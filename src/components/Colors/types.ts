@@ -1,10 +1,16 @@
 import { ReactNode } from 'react';
 
+export type COLORS_VARIANTS_OBJECT = {
+  variant: string;
+  hex: number;
+};
+
 export interface ColorsProps {
   children?: ReactNode;
   background: string;
 }
 
-export interface ColorProps {
-  color: { key: string; variants: Array<object> };
-}
+export type COLORS_OBJECT = {
+  key: string;
+  variants: COLORS_VARIANTS_OBJECT[];
+};

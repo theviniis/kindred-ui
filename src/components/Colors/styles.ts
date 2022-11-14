@@ -1,35 +1,52 @@
 import styled from 'styled-components';
-import { border, spacing } from '../../shared';
+import { border, KEYFRAMES, spacing } from '../../shared';
 
 export const Wrapper = styled.ul`
-  flex-direction: column;
-  gap: ${spacing.medium}px;
-  h4 {
-    text-transform: capitalize;
-    padding: ${spacing.small}px 0;
-  }
-  &,
-  ul {
-    display: flex;
-  }
-`;
-
-export const List = styled.ul`
-  align-items: center;
+  display: flex;
   flex-wrap: wrap;
+  align-items: center;
   border-radius: ${border.radius.xsmall}px;
   overflow: hidden;
 `;
 
-export const Content = styled.li`
+export const ColorKey = styled.span`
+  color: ${({ color }) => color};
+`;
+
+export const ColorPath = styled.span`
+  position: absolute;
+  inset: 0;
+  display: none;
+  background-color: rgb(0 0 0 / 0.2);
+  place-content: center;
+  padding: ${spacing.medium}px;
+  animation: ${KEYFRAMES.fadeIn} 50ms ease-in forwards;
+  color: #fff;
+`;
+
+export const Content = styled.li<{ background: string; expandable: boolean }>`
   text-align: center;
-  background-color: ${({ background }: { background: number }): number =>
-    background};
+  background-color: ${({ background }) => background};
   flex-grow: 1;
-  padding: ${spacing.small}px;
+  padding: ${spacing.medium}px;
+  cursor: pointer;
+  position: relative;
 
   &:first-child {
-    padding: ${spacing.medium}px ${spacing.small}px;
-    width: 100%;
+    width: ${({ expandable }) => (expandable ? '100%' : '')};
+  }
+
+  ${({ expandable }) => !expandable && `flex-basis: 25%;`}
+
+  &:hover {
+    &:not(:first-child) {
+      /* width: 100%; */
+    }
+    ${ColorKey} {
+      visibility: hidden;
+    }
+    ${ColorPath} {
+      display: grid;
+    }
   }
 `;

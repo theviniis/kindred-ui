@@ -1,3 +1,5 @@
+import { keyframes } from 'styled-components';
+
 export const typography = {
   type: { primary: `'Poppins, sans-serif'`, secondary: 'arial' },
   weight: {
@@ -30,54 +32,54 @@ export const typography = {
 
 export const colors = {
   primary: {
-    100: '#03a9f4',
-    200: '#e1f5fe',
-    300: '#b3e5fc',
-    400: '#4fc3f7',
-    500: '#0288d1',
-    600: '#0277bd',
+    100: { color: '#03a9f4', fontColor: '#fff' },
+    200: { color: '#e1f5fe', fontColor: '#000' },
+    300: { color: '#b3e5fc', fontColor: '#000' },
+    400: { color: '#4fc3f7', fontColor: '#000' },
+    500: { color: '#0288d1', fontColor: '#fff' },
+    600: { color: '#0277bd', fontColor: '#fff' },
   },
   secondary: {
-    100: '#673ab7',
-    200: '#ede7f6',
-    300: '#d1c4e9',
-    400: '#9575cd',
-    500: '#512da8',
-    600: '#311b92',
+    100: { color: '#673ab7', fontColor: '#fff' },
+    200: { color: '#ede7f6', fontColor: '#000' },
+    300: { color: '#d1c4e9', fontColor: '#000' },
+    400: { color: '#9575cd', fontColor: '#000' },
+    500: { color: '#512da8', fontColor: '#fff' },
+    600: { color: '#311b92', fontColor: '#fff' },
   },
   success: {
-    100: '#8bc34a',
-    200: '#e7f6d5',
-    300: '#c5e1a5',
-    400: '#aed581',
-    500: '#689f38',
-    600: '#558b2f',
+    100: { color: '#8bc34a', fontColor: '#fff' },
+    200: { color: '#e7f6d5', fontColor: '#000' },
+    300: { color: '#c5e1a5', fontColor: '#000' },
+    400: { color: '#aed581', fontColor: '#000' },
+    500: { color: '#689f38', fontColor: '#fff' },
+    600: { color: '#558b2f', fontColor: '#fff' },
   },
   // warning: {
-  //   100: '#8bc34a',
-  //   200: '#e7f6d5',
-  //   300: '#c5e1a5',
-  //   400: '#aed581',
-  //   500: '#689f38',
-  //   600: '#558b2f',
+  //   100: { color: '#673ab7', fontColor: '#fff' },
+  //   200: { color: '#ede7f6', fontColor: '#000' },
+  //   300: { color: '#d1c4e9', fontColor: '#000' },
+  //   400: { color: '#9575cd', fontColor: '#000' },
+  //   500: { color: '#512da8', fontColor: '#000' },
+  //   600: { color: '#311b92', fontColor: '#000' },
   // },
   error: {
-    100: '#f44336',
-    200: '#ffdde0',
-    300: '#ffcdd2',
-    400: '#ef9a9a',
-    500: '#d32f2f',
-    600: '#b71c1c',
+    100: { color: '#f44336', fontColor: '#fff' },
+    200: { color: '#ffdde0', fontColor: '#000' },
+    300: { color: '#ffcdd2', fontColor: '#000' },
+    400: { color: '#ef9a9a', fontColor: '#000' },
+    500: { color: '#d32f2f', fontColor: '#fff' },
+    600: { color: '#b71c1c', fontColor: '#fff' },
   },
   neutral: {
-    100: '#f2f2f2',
-    200: '#e8e9e9',
-    300: '#d1d3d4',
-    400: '#babdbf',
-    500: '#808488',
-    600: '#666a6d',
-    700: '#4d5052',
-    800: '#212122',
+    100: { color: '#f2f2f2', fontColor: '#000' },
+    200: { color: '#e8e9e9', fontColor: '#000' },
+    300: { color: '#d1d3d4', fontColor: '#000' },
+    400: { color: '#babdbf', fontColor: '#000' },
+    500: { color: '#808488', fontColor: '#fff' },
+    600: { color: '#666a6d', fontColor: '#fff' },
+    700: { color: '#4d5052', fontColor: '#fff' },
+    800: { color: '#212122', fontColor: '#fff' },
   },
 };
 
@@ -135,4 +137,16 @@ export const darkTheme = {
   name: 'dark',
   body: colors.neutral[800],
   fontColor: colors.neutral[100],
+};
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  } to {
+    opacity: 1;
+  }
+`;
+
+export const KEYFRAMES = {
+  fadeIn,
 };

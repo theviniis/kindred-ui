@@ -94,3 +94,13 @@ export const breakpoints = {
     columns: 12,
   },
 };
+
+export const lightTheme = {
+  body: colors.neutral[100],
+  fontColor: colors.neutral[800],
+};
+
+export const darkTheme = {
+  body: colors.neutral[800],
+  fontColor: colors.neutral[100],
+};

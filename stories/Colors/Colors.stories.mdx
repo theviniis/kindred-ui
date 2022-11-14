@@ -1,18 +1,18 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { Colors } from '../../src/components';
-import { Default } from './Colors.stories.tsx';
+// import { Default } from './Colors.stories.tsx';
 import { colors } from '../../src/shared';
 
-<Meta title="Components/Colors" component={Colors} />
+<Meta title="Tokens/Colors" component={Colors} />
 
-# Colors
-
-<ArgsTable of={Colors} />
+export const Template = args => <Colors {...args} />
 
 # <a id="examples"></a>Examples
 
 ### Default
 
 <Canvas>
-  <Story story={Default} />
+  <Story name="Default">
+    {Template.bind({})}
+  </Story>
 </Canvas>

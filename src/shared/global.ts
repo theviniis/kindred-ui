@@ -1,12 +1,10 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { typography } from './theme';
-// import { typography } from './styles';
 
 export const bodyStyles = css`
   font-family: ${typography.type.primary};
-  /* background-color: ${({ theme }) => theme.body}; */
-  /* color: ${({ theme }) => theme.fontColor}; */
-  background-color: red;
+  background-color: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.fontColor};
 `;
 
 export const fontUrl =

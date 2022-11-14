@@ -3,9 +3,10 @@ import { typography } from './theme';
 // import { typography } from './styles';
 
 export const bodyStyles = css`
-  font-family: ${typography.type};
+  font-family: ${typography.type.primary};
   /* background-color: ${({ theme }) => theme.body}; */
   /* color: ${({ theme }) => theme.fontColor}; */
+  background-color: red;
 `;
 
 export const fontUrl =

@@ -1,12 +1,20 @@
 import { createGlobalStyle, css } from 'styled-components';
+import { typography } from './theme';
 // import { typography } from './styles';
 
-export const bodyStyles = css``;
+export const bodyStyles = css`
+  font-family: ${typography.type};
+  /* background-color: ${({ theme }) => theme.body}; */
+  /* color: ${({ theme }) => theme.fontColor}; */
+`;
 
 export const fontUrl =
   'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap';
 
 export const GlobalStyle = createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     ${bodyStyles}
   }

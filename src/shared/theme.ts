@@ -1,3 +1,33 @@
+export const typography = {
+  type: { primary: `'Poppins, sans-serif'`, secondary: 'arial' },
+  weight: {
+    regular: '400',
+    medium: '600',
+    bold: '700',
+  },
+  size: {
+    paragraph: {
+      xxxs: '12px',
+      xxs: '14px',
+      xs: '16px',
+      sm: '20px',
+      md: '24px',
+      lg: '32px',
+      xl: '40px',
+      xxl: '48px',
+    },
+    lineHeight: {
+      default: 1,
+      xs: 1.15,
+      sm: 1.2,
+      md: 1.33,
+      lg: 1.5,
+      xl: 1.7,
+      xxl: 2,
+    },
+  },
+} as const;
+
 export const colors = {
   primary: {
     100: '#03a9f4',
@@ -96,11 +126,13 @@ export const breakpoints = {
 };
 
 export const lightTheme = {
+  name: 'light',
   body: colors.neutral[100],
   fontColor: colors.neutral[800],
 };
 
 export const darkTheme = {
+  name: 'dark',
   body: colors.neutral[800],
   fontColor: colors.neutral[100],
 };

@@ -4,7 +4,7 @@ import { darkTheme, GlobalStyle, lightTheme } from '../src/shared';
 import { themes } from '@storybook/theming';
 import { GlobalContext, GlobalStorage } from '../src/context';
 import { ThemeProvider } from 'styled-components';
-import theme from './theme';
+import theme from './manager';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },

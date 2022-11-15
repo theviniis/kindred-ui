@@ -1,2 +1,1 @@
-export * from './Colors';
-export * from './types';
+export * as Colors from './Colors';

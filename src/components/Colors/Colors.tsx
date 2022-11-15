@@ -1,36 +1,62 @@
 import React from 'react';
-import * as T from './types';
 import * as S from './styles';
+import * as T from './types';
 import { colors } from '../../shared';
 
-let colorsObject: T.COLORS_OBJECT[] = [];
+const getColorsArray = ({ colorObject }: { colorObject: any }) => {
+  const keys = Object.keys(colorObject);
+  const obj: T.COLOR_OBJECT[] = [];
+  keys.map(k => obj.push({ key: k, hex: colorObject[k] }));
+  return obj;
+};
 
-const keys = Object.keys(colors);
-keys.map(key => {
-  const variants = Object.keys(colors[key]).map(variant => {
-    const hex: number = colors[key][variant];
-    return { variant, hex };
-  });
-  colorsObject.push({ key, variants });
-});
-
-export const Colors: React.FC<T.ColorsProps> = () => {
+const Color: React.FC<T.ColorProps> = ({
+  colorList,
+  colorName,
+  expandable = true,
+}) => {
   return (
     <S.Wrapper>
-      {colorsObject.length &&
-        colorsObject.map((color, i) => (
-          <li key={i}>
-            <h4>{color.key}</h4>
-            <S.List>
-              {color.variants &&
-                color.variants.map((item, i) => (
-                  <S.Content key={i} background={item.hex}>
-                    {item.variant}
-                  </S.Content>
-                ))}
-            </S.List>
-          </li>
-        ))}
+      {colorList.map(({ hex, key }) => {
+        return (
+          <S.Content key={key} background={hex.color} expandable={expandable}>
+            <S.ColorKey color={hex.fontColor}>{key}</S.ColorKey>
+            <S.ColorPath
+              onClick={() => {
+                return navigator.clipboard.writeText(
+                  `colors.${colorName}[${key}].color`
+                );
+              }}
+            >{`colors.${colorName}[${key}].color`}</S.ColorPath>
+          </S.Content>
+        );
+      })}
     </S.Wrapper>
   );
 };
+
+const primaryList = getColorsArray({ colorObject: colors.primary });
+
+const Primary = () => <Color colorName="primary" colorList={primaryList} />;
+
+const secondaryList = getColorsArray({ colorObject: colors.secondary });
+
+const Secondary = () => (
+  <Color colorName="secondary" colorList={secondaryList} />
+);
+
+const successList = getColorsArray({ colorObject: colors.success });
+
+const Success = () => <Color colorName="success" colorList={successList} />;
+
+const errorList = getColorsArray({ colorObject: colors.error });
+
+const Error = () => <Color colorName="error" colorList={errorList} />;
+
+const neutralList = getColorsArray({ colorObject: colors.neutral });
+
+const Neutral = () => (
+  <Color colorName="neutral" colorList={neutralList} expandable={false} />
+);
+
+export { Primary, Secondary, Success, Error, Neutral };

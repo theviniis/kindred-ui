@@ -20,9 +20,9 @@ const theme = create({
   colorSecondary: colors.primary[100].color, // Chateau Green
 
   // UI
-  appBg: '#F6F9FC',
+  appBg: colors.neutral[200].color,
   appContentBg: colors.neutral[100].color,
-  appBorderColor: colors.neutral[800].color,
+  appBorderColor: colors.neutral[300].color,
   appBorderRadius: border.radius.xsmall,
 
   // Typography

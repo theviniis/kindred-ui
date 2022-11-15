@@ -83,6 +83,25 @@ export const colors = {
   },
 } as const;
 
+export const gradient = {
+  info: `
+    background: #2328EB;
+    background: linear-gradient(225deg, #2328EB 0%, #23CCEB 100%);
+  `,
+  highlight: `
+    background: #E0157A;
+    background: linear-gradient(225deg, #E0157A 0%, #FEDB4D 100%);
+  `,
+  secondary: `
+    background: #7116E9;
+    background: linear-gradient(225deg, #7116E9 0%, #E0157A 100%);
+  `,
+  communication: `
+    background: #23CCEB;
+    background: linear-gradient(225deg, #23CCEB 0%, #FEDB4D 100%);
+  `,
+} as const;
+
 export const spacing = {
   nano: 4,
   xsmall: 8,

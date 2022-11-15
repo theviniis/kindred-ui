@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import { border, spacing } from '../../shared/theme';
+import { border, colors, spacing } from '../../shared/theme';
 
 export const Wrapper = styled.div`
   --padding: ${spacing.xlarger}px;
   width: 100%;
-  height: 376px;
+  height: 300px;
   display: flex;
   flex-direction: column;
-  gap: ${spacing.xsmall};
+  gap: ${spacing.xsmall}px;
   color: white;
-  background: linear-gradient(135deg, #2328eb 14.64%, #23cceb 85.36%);
+  background: ${`linear-gradient(135deg, ${colors.primary[100].color} 15%, ${colors.primary[600].color} 100%)`};
   position: relative;
   border-radius: ${border.radius.xsmall}px;
   padding: var(--padding);

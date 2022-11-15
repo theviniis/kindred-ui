@@ -4,8 +4,8 @@ import * as S from './styles';
 export const Clouds = (): JSX.Element => {
   return (
     <S.Image
-      width="1280"
-      height="167"
+      width="100%"
+      // height="167"
       viewBox="0 0 1280 167"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

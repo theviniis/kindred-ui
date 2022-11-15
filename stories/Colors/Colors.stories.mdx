@@ -24,16 +24,32 @@ export const NeutralTemplate = args => <Colors.Neutral {...args} />;
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, facilis!
 </Hero>
 
+## Index
+
 - [Importing and usage](#importing)
 - [Examples](#examples)
 
-## <a id="importing"></a>Importing and usage
+## <a id="importing"></a>Importing
 
 ```js
-import { Button } from '@viniis/viniis_ui';
+import { colors } from '@viniis/viniis_ui';
 ```
 
-# <a id="examples"></a>Examples
+## <a id="Usage"></a>Usage
+
+```js
+console.log(colors.primary[100].color); // it will console #03a9f4
+
+console.log(colors.primary[100].fontColor); // it will console #f2f2f2
+
+// styling elements
+const Wrapper = styled.div`
+  background-color: ${colors.primary[100].color};
+  color: ${colors.primary[100].fontColor};
+`;
+```
+
+## <a id="examples"></a>Examples
 
 ### Primary
 

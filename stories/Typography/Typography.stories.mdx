@@ -1,17 +1,123 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { Typography } from '../../src/components';
-import { Default } from './Typography.stories.tsx';
+const innerText = 'Lorem ipsum'
 
-<Meta title="Components/Typography" component={Typography} />
+<Meta title="Tokens/Typography" component={Typography} />
 
 # Typography
 
-<ArgsTable of={Typography} />
+- [Importing and usage](#importing)
+- [Examples](#examples)
+
+## <a id="importing"></a>Importing and usage
+
+```js
+import { Typography } from '@viniis/viniis_ui';
+```
 
 # <a id="examples"></a>Examples
 
-### Default
-
+### H1
 <Canvas>
-  <Story story={Default} />
+  <Story name="H1">
+    <Typography.H1>{innerText}</Typography.H1>
+  </Story>
+</Canvas>
+
+### H2
+<Canvas>
+  <Story name="H2">
+    <Typography.H2>{innerText}</Typography.H2>
+  </Story>
+</Canvas>
+
+### H3
+<Canvas>
+  <Story name="H3">
+    <Typography.H3>{innerText}</Typography.H3>
+  </Story>
+</Canvas>
+
+### H4
+<Canvas>
+  <Story name="H4">
+    <Typography.H4>{innerText}</Typography.H4>
+  </Story>
+</Canvas>
+
+### H5
+<Canvas>
+  <Story name="H5">
+    <Typography.H5>{innerText}</Typography.H5>
+  </Story>
+</Canvas>
+
+### H6
+<Canvas>
+  <Story name="H6">
+    <Typography.H6>{innerText}</Typography.H6>
+  </Story>
+</Canvas>
+
+### Subtitle1
+<Canvas>
+  <Story name="Subtitle1">
+    <Typography.Subtitle1>{innerText}</Typography.Subtitle1>
+  </Story>
+</Canvas>
+
+### Subtitle2
+<Canvas>
+  <Story name="Subtitle2">
+    <Typography.Subtitle2>{innerText}</Typography.Subtitle2>
+  </Story>
+</Canvas>
+
+### Body1
+<Canvas>
+  <Story name="Body1">
+    <Typography.Body1>{innerText}</Typography.Body1>
+  </Story>
+</Canvas>
+
+### Body2
+<Canvas>
+  <Story name="Body2">
+    <Typography.Body2>{innerText}</Typography.Body2>
+  </Story>
+</Canvas>
+
+### Body3
+<Canvas>
+  <Story name="Body3">
+    <Typography.Body3>{innerText}</Typography.Body3>
+  </Story>
+</Canvas>
+
+### P1
+<Canvas>
+  <Story name="P1">
+    <Typography.P1>{innerText}</Typography.P1>
+  </Story>
+</Canvas>
+
+### P2
+<Canvas>
+  <Story name="P2">
+    <Typography.P2>{innerText}</Typography.P2>
+  </Story>
+</Canvas>
+
+### P3
+<Canvas>
+  <Story name="P3">
+    <Typography.P3>{innerText}</Typography.P3>
+  </Story>
+</Canvas>
+
+### Overline
+<Canvas>
+  <Story name="Overline">
+    <Typography.Overline>{innerText}</Typography.Overline>
+  </Story>
 </Canvas>

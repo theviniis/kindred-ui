@@ -81,7 +81,7 @@ export const colors = {
     700: { color: '#4d5052', fontColor: '#fff' },
     800: { color: '#212122', fontColor: '#fff' },
   },
-};
+} as const;
 
 export const spacing = {
   nano: 4,
@@ -90,7 +90,7 @@ export const spacing = {
   medium: 24,
   larger: 32,
   xlarger: 40,
-};
+} as const;
 
 export const border = {
   radius: {
@@ -107,7 +107,7 @@ export const border = {
     medium: 4,
     larger: 8,
   },
-};
+} as const;
 
 export const breakpoints = {
   xsmall: {
@@ -125,19 +125,17 @@ export const breakpoints = {
     width: 1440,
     columns: 12,
   },
-};
+} as const;
 
 export const lightTheme = {
   name: 'light',
-  body: colors.neutral[100],
-  fontColor: colors.neutral[800],
-};
+  body: colors.neutral[100].color,
+} as const;
 
 export const darkTheme = {
   name: 'dark',
-  body: colors.neutral[800],
-  fontColor: colors.neutral[100],
-};
+  body: colors.neutral[800].color,
+} as const;
 
 const fadeIn = keyframes`
   from {
@@ -149,4 +147,4 @@ const fadeIn = keyframes`
 
 export const KEYFRAMES = {
   fadeIn,
-};
+} as const;

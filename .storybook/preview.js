@@ -4,6 +4,7 @@ import { darkTheme, GlobalStyle, lightTheme } from '../src/shared';
 import { themes } from '@storybook/theming';
 import { GlobalContext, GlobalStorage } from '../src/context';
 import { ThemeProvider } from 'styled-components';
+import theme from './theme';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -14,17 +15,16 @@ export const parameters = {
     },
   },
   docs: {
-    theme: themes.dark,
+    theme,
   },
 };
 
 addDecorator((Story, context) => {
   // const theme = React.useContext(GlobalContext);
-  // console.log(context);
   return (
     <>
       <GlobalStorage>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={lightTheme}>
           <Story {...context} />
           <GlobalStyle />
         </ThemeProvider>

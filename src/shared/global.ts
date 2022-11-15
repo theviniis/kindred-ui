@@ -13,6 +13,7 @@ export const fontUrl =
 export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
+    font-family: ${typography.type.primary};
   }
   body {
     ${bodyStyles}

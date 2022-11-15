@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { typography } from '../../shared';
 
-export const typographyDefinitions = {
+export const TypographyDefinitions = {
   h1: `
     font-family: ${typography.type.primary};
     font-size: ${typography.size.paragraph.xxl};
@@ -105,77 +105,77 @@ const setColor = ({ color, theme }: { color?: string; theme: any }) => {
 
 const H1 = styled.h1`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.h1};
+  ${TypographyDefinitions.h1};
 `;
 
 const H2 = styled.h2`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.h2};
+  ${TypographyDefinitions.h2};
 `;
 
 const H3 = styled.h3`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.h3};
+  ${TypographyDefinitions.h3};
 `;
 
 const H4 = styled.h4`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.h4};
+  ${TypographyDefinitions.h4};
 `;
 
 const H5 = styled.h5`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.h5};
+  ${TypographyDefinitions.h5};
 `;
 
 const H6 = styled.h6`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.h6};
+  ${TypographyDefinitions.h6};
 `;
 
 const Subtitle1 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.subtitle1};
+  ${TypographyDefinitions.subtitle1};
 `;
 
 const Subtitle2 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.subtitle2};
+  ${TypographyDefinitions.subtitle2};
 `;
 
 const Body1 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.body1};
+  ${TypographyDefinitions.body1};
 `;
 
 const Body2 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.body2};
+  ${TypographyDefinitions.body2};
 `;
 
 const Body3 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.body3};
+  ${TypographyDefinitions.body3};
 `;
 
 const P1 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.p1};
+  ${TypographyDefinitions.p1};
 `;
 
 const P2 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.p2};
+  ${TypographyDefinitions.p2};
 `;
 
 const P3 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.p3};
+  ${TypographyDefinitions.p3};
 `;
 
 const Overline = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
-  ${typographyDefinitions.overline};
+  ${TypographyDefinitions.overline};
 `;
 
 export {

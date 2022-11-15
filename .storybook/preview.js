@@ -22,7 +22,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme for components',
-    defaultValue: 'light',
+    defaultValue: 'dark',
     toolbar: {
       icon: 'circlehollow',
       // Array of plain string values or MenuItem shape (see below)

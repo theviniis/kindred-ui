@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { typography } from '../../shared';
 
 export const typographyDefinitions = {
@@ -94,63 +94,87 @@ export const typographyDefinitions = {
   `,
 } as const;
 
+const setColor = ({ color, theme }: { color?: string; theme: any }) => {
+  let c;
+  if (color) c = color;
+  else c = theme.fontColor;
+  return css`
+    color: ${c};
+  `;
+};
+
 const H1 = styled.h1`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.h1};
 `;
 
 const H2 = styled.h2`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.h2};
 `;
 
 const H3 = styled.h3`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.h3};
 `;
 
 const H4 = styled.h4`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.h4};
 `;
 
 const H5 = styled.h5`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.h5};
 `;
 
 const H6 = styled.h6`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.h6};
 `;
 
 const Subtitle1 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.subtitle1};
 `;
 
 const Subtitle2 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.subtitle2};
 `;
 
 const Body1 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.body1};
 `;
 
 const Body2 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.body2};
 `;
 
 const Body3 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.body3};
 `;
 
 const P1 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.p1};
 `;
 
 const P2 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.p2};
 `;
 
 const P3 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.p3};
 `;
 
 const Overline = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
   ${typographyDefinitions.overline};
 `;
 

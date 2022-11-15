@@ -91,6 +91,7 @@ export const TypographyDefinitions = {
     font-size: ${typography.size.paragraph.xs};
     font-weight: ${typography.weight.regular};
     line-height: ${typography.size.lineHeight.sm};
+    text-transform: uppercase;
   `,
 } as const;
 
@@ -133,27 +134,27 @@ const H6 = styled.h6`
   ${TypographyDefinitions.h6};
 `;
 
-const Subtitle1 = styled.p`
+const S1 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
   ${TypographyDefinitions.subtitle1};
 `;
 
-const Subtitle2 = styled.p`
+const S2 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
   ${TypographyDefinitions.subtitle2};
 `;
 
-const Body1 = styled.p`
+const B1 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
   ${TypographyDefinitions.body1};
 `;
 
-const Body2 = styled.p`
+const B2 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
   ${TypographyDefinitions.body2};
 `;
 
-const Body3 = styled.p`
+const B3 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
   ${TypographyDefinitions.body3};
 `;
@@ -178,20 +179,4 @@ const Overline = styled.p`
   ${TypographyDefinitions.overline};
 `;
 
-export {
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  Subtitle1,
-  Subtitle2,
-  Body1,
-  Body2,
-  Body3,
-  P1,
-  P2,
-  P3,
-  Overline,
-};
+export { H1, H2, H3, H4, H5, H6, S1, S2, B1, B2, B3, P1, P2, P3, Overline };

@@ -3,7 +3,7 @@ import { lightTheme } from '../shared';
 
 export const GlobalContext = React.createContext({});
 
-export const GlobalStorage = ({ children }: { children: React.ReactNode }) => {
+export const ViniisContext = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = React.useState(lightTheme);
 
   function themeToggle() {

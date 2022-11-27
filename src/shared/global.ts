@@ -1,5 +1,4 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { docsStyle } from './docsStyle';
 import { typography } from './theme';
 
 export const bodyStyles = css`
@@ -33,5 +32,4 @@ export const GlobalStyle = createGlobalStyle`
   button {
     all: unset;
   }
-  ${docsStyle}
 `;

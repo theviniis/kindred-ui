@@ -55,14 +55,6 @@ export const colors = {
     500: { color: '#689f38', fontColor: '#f2f2f2' },
     600: { color: '#558b2f', fontColor: '#f2f2f2' },
   },
-  // warning: {
-  //   100: { color: '#673ab7', fontColor: '#f2f2f2' },
-  //   200: { color: '#ede7f6', fontColor: '#212122' },
-  //   300: { color: '#d1c4e9', fontColor: '#212122' },
-  //   400: { color: '#9575cd', fontColor: '#212122' },
-  //   500: { color: '#512da8', fontColor: '#212122' },
-  //   600: { color: '#311b92', fontColor: '#212122' },
-  // },
   error: {
     100: { color: '#f44336', fontColor: '#f2f2f2' },
     200: { color: '#ffdde0', fontColor: '#212122' },
@@ -150,12 +142,14 @@ export const lightTheme = {
   name: 'light',
   bodyColor: colors.neutral[100].color,
   fontColor: colors.neutral[100].fontColor,
+  ...colors,
 } as const;
 
 export const darkTheme = {
   name: 'dark',
   bodyColor: colors.neutral[800].color,
   fontColor: colors.neutral[800].fontColor,
+  ...colors,
 } as const;
 
 const fadeIn = keyframes`

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as T from './types';
 import * as S from './style';
+import { ICON_SIZES } from '../Icon';
 
 export const Button: React.FC<T.ButtonProps> = ({
   children,
@@ -17,9 +18,10 @@ export const Button: React.FC<T.ButtonProps> = ({
       skin={skin}
       variant={variant}
       disabled={disabled}
+      iconPosition={iconPosition}
       {...props}
     >
-      {icon && icon}
+      {icon && <S.IconWrapper icon={icon} />}
       {children}
     </S.Button>
   );

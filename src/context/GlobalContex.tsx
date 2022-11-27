@@ -6,13 +6,8 @@ export const GlobalContext = React.createContext({});
 export const ViniisContext = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = React.useState(lightTheme);
 
-  function themeToggle() {
-    // const currentTheme = theme.name === 'light' ? darkTheme : lightTheme;
-    // setTheme(currentTheme);
-  }
-
   return (
-    <GlobalContext.Provider value={{ theme, setTheme, themeToggle }}>
+    <GlobalContext.Provider value={{ theme, setTheme }}>
       {children}
     </GlobalContext.Provider>
   );

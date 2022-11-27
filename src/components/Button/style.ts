@@ -99,5 +99,5 @@ export const Button = styled(S2)<Omit<ButtonProps, 'icon' | 'children'>>`
   border-width: ${border.width.xsmall}px;
 
   ${({ theme, skin, variant, disabled }) =>
-    setVariant({ theme, skin, variant, disabled })}
+    setVariant({ theme, skin, variant, disabled })};
 `;

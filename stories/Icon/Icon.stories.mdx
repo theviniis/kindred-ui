@@ -1,0 +1,41 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import { Icon } from '../../src/components';
+import { Default, Variant, Skin, Size, Toggle } from './Icon.stories.tsx';
+
+<Meta title="Components/Icon" component={Icon} />
+
+# Icon
+
+<ArgsTable of={Icon} />
+
+# <a id="examples"></a>Examples
+
+### Default
+
+<Canvas>
+  <Story story={Default} />
+</Canvas>
+
+### Variant
+
+<Canvas>
+  <Story story={Variant} />
+</Canvas>
+
+### Skin
+
+<Canvas>
+  <Story story={Skin} />
+</Canvas>
+
+### Size
+
+<Canvas>
+  <Story story={Size} />
+</Canvas>
+
+### Toggle
+
+<Canvas>
+  <Story story={Toggle} />
+</Canvas>

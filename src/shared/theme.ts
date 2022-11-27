@@ -164,3 +164,7 @@ const fadeIn = keyframes`
 export const KEYFRAMES = {
   fadeIn,
 } as const;
+
+export const transitions = {
+  default: `ease-in-out 200ms`,
+};

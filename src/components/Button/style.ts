@@ -1,6 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { border, spacing } from '../../shared';
-import { S3 } from '../Typography';
+import { S2 } from '../Typography';
 import { ButtonProps, SetVariantProps } from './types';
 
 const setVariant = ({
@@ -86,7 +86,7 @@ const setVariant = ({
   `;
 };
 
-export const Button = styled(S3)<Omit<ButtonProps, 'icon' | 'children'>>`
+export const Button = styled(S2)<Omit<ButtonProps, 'icon' | 'children'>>`
   display: flex;
   gap: ${spacing.xsmall}px;
   align-items: center;

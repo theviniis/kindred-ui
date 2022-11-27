@@ -47,9 +47,15 @@ export const TypographyDefinitions = {
   subtitle2: `
     font-family: ${typography.type.primary};
     font-size: ${typography.size.paragraph.xs};
-    font-weight: ${typography.weight.bold};
+    font-weight: ${typography.weight.medium};
     line-height: ${typography.size.lineHeight.xs};
   `,
+  subtitle3: `
+  font-family: ${typography.type.primary};
+  font-size: ${typography.size.paragraph.xs};
+  font-weight: ${typography.weight.bold};
+  line-height: ${typography.size.lineHeight.xs};
+`,
   body1: `
     font-family: ${typography.type.primary};
     font-size: ${typography.size.paragraph.md};
@@ -144,6 +150,11 @@ const S2 = styled.p`
   ${TypographyDefinitions.subtitle2};
 `;
 
+const S3 = styled.p`
+  ${({ color, theme }) => setColor({ color, theme })}
+  ${TypographyDefinitions.subtitle3};
+`;
+
 const B1 = styled.p`
   ${({ color, theme }) => setColor({ color, theme })}
   ${TypographyDefinitions.body1};
@@ -179,4 +190,4 @@ const Overline = styled.p`
   ${TypographyDefinitions.overline};
 `;
 
-export { H1, H2, H3, H4, H5, H6, S1, S2, B1, B2, B3, P1, P2, P3, Overline };
+export { H1, H2, H3, H4, H5, H6, S1, S2, S3, B1, B2, B3, P1, P2, P3, Overline };

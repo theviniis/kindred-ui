@@ -1,16 +1,28 @@
 import React from 'react';
-import { ICONS } from '../Icon';
+import { DEFAULT_SIZES } from '../../shared';
+import { IconProps } from '../Icon';
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export type BUTTON_SIZES = DEFAULT_SIZES;
+export interface ButtonProps
+  extends React.HTMLAttributes<HTMLButtonElement>,
+    Pick<IconProps, 'icon'> {
   children: string;
-  skin: 'default' | 'primary' | 'secondary' | 'success' | 'error';
+  skin: 'primary' | 'secondary' | 'success' | 'error';
   variant: 'default' | 'stroke' | 'ghost';
   disabled?: boolean;
-  icon?: ICONS;
+  size: BUTTON_SIZES;
   iconPosition?: 'start' | 'end';
+  fullWidth?: boolean;
+}
+
+export interface StyledButtonProps
+  extends Pick<ButtonProps, 'iconPosition' | 'disabled' | 'skin' | 'variant'> {
+  size: string;
 }
 
 export interface SetVariantProps
-  extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'children'> {
+  extends Pick<ButtonProps, 'skin' | 'variant' | 'disabled'> {
   theme: any;
 }
+
+export type SetSizeProps = Pick<ButtonProps, 'size'>;

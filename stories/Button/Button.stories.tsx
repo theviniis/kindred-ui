@@ -4,10 +4,9 @@ import {
   Button,
   ButtonProps,
   Icon as IconComponent,
-  ICONS,
 } from '../../src/components';
 
-const icon = ICONS.checkSquare;
+const icon = 'checkSquare';
 
 const Template: Story<ButtonProps> = args => <Button {...args}></Button>;
 
@@ -34,6 +33,12 @@ Disabled.args = {
   disabled: true,
 };
 
+const Size: Story<ButtonProps> = Template.bind({});
+Size.args = {
+  children: 'Size',
+  size: 'xsmall',
+};
+
 const Icon: Story<ButtonProps> = Template.bind({});
 Icon.args = {
   children: 'Icon',
@@ -47,4 +52,4 @@ IconPosition.args = {
   iconPosition: 'end',
 };
 
-export { Default, Skin, Variant, Disabled, Icon, IconPosition };
+export { Default, Skin, Variant, Disabled, Size, Icon, IconPosition };

@@ -1,8 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { border, spacing } from '../../shared';
-import { Icon } from '../Icon';
 import { P1 } from '../Typography';
-import { ButtonProps, SetVariantProps } from './types';
+import { SetVariantProps, StyledButtonProps } from './types';
 
 const setVariant = ({
   theme,
@@ -88,23 +87,19 @@ const setVariant = ({
   `;
 };
 
-export const Button = styled(P1)<Omit<ButtonProps, 'icon' | 'children'>>`
+export const Button = styled(P1)<StyledButtonProps>`
   display: flex;
   gap: ${spacing.xsmall}px;
   align-items: center;
   flex-direction: ${({ iconPosition }) =>
     iconPosition === 'start' ? 'row' : 'row-reverse'};
-  padding: ${spacing.xsmall}px ${spacing.small}px;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border-radius: ${border.radius.xsmall}px;
   border-style: solid;
   border-width: ${border.width.xsmall}px;
 
+  padding: ${({ size }) => `${parseInt(size, 10) / 2}px ${size}`};
+
   ${({ theme, skin, variant, disabled }) =>
     setVariant({ theme, skin, variant, disabled })};
-`;
-
-export const IconWrapper = styled(Icon)`
-  border-left: 1px solid red;
-  height: 100%;
 `;

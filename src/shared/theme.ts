@@ -96,12 +96,13 @@ export const gradient = {
 } as const;
 
 export const spacing = {
-  nano: 4,
+  xxsmall: 4,
   xsmall: 8,
-  small: 16,
-  medium: 24,
-  large: 32,
-  xlarge: 40,
+  small: 12,
+  medium: 16,
+  large: 20,
+  xlarge: 24,
+  xxlarge: 28,
 } as const;
 
 export const border = {
@@ -168,3 +169,5 @@ export const KEYFRAMES = {
 export const transitions = {
   default: `ease-in-out 200ms`,
 };
+
+export type DEFAULT_SIZES = 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';

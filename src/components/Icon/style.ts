@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { IconProps } from './types';
+import { StyledIconWrapperProps } from './types';
 
-export const IconWrapper = styled.span<
-  Pick<IconProps, 'onClick' | 'cursor' | 'size'>
->`
+export const IconWrapper = styled.span<StyledIconWrapperProps>`
+  display: grid;
+  place-content: center;
   overflow: hidden;
   aspect-ratio: 1;
-  width: ${({ size }) => size};
+  width: ${({ size }) => size + 'px'};
   cursor: ${({ cursor }) => cursor};
 `;

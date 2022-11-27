@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Story } from '@storybook/react';
-import { Icon, IconProps, ICON_SIZES } from '../../src/components';
-import { colors } from '../../src';
+import {
+  Icon,
+  IconProps,
+  ICON_SIZES,
+  ICON_VARIANTS,
+  ICONS,
+} from '../../src/components';
+import { colors } from '../../src/shared';
 
-const icon = 'checkSquare';
+const icon = ICONS.checkSquare;
 
 const Template: Story<IconProps> = args => <Icon {...args} icon={icon} />;
 
@@ -14,7 +20,7 @@ const ToggleTemplate: Story<IconProps> = args => {
     <Icon
       {...args}
       icon={icon}
-      variant={isActive ? 'fill' : 'stroke'}
+      variant={isActive ? ICON_VARIANTS.fill : ICON_VARIANTS.stroke}
       onClick={() => setIsActive(!isActive)}
     />
   );
@@ -24,7 +30,7 @@ const Default: Story<IconProps> = Template.bind({});
 
 const Variant: Story<IconProps> = Template.bind({});
 Variant.args = {
-  variant: 'fill',
+  variant: ICON_VARIANTS.fill,
 };
 
 const Skin: Story<IconProps> = Template.bind({});

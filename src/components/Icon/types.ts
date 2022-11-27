@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export enum ICON_SIZES {
   nano = '4px',
@@ -9,10 +9,19 @@ export enum ICON_SIZES {
   xlarge = '40px',
 }
 
+export enum ICON_VARIANTS {
+  stroke = 'stroke',
+  fill = 'fill',
+}
+
+export enum ICONS {
+  checkSquare = 'checkSquare',
+}
+
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
-  icon: 'checkSquare';
-  variant: 'stroke' | 'fill';
-  skin: `#${string}`;
+  icon: ICONS;
+  variant: ICON_VARIANTS;
+  skin: string;
   size: ICON_SIZES;
   cursor?: string;
   onClick?: (e?: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;

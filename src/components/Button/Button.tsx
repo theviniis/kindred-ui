@@ -17,6 +17,7 @@ export const Button: React.FC<T.ButtonProps> = ({
       skin={skin}
       variant={variant}
       disabled={disabled}
+      iconPosition={iconPosition}
       {...props}
     >
       {icon && icon}

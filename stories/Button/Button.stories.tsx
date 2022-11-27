@@ -1,6 +1,9 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import { Button, ButtonProps } from '../../src/components';
+import { FaBeer } from 'react-icons/fa';
+
+const icon = <FaBeer />;
 
 const Template: Story<ButtonProps> = args => <Button {...args}></Button>;
 
@@ -30,13 +33,14 @@ Disabled.args = {
 const Icon: Story<ButtonProps> = Template.bind({});
 Icon.args = {
   children: 'Icon',
-  icon: <div style={{ backgroundColor: 'red' }}></div>,
+  icon,
 };
 
 const IconPosition: Story<ButtonProps> = Template.bind({});
 IconPosition.args = {
   children: 'IconPosition',
-  iconPosition: 'start',
+  icon,
+  iconPosition: 'end',
 };
 
 export { Default, Skin, Variant, Disabled, Icon, IconPosition };

@@ -30,6 +30,8 @@ export const GlobalStyle = createGlobalStyle`
   ul, li {
     list-style: none;
   }
-
+  button {
+    all: unset;
+  }
   ${docsStyle}
 `;

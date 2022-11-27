@@ -1,9 +1,13 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { Button, ButtonProps } from '../../src/components';
-import { FaBeer } from 'react-icons/fa';
+import {
+  Button,
+  ButtonProps,
+  Icon as IconComponent,
+  ICONS,
+} from '../../src/components';
 
-const icon = <FaBeer />;
+const icon = ICONS.checkSquare;
 
 const Template: Story<ButtonProps> = args => <Button {...args}></Button>;
 

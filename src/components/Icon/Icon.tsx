@@ -2,8 +2,15 @@ import React from 'react';
 import { IconProps, ICON_SIZES, ICON_VARIANTS } from './types';
 import * as S from './style';
 import { colors } from '../../shared';
-import { BsCheckSquare, BsCheckSquareFill } from 'react-icons/bs';
+import { FaRegCheckSquare, FaCheckSquare } from 'react-icons/fa';
 import { IconContext } from 'react-icons/lib';
+
+const iconOptions = {
+  checkSquare: {
+    stroke: <FaRegCheckSquare />,
+    fill: <FaCheckSquare />,
+  },
+};
 
 export const Icon: React.FC<IconProps> = ({
   icon,
@@ -15,17 +22,9 @@ export const Icon: React.FC<IconProps> = ({
   ...props
 }) => {
   if (!icon) return null;
-
-  const iconOptions = {
-    checkSquare: {
-      stroke: <BsCheckSquare />,
-      fill: <BsCheckSquareFill />,
-    },
-  };
-
   return (
     <IconContext.Provider value={{ color: skin, size }}>
-      <S.IconWrapper {...props} onClick={onClick} size={size} cursor={cursor}>
+      <S.IconWrapper onClick={onClick} size={size} cursor={cursor} {...props}>
         {iconOptions[icon][variant]}
       </S.IconWrapper>
     </IconContext.Provider>

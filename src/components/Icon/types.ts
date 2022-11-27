@@ -20,9 +20,9 @@ export enum ICONS {
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   icon: ICONS;
-  variant: ICON_VARIANTS;
-  skin: string;
-  size: ICON_SIZES;
+  variant?: ICON_VARIANTS;
+  skin?: string;
+  size?: ICON_SIZES;
   cursor?: string;
   onClick?: (e?: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
 }

@@ -1,14 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { typography } from './theme';
-
-export const bodyStyles = css`
-  font-family: ${typography.type.primary};
-  background-color: ${({ theme }) => theme.body};
-  color: ${({ theme }) => theme.fontColor};
-`;
-
-export const fontUrl =
-  'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap';
 
 export const GlobalStyle = createGlobalStyle`
   html {
@@ -16,7 +7,9 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${typography.type.primary};
   }
   body {
-    ${bodyStyles}
+    font-family: ${typography.type.primary};
+    background-color: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.fontColor};
   }
   :focus:not(:focus-visible) {
     outline: none;

@@ -4,7 +4,8 @@ export const typography = {
   type: { primary: `'Poppins, sans-serif'`, secondary: 'arial' },
   weight: {
     regular: '400',
-    medium: '600',
+    medium: '500',
+    semiBold: '600',
     bold: '700',
   },
   size: {
@@ -55,14 +56,6 @@ export const colors = {
     500: { color: '#689f38', fontColor: '#f2f2f2' },
     600: { color: '#558b2f', fontColor: '#f2f2f2' },
   },
-  // warning: {
-  //   100: { color: '#673ab7', fontColor: '#f2f2f2' },
-  //   200: { color: '#ede7f6', fontColor: '#212122' },
-  //   300: { color: '#d1c4e9', fontColor: '#212122' },
-  //   400: { color: '#9575cd', fontColor: '#212122' },
-  //   500: { color: '#512da8', fontColor: '#212122' },
-  //   600: { color: '#311b92', fontColor: '#212122' },
-  // },
   error: {
     100: { color: '#f44336', fontColor: '#f2f2f2' },
     200: { color: '#ffdde0', fontColor: '#212122' },
@@ -107,8 +100,8 @@ export const spacing = {
   xsmall: 8,
   small: 16,
   medium: 24,
-  larger: 32,
-  xlarger: 40,
+  large: 32,
+  xlarge: 40,
 } as const;
 
 export const border = {
@@ -116,7 +109,7 @@ export const border = {
     xsmall: 4,
     small: 8,
     medium: 16,
-    larger: 24,
+    large: 24,
     pill: 500,
     circular: '50%',
   },
@@ -124,7 +117,7 @@ export const border = {
     xsmall: 1,
     small: 2,
     medium: 4,
-    larger: 8,
+    large: 8,
   },
 } as const;
 
@@ -150,12 +143,14 @@ export const lightTheme = {
   name: 'light',
   bodyColor: colors.neutral[100].color,
   fontColor: colors.neutral[100].fontColor,
+  ...colors,
 } as const;
 
 export const darkTheme = {
   name: 'dark',
   bodyColor: colors.neutral[800].color,
   fontColor: colors.neutral[800].fontColor,
+  ...colors,
 } as const;
 
 const fadeIn = keyframes`

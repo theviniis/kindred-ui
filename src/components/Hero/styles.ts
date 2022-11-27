@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { border, colors, spacing } from '../../shared/theme';
 
 export const Wrapper = styled.div`
-  --padding: ${spacing.xlarger}px;
+  --padding: ${spacing.xlarge}px;
   width: 100%;
   height: 300px;
   display: flex;

@@ -107,8 +107,8 @@ export const spacing = {
   xsmall: 8,
   small: 16,
   medium: 24,
-  larger: 32,
-  xlarger: 40,
+  large: 32,
+  xlarge: 40,
 } as const;
 
 export const border = {
@@ -116,7 +116,7 @@ export const border = {
     xsmall: 4,
     small: 8,
     medium: 16,
-    larger: 24,
+    large: 24,
     pill: 500,
     circular: '50%',
   },
@@ -124,7 +124,7 @@ export const border = {
     xsmall: 1,
     small: 2,
     medium: 4,
-    larger: 8,
+    large: 8,
   },
 } as const;
 

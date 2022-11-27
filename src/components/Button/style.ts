@@ -9,13 +9,8 @@ const setVariant = ({
   variant,
   disabled,
 }: SetVariantProps): FlattenSimpleInterpolation => {
-  console.log(theme);
   if (disabled) {
-    return css`
-      /* background-color: ${theme.neutral[200].color}; */
-      /* border-color: ${theme.neutral[200].color}; */
-      /* color: ${theme.neutral[200].fontColor}; */
-    `;
+    return css``;
   }
   return css``;
 };

@@ -10,11 +10,11 @@ export const docsStyle = css`
     }
 
     .sbdocs-content {
-      padding: ${spacing.larger}px !important;
+      padding: ${spacing.large}px !important;
     }
 
     .sbdocs-ul {
-      margin-left: ${spacing.larger}px !important;
+      margin-left: ${spacing.large}px !important;
     }
 
     .sbdocs-li {

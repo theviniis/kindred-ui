@@ -1,11 +1,11 @@
 import React from 'react';
-import { DEFAULT_SIZES } from '../../shared';
+import { spacing } from '../../shared';
 
 export interface IconProps extends React.HTMLAttributes<HTMLSpanElement> {
   icon: 'checkSquare';
   variant?: 'stroke' | 'fill';
   skin?: string;
-  size?: DEFAULT_SIZES;
+  size?: keyof typeof spacing;
   cursor?: string;
   onClick?: (e?: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void;
 }

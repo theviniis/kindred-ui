@@ -91,14 +91,16 @@ export const Button = styled(Typography)<StyledButtonProps>`
   display: flex;
   gap: ${spacing.xsmall}px;
   align-items: center;
+  justify-content: center;
   flex-direction: ${({ iconPosition }) =>
     iconPosition === 'start' ? 'row' : 'row-reverse'};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border-radius: ${border.radius.xsmall}px;
   border-style: solid;
   border-width: ${border.width.xsmall}px;
-
   padding: ${({ size }) => `${size / 2}px ${size}px`};
+
+  ${({ fullWidth }) => (fullWidth ? 'width: 100%' : '')};
 
   ${({ theme, skin, variant, disabled }) =>
     setVariant({ theme, skin, variant, disabled })};

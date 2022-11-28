@@ -16,7 +16,10 @@ export interface ButtonProps
 }
 
 export interface StyledButtonProps
-  extends Pick<ButtonProps, 'iconPosition' | 'disabled' | 'skin' | 'variant'> {
+  extends Pick<
+    ButtonProps,
+    'iconPosition' | 'disabled' | 'skin' | 'variant' | 'fullWidth'
+  > {
   size: number;
 }
 

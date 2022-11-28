@@ -25,13 +25,14 @@ export const Button: React.FC<T.ButtonProps> = ({
 
   return (
     <S.Button
+      forwardedAs="button"
       skin={skin}
       variant={variant}
       disabled={disabled}
       iconPosition={iconPosition}
       size={spacing[size]}
+      fullWidth={fullWidth}
       typography={buttonTypography[size]}
-      forwardedAs="button"
       {...props}
     >
       {icon && <Icon icon={icon} size={size} />}

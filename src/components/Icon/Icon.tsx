@@ -16,7 +16,7 @@ export const Icon: React.FC<IconProps> = ({
   icon,
   skin = colors.neutral[100].color,
   variant = 'stroke',
-  size = 'small',
+  size = 'medium',
   cursor = 'pointer',
   onClick,
   ...props

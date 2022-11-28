@@ -9,14 +9,6 @@ const setVariant = ({
   variant,
   disabled,
 }: SetVariantProps): FlattenSimpleInterpolation => {
-  if (disabled) {
-    return css`
-      background-color: ${theme.neutral[200].color};
-      border-color: ${theme.neutral[200].color};
-      color: ${theme.neutral[200].fontColor};
-    `;
-  }
-
   const colorDefault = 100;
   const colorHover = 500;
   const colorFocus = 600;
@@ -36,6 +28,11 @@ const setVariant = ({
         background: theme[skin][colorFocus].color,
         border: theme[skin][colorFocus].color,
       },
+      disabled: {
+        color: theme.neutral[200].fontColor,
+        background: theme.neutral[200].color,
+        border: theme.neutral[200].color,
+      },
     },
     stroke: {
       color: theme[skin][colorDefault].color,
@@ -50,6 +47,11 @@ const setVariant = ({
         color: theme[skin][colorFocus].fontColor,
         background: theme[skin][colorFocus].color,
         border: theme[skin][colorFocus].color,
+      },
+      disabled: {
+        color: theme.neutral[200].color,
+        background: 'transparent',
+        border: theme.neutral[200].color,
       },
     },
     ghost: {
@@ -66,8 +68,21 @@ const setVariant = ({
         background: 'transparent',
         border: 'transparent',
       },
+      disabled: {
+        color: theme.neutral[200].color,
+        background: 'transparent',
+        border: 'transparent',
+      },
     },
-  };
+  } as const;
+
+  if (disabled) {
+    return css`
+      color: ${variantOptions[variant].disabled.color};
+      background-color: ${variantOptions[variant].disabled.background};
+      border-color: ${variantOptions[variant].disabled.border};
+    `;
+  }
 
   return css`
     color: ${variantOptions[variant].color};

@@ -1,10 +1,6 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import {
-  Button,
-  ButtonProps,
-  Icon as IconComponent,
-} from '../../src/components';
+import { Button, ButtonProps } from '../../src/components';
 
 const icon = 'checkSquare';
 

@@ -30,7 +30,7 @@
     ],
     "react-hooks/exhaustive-deps": 2
   },
-  "ignorePatterns": ["**/*.stories*"],
+  // "ignorePatterns": ["**/*.stories*"],
   "settings": {
     "mdx/code-blocks": true,
     // optional, if you want to disable language mapper, set it to `false`

@@ -1,4 +1,5 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import { Typography } from '../../src/components';
 import {
   H1,
   H2,
@@ -6,158 +7,127 @@ import {
   H4,
   H5,
   H6,
-  S1,
-  S2,
-  S3,
-  B1,
-  B2,
-  B3,
-  P1,
-  P2,
-  P3,
-  Overline,
-} from '../../src/components';
-const innerText = 'Lorem ipsum';
+  Paragraph1,
+  Paragraph2,
+  Paragraph3,
+  Paragraph4,
+  Paragraph5,
+  Body1,
+  Body2,
+  Body3,
+  Body4,
+  Body5,
+  Color,
+} from './Typography.stories.tsx';
 
-<Meta title="Tokens/Typography" />
+<Meta title="Components/Typography" component={Typography} />
 
 # Typography
 
-- [Importing and usage](#importing)
-- [Examples](#examples)
-
-## <a id="importing"></a>Importing and usage
-
-```js
-import { Typography } from '@viniis/viniis_ui';
-```
+<ArgsTable of={Typography} />
 
 # <a id="examples"></a>Examples
 
 ### H1
 
 <Canvas>
-  <Story name="H1">
-    <H1>Lorem ipsum</H1>
-  </Story>
+  <Story story={H1} />
 </Canvas>
 
 ### H2
 
 <Canvas>
-  <Story name="H2">
-    <H2>Lorem ipsum</H2>
-  </Story>
+  <Story story={H2} />
 </Canvas>
 
 ### H3
 
 <Canvas>
-  <Story name="H3">
-    <H3>Lorem ipsum</H3>
-  </Story>
+  <Story story={H3} />
 </Canvas>
 
 ### H4
 
 <Canvas>
-  <Story name="H4">
-    <H4>Lorem ipsum</H4>
-  </Story>
+  <Story story={H4} />
 </Canvas>
 
 ### H5
 
 <Canvas>
-  <Story name="H5">
-    <H5>Lorem ipsum</H5>
-  </Story>
+  <Story story={H5} />
 </Canvas>
 
 ### H6
 
 <Canvas>
-  <Story name="H6">
-    <H6>Lorem ipsum</H6>
-  </Story>
+  <Story story={H6} />
 </Canvas>
 
-### S1
+
+### Body1
 
 <Canvas>
-  <Story name="S1">
-    <S1>Lorem ipsum</S1>
-  </Story>
+  <Story story={Body1} />
 </Canvas>
 
-### S2
+### Body2
 
 <Canvas>
-  <Story name="S2">
-    <S2>Lorem ipsum</S2>
-  </Story>
+  <Story story={Body2} />
 </Canvas>
 
-### S3
+### Body3
 
 <Canvas>
-  <Story name="S3">
-    <S3>Lorem ipsum</S3>
-  </Story>
+  <Story story={Body3} />
 </Canvas>
 
-### B1
+### Body4
 
 <Canvas>
-  <Story name="B1">
-    <B1>Lorem ipsum</B1>
-  </Story>
+  <Story story={Body4} />
 </Canvas>
 
-### B2
+### Body5
 
 <Canvas>
-  <Story name="B2">
-    <B2>Lorem ipsum</B2>
-  </Story>
+  <Story story={Body5} />
 </Canvas>
 
-### B3
+### Paragraph1
 
 <Canvas>
-  <Story name="B3">
-    <B3>Lorem ipsum</B3>
-  </Story>
+  <Story story={Paragraph1} />
 </Canvas>
 
-### P1
+### Paragraph2
 
 <Canvas>
-  <Story name="P1">
-    <P1>Lorem ipsum</P1>
-  </Story>
+  <Story story={Paragraph2} />
 </Canvas>
 
-### P2
+### Paragraph3
 
 <Canvas>
-  <Story name="P2">
-    <P2>Lorem ipsum</P2>
-  </Story>
+  <Story story={Paragraph3} />
 </Canvas>
 
-### P3
+### Paragraph4
 
 <Canvas>
-  <Story name="P3">
-    <P3>Lorem ipsum</P3>
-  </Story>
+  <Story story={Paragraph4} />
 </Canvas>
 
-### Overline
+### Paragraph5
 
 <Canvas>
-  <Story name="Overline">
-    <Overline>Lorem ipsum</Overline>
-  </Story>
+  <Story story={Paragraph5} />
+</Canvas>
+
+
+### Color
+
+<Canvas>
+  <Story story={Color} />
 </Canvas>

@@ -16,7 +16,7 @@ const Color: React.FC<T.ColorProps> = ({
   expandable = true,
 }) => {
   return (
-    <S.Wrapper>
+    <S.Wrapper forwardedAs="div">
       {colorList.map(({ hex, key }) => {
         return (
           <S.Content key={key} background={hex.color} expandable={expandable}>

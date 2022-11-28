@@ -1,7 +1,7 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { border, spacing } from '../../shared';
-import { P1 } from '../Typography';
 import { SetVariantProps, StyledButtonProps } from './types';
+import { Typography } from '../';
 
 const setVariant = ({
   theme,
@@ -87,7 +87,7 @@ const setVariant = ({
   `;
 };
 
-export const Button = styled(P1)<StyledButtonProps>`
+export const Button = styled(Typography)<StyledButtonProps>`
   display: flex;
   gap: ${spacing.xsmall}px;
   align-items: center;
@@ -98,7 +98,7 @@ export const Button = styled(P1)<StyledButtonProps>`
   border-style: solid;
   border-width: ${border.width.xsmall}px;
 
-  padding: ${({ size }) => `${parseInt(size, 10) / 2}px ${size}`};
+  padding: ${({ size }) => `${size / 2}px ${size}px`};
 
   ${({ theme, skin, variant, disabled }) =>
     setVariant({ theme, skin, variant, disabled })};

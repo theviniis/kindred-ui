@@ -15,14 +15,23 @@ export const Button: React.FC<T.ButtonProps> = ({
   iconPosition = 'start',
   ...props
 }) => {
+  const buttonTypography = {
+    xsmall: 'body4',
+    small: 'body3',
+    medium: 'body2',
+    large: 'h6',
+    xlarge: 'h4',
+  } as const;
+
   return (
     <S.Button
-      as="button"
       skin={skin}
       variant={variant}
       disabled={disabled}
       iconPosition={iconPosition}
-      size={fullWidth ? '100%' : `${spacing[size]}px`}
+      size={spacing[size]}
+      typography={buttonTypography[size]}
+      forwardedAs="button"
       {...props}
     >
       {icon && <Icon icon={icon} size={size} />}

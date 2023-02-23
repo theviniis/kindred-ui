@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   gap: ${spacing.xsmall}px;
   color: white;
-  background: ${`linear-gradient(135deg, ${colors.primary[100].color} 15%, ${colors.primary[600].color} 100%)`};
+  background: ${`linear-gradient(135deg, ${colors.primary[100]} 15%, ${colors.primary[600]} 100%)`};
   position: relative;
   border-radius: ${border.radius.xsmall}px;
   padding: var(--padding);

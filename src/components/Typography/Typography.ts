@@ -101,14 +101,20 @@ export const TypographyDefinitions = {
   `,
 } as const;
 
-const setColor = ({ color, theme }: { color?: string; theme: any }) => {
+function setColor({ color, theme }: { color?: string; theme: any }) {
   let c;
   if (color) c = color;
   else c = theme.fontColor;
   return css`
     color: ${c};
   `;
-};
+}
+
+function getTypographyStyles(variant: keyof typeof TypographyDefinitions) {
+  return css`
+    ${TypographyDefinitions[variant]}
+  `;
+}
 
 const H1 = styled.h1`
   ${({ color, theme }) => setColor({ color, theme })}
@@ -190,4 +196,22 @@ const Overline = styled.p`
   ${TypographyDefinitions.overline};
 `;
 
-export { H1, H2, H3, H4, H5, H6, S1, S2, S3, B1, B2, B3, P1, P2, P3, Overline };
+export {
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  S1,
+  S2,
+  S3,
+  B1,
+  B2,
+  B3,
+  P1,
+  P2,
+  P3,
+  Overline,
+  getTypographyStyles,
+};

@@ -1,8 +1,9 @@
 import React from 'react';
+import { DefaultTheme } from 'styled-components';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
-  skin: 'default' | 'primary' | 'secondary' | 'success' | 'error';
+  skin: 'primary' | 'secondary' | 'success' | 'error';
   variant: 'default' | 'stroke' | 'ghost';
   disabled?: boolean;
   icon?: JSX.Element;
@@ -11,5 +12,5 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 
 export interface SetVariantProps
   extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'children'> {
-  theme: any;
+  theme: DefaultTheme;
 }

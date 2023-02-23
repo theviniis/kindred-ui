@@ -1,6 +1,6 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { border, spacing } from '../../shared';
-import { S2 } from '../Typography';
+import { getTypographyStyles } from '../Typography';
 import { ButtonProps, SetVariantProps } from './types';
 
 const setVariant = ({
@@ -11,58 +11,58 @@ const setVariant = ({
 }: SetVariantProps): FlattenSimpleInterpolation => {
   if (disabled) {
     return css`
-      background-color: ${theme.neutral[200].color};
-      border-color: ${theme.neutral[200].color};
-      color: ${theme.neutral[200].fontColor};
+      background-color: ${theme.colors.neutral[200]};
+      border-color: ${theme.colors.neutral[200]};
+      color: ${theme.colors.neutral[200]};
     `;
   }
 
   const colorDefault = 100;
-  const colorHover = 500;
-  const colorFocus = 600;
+  const colorHover = 300;
+  const colorFocus = 500;
 
   const variantOptions = {
     default: {
-      color: theme[skin][colorDefault].fontColor,
-      background: theme[skin][colorDefault].color,
-      border: theme[skin][colorDefault].color,
+      color: theme.colors.neutral[colorDefault],
+      background: theme.colors[skin][colorDefault],
+      border: theme.colors[skin][colorDefault],
       hover: {
-        color: theme[skin][colorHover].fontColor,
-        background: theme[skin][colorHover].color,
-        border: theme[skin][colorHover].color,
+        color: theme.colors.neutral[colorDefault],
+        background: theme.colors[skin][colorHover],
+        border: theme.colors[skin][colorHover],
       },
       focus: {
-        color: theme[skin][colorFocus].fontColor,
-        background: theme[skin][colorFocus].color,
-        border: theme[skin][colorFocus].color,
+        color: theme.colors.neutral[colorDefault],
+        background: theme.colors[skin][colorFocus],
+        border: theme.colors[skin][colorFocus],
       },
     },
     stroke: {
-      color: theme[skin][colorDefault].color,
+      color: theme.colors[skin][colorDefault],
       background: 'transparent',
-      border: theme[skin][colorDefault].color,
+      border: theme.colors[skin][colorDefault],
       hover: {
-        color: theme[skin][colorHover].fontColor,
-        background: theme[skin][colorHover].color,
-        border: theme[skin][colorHover].color,
+        color: theme.colors[skin][colorDefault],
+        background: theme.colors[skin][colorHover],
+        border: theme.colors[skin][colorDefault],
       },
       focus: {
-        color: theme[skin][colorFocus].fontColor,
-        background: theme[skin][colorFocus].color,
-        border: theme[skin][colorFocus].color,
+        color: theme.colors.neutral[colorDefault],
+        background: theme.colors[skin][colorFocus],
+        border: theme.colors[skin][colorFocus],
       },
     },
     ghost: {
-      color: theme[skin][colorDefault].color,
+      color: theme.colors[skin][colorDefault],
       background: 'transparent',
       border: 'transparent',
       hover: {
-        color: theme[skin][colorHover].color,
+        color: theme.colors[skin][colorHover],
         background: 'transparent',
         border: 'transparent',
       },
       focus: {
-        color: theme[skin][colorFocus].color,
+        color: theme.colors[skin][colorFocus],
         background: 'transparent',
         border: 'transparent',
       },
@@ -86,7 +86,7 @@ const setVariant = ({
   `;
 };
 
-export const Button = styled(S2)<Omit<ButtonProps, 'icon' | 'children'>>`
+export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
   display: flex;
   gap: ${spacing.xsmall}px;
   align-items: center;
@@ -97,7 +97,8 @@ export const Button = styled(S2)<Omit<ButtonProps, 'icon' | 'children'>>`
   border-radius: ${border.radius.xsmall}px;
   border-style: solid;
   border-width: ${border.width.xsmall}px;
-
+  transition: ease-in-out 100ms;
   ${({ theme, skin, variant, disabled }) =>
     setVariant({ theme, skin, variant, disabled })}
+  ${getTypographyStyles('subtitle2')}
 `;

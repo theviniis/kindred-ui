@@ -1,7 +1,10 @@
-import { keyframes } from 'styled-components';
+import { keyframes as _keyframes } from 'styled-components';
 
 export const typography = {
-  type: { primary: `'Poppins, sans-serif'`, secondary: 'arial' },
+  type: {
+    primary: `Lato, "Helvetica Neue", Helvetica, sans-serif`,
+    secondary: 'arial',
+  },
   weight: {
     regular: '400',
     medium: '500',
@@ -33,66 +36,65 @@ export const typography = {
 
 export const colors = {
   primary: {
-    100: { color: '#03a9f4', fontColor: '#f2f2f2' },
-    200: { color: '#e1f5fe', fontColor: '#212122' },
-    300: { color: '#b3e5fc', fontColor: '#212122' },
-    400: { color: '#4fc3f7', fontColor: '#212122' },
-    500: { color: '#0288d1', fontColor: '#f2f2f2' },
-    600: { color: '#0277bd', fontColor: '#f2f2f2' },
+    100: '#03a9f4',
+    200: '#e1f5fe',
+    300: '#b3e5fc',
+    400: '#4fc3f7',
+    500: '#0288d1',
+    600: '#0277bd',
   },
   secondary: {
-    100: { color: '#673ab7', fontColor: '#f2f2f2' },
-    200: { color: '#ede7f6', fontColor: '#212122' },
-    300: { color: '#d1c4e9', fontColor: '#212122' },
-    400: { color: '#9575cd', fontColor: '#212122' },
-    500: { color: '#512da8', fontColor: '#f2f2f2' },
-    600: { color: '#311b92', fontColor: '#f2f2f2' },
+    100: '#673ab7',
+    200: '#ede7f6',
+    300: '#d1c4e9',
+    400: '#9575cd',
+    500: '#512da8',
+    600: '#311b92',
   },
   success: {
-    100: { color: '#8bc34a', fontColor: '#f2f2f2' },
-    200: { color: '#e7f6d5', fontColor: '#212122' },
-    300: { color: '#c5e1a5', fontColor: '#212122' },
-    400: { color: '#aed581', fontColor: '#212122' },
-    500: { color: '#689f38', fontColor: '#f2f2f2' },
-    600: { color: '#558b2f', fontColor: '#f2f2f2' },
+    100: '#8bc34a',
+    200: '#e7f6d5',
+    300: '#c5e1a5',
+    400: '#aed581',
+    500: '#689f38',
+    600: '#558b2f',
   },
   error: {
-    100: { color: '#f44336', fontColor: '#f2f2f2' },
-    200: { color: '#ffdde0', fontColor: '#212122' },
-    300: { color: '#ffcdd2', fontColor: '#212122' },
-    400: { color: '#ef9a9a', fontColor: '#212122' },
-    500: { color: '#d32f2f', fontColor: '#f2f2f2' },
-    600: { color: '#b71c1c', fontColor: '#f2f2f2' },
+    100: '#f44336',
+    200: '#ffdde0',
+    300: '#ffcdd2',
+    400: '#ef9a9a',
+    500: '#d32f2f',
+    600: '#b71c1c',
   },
   neutral: {
-    100: { color: '#f2f2f2', fontColor: '#212122' },
-    200: { color: '#e8e9e9', fontColor: '#212122' },
-    300: { color: '#d1d3d4', fontColor: '#212122' },
-    400: { color: '#babdbf', fontColor: '#212122' },
-    500: { color: '#808488', fontColor: '#f2f2f2' },
-    600: { color: '#666a6d', fontColor: '#f2f2f2' },
-    700: { color: '#4d5052', fontColor: '#f2f2f2' },
-    800: { color: '#212122', fontColor: '#f2f2f2' },
+    100: '#f2f2f2',
+    200: '#e8e9e9',
+    300: '#d1d3d4',
+    400: '#babdbf',
+    500: '#808488',
+    600: '#666a6d',
+    700: '#4d5052',
+    800: '#212122',
   },
-} as const;
-
-export const gradient = {
-  info: `
-    background: #2328EB;
-    background: linear-gradient(225deg, #2328EB 0%, #23CCEB 100%);
-  `,
-  highlight: `
-    background: #E0157A;
-    background: linear-gradient(225deg, #E0157A 0%, #FEDB4D 100%);
-  `,
-  secondary: `
-    background: #7116E9;
-    background: linear-gradient(225deg, #7116E9 0%, #E0157A 100%);
-  `,
-  communication: `
-    background: #23CCEB;
-    background: linear-gradient(225deg, #23CCEB 0%, #FEDB4D 100%);
-  `,
+  gradients: {
+    info: `
+      background: #2328EB;
+      background: linear-gradient(225deg, #2328EB 0%, #23CCEB 100%);
+    `,
+    highlight: `
+      background: #E0157A;
+      background: linear-gradient(225deg, #E0157A 0%, #FEDB4D 100%);
+    `,
+    secondary: `
+      background: #7116E9;
+      background: linear-gradient(225deg, #7116E9 0%, #E0157A 100%);
+    `,
+    communication: `
+      background: #23CCEB;
+      background: linear-gradient(225deg, #23CCEB 0%, #FEDB4D 100%);
+    `,
+  },
 } as const;
 
 export const spacing = {
@@ -139,21 +141,7 @@ export const breakpoints = {
   },
 } as const;
 
-export const lightTheme = {
-  name: 'light',
-  bodyColor: colors.neutral[100].color,
-  fontColor: colors.neutral[100].fontColor,
-  ...colors,
-} as const;
-
-export const darkTheme = {
-  name: 'dark',
-  bodyColor: colors.neutral[800].color,
-  fontColor: colors.neutral[800].fontColor,
-  ...colors,
-} as const;
-
-const fadeIn = keyframes`
+const fadeIn = _keyframes`
   from {
     opacity: 0;
   } to {
@@ -161,6 +149,37 @@ const fadeIn = keyframes`
   }
 `;
 
-export const KEYFRAMES = {
+export const keyframes = {
   fadeIn,
 } as const;
+
+export const theme = {
+  typography,
+  colors,
+  spacing,
+  border,
+  breakpoints,
+  keyframes,
+} as const;
+
+type CustomTheme = typeof theme &
+  Record<
+    'colorBg' | 'colorFg',
+    typeof colors.neutral[100] | typeof colors.neutral[800]
+  >;
+
+export const lightTheme: CustomTheme = {
+  colorBg: colors.neutral[100],
+  colorFg: colors.neutral[800],
+  ...theme,
+} as const;
+
+export const darkTheme: CustomTheme = {
+  colorBg: colors.neutral[800],
+  colorFg: colors.neutral[100],
+  ...theme,
+} as const;
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends CustomTheme {}
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { Button, ButtonProps } from '../../src/components';
+import { Button, ButtonProps } from '.';
 
 const Template: Story<ButtonProps> = args => <Button {...args}></Button>;
 

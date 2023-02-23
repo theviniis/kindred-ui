@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { border, KEYFRAMES, spacing } from '../../shared';
+import { border, keyframes, spacing } from '../../shared';
 import { P1 } from '../';
 
 export const Wrapper = styled(P1)`
@@ -21,7 +21,7 @@ export const ColorPath = styled.span`
   background-color: rgb(0 0 0 / 0.2);
   place-content: center;
   padding: ${spacing.medium}px;
-  animation: ${KEYFRAMES.fadeIn} 50ms ease-in forwards;
+  animation: ${keyframes.fadeIn} 50ms ease-in forwards;
   color: #fff;
 `;
 

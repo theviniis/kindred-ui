@@ -24,10 +24,10 @@ const Color: React.FC<T.ColorProps> = ({
             <S.ColorPath
               onClick={() => {
                 return navigator.clipboard.writeText(
-                  `colors.${colorName}[${key}].color`
+                  `colors.${colorName}[${key}`
                 );
               }}
-            >{`colors.${colorName}[${key}].color`}</S.ColorPath>
+            >{`colors.${colorName}[${key}`}</S.ColorPath>
           </S.Content>
         );
       })}

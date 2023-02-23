@@ -3,8 +3,6 @@ import { typography } from './theme';
 
 export const bodyStyles = css`
   font-family: ${typography.type.primary};
-  background-color: ${({ theme }) => theme.body};
-  color: ${({ theme }) => theme.fontColor};
 `;
 
 export const fontUrl =
@@ -13,7 +11,7 @@ export const fontUrl =
 export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
-    font-family: ${typography.type.primary};
+    font-family: ${typography.type.secondary};
   }
   body {
     ${bodyStyles}

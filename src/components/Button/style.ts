@@ -1,5 +1,4 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
-import { border, spacing } from '../../shared';
 import { getTypographyStyles } from '../Typography';
 import { ButtonProps, SetVariantProps } from './types';
 
@@ -13,26 +12,24 @@ const setVariant = ({
     return css`
       background-color: ${theme.colors.neutral[200]};
       border-color: ${theme.colors.neutral[200]};
-      color: ${theme.colors.neutral[200]};
+      color: ${theme.colors.neutral[900]};
     `;
   }
-
   const colorDefault = 'DEFAULT';
   const colorHover = 400;
   const colorFocus = 500;
-
   const variantOptions = {
     default: {
-      color: theme.colors.background,
+      color: theme.colors.neutral.white,
       background: theme.colors[skin][colorDefault],
       border: theme.colors[skin][colorDefault],
       hover: {
-        color: theme.colors.background,
+        color: theme.colors.neutral.white,
         background: theme.colors[skin][colorHover],
         border: theme.colors[skin][colorHover],
       },
       focus: {
-        color: theme.colors.background,
+        color: theme.colors.neutral.white,
         background: theme.colors[skin][colorFocus],
         border: theme.colors[skin][colorFocus],
       },
@@ -47,7 +44,7 @@ const setVariant = ({
         border: theme.colors[skin][colorDefault],
       },
       focus: {
-        color: theme.colors.background,
+        color: theme.colors.neutral.white,
         background: theme.colors[skin][colorFocus],
         border: theme.colors[skin][colorFocus],
       },
@@ -89,17 +86,19 @@ const setVariant = ({
 
 export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
   display: flex;
-  gap: ${spacing.xsmall}px;
+  gap: ${({ theme }) => theme.spacing.xsmall}px;
   align-items: center;
   flex-direction: ${({ iconPosition }) =>
     iconPosition === 'start' ? 'row' : 'row-reverse'};
-  padding: ${spacing.xsmall}px ${spacing.small}px;
+  padding: ${({ theme }) => theme.spacing.xsmall}px
+    ${({ theme }) => theme.spacing.small}px;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  border-radius: ${border.radius.xsmall}px;
+  border-radius: ${({ theme }) => theme.border.radius.xsmall}px;
   border-style: solid;
-  border-width: ${border.width.xsmall}px;
+  border-width: ${({ theme }) => theme.border.width.xsmall}px;
   transition: ease-in-out 100ms;
+
+  ${getTypographyStyles('subtitle2')}
   ${({ theme, skin, variant, disabled }) =>
     setVariant({ theme, skin, variant, disabled })}
-  ${getTypographyStyles('subtitle2')}
 `;

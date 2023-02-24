@@ -36,6 +36,8 @@ export const typography = {
 
 export const colors = {
   neutral: {
+    white: '#FFF',
+    black: '#000',
     50: '#fafafa',
     100: '#f4f4f4',
     200: '#e6e6e6',

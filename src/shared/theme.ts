@@ -35,47 +35,69 @@ export const typography = {
 } as const;
 
 export const colors = {
+  neutral: {
+    50: '#fafafa',
+    100: '#f4f4f4',
+    200: '#e6e6e6',
+    300: '#d4d4d4',
+    400: '#a2a2a2',
+    500: '#727272',
+    600: '#535353',
+    700: '#404040',
+    800: '#272727',
+    900: '#181818',
+  },
   primary: {
-    100: '#03a9f4',
-    200: '#e1f5fe',
-    300: '#b3e5fc',
-    400: '#4fc3f7',
-    500: '#0288d1',
-    600: '#0277bd',
+    DEFAULT: '#03a9f4',
+    50: '#f0f9ff',
+    100: '#e2f3ff',
+    200: '#bfe8ff',
+    300: '#85d6ff',
+    400: '#3fc0ff',
+    500: '#03a9f4',
+    600: '#0486ce',
+    700: '#086aa5',
+    800: '#0c5987',
+    900: '#104a6f',
   },
   secondary: {
-    100: '#673ab7',
-    200: '#ede7f6',
-    300: '#d1c4e9',
-    400: '#9575cd',
-    500: '#512da8',
-    600: '#311b92',
+    DEFAULT: '#673ab7',
+    50: '#f8f6ff',
+    100: '#f2edff',
+    200: '#e8dfff',
+    300: '#d4c3ff',
+    400: '#b899ff',
+    500: '#9e70ff',
+    600: '#8a4ffb',
+    700: '#7740de',
+    800: '#673ab7',
+    900: '#4e228e',
   },
   success: {
-    100: '#8bc34a',
-    200: '#e7f6d5',
-    300: '#c5e1a5',
-    400: '#aed581',
-    500: '#689f38',
-    600: '#558b2f',
+    DEFAULT: '#8bc34a',
+    50: '#f7fee7',
+    100: '#ebfacc',
+    200: '#d9f5a2',
+    300: '#bfec75',
+    400: '#a7de59',
+    500: '#8bc34a',
+    600: '#6a9d32',
+    700: '#507921',
+    800: '#406118',
+    900: '#365313',
   },
   error: {
-    100: '#f44336',
-    200: '#ffdde0',
-    300: '#ffcdd2',
-    400: '#ef9a9a',
-    500: '#d32f2f',
-    600: '#b71c1c',
-  },
-  neutral: {
-    100: '#f2f2f2',
-    200: '#e8e9e9',
-    300: '#d1d3d4',
-    400: '#babdbf',
-    500: '#808488',
-    600: '#666a6d',
-    700: '#4d5052',
-    800: '#212122',
+    DEFAULT: '#f44336',
+    50: '#fef2f1',
+    100: '#ffe3e1',
+    200: '#ffcbc9',
+    300: '#ffa6a1',
+    400: '#fc7269',
+    500: '#f44336',
+    600: '#df250d',
+    700: '#bb1c06',
+    800: '#9a1c0f',
+    900: '#7f1e16',
   },
   gradients: {
     info: `
@@ -153,30 +175,34 @@ export const keyframes = {
   fadeIn,
 } as const;
 
+// Theme config
 export const theme = {
   typography,
-  colors,
   spacing,
   border,
   breakpoints,
   keyframes,
 } as const;
 
-type CustomTheme = typeof theme &
-  Record<
-    'colorBg' | 'colorFg',
-    typeof colors.neutral[100] | typeof colors.neutral[800]
-  >;
+type CustomTheme = typeof theme & {
+  colors: Record<'background' | 'foreground', '#fff' | '#000'> & typeof colors;
+};
 
 export const lightTheme: CustomTheme = {
-  colorBg: colors.neutral[100],
-  colorFg: colors.neutral[800],
+  colors: {
+    background: '#fff',
+    foreground: '#000',
+    ...colors,
+  },
   ...theme,
 } as const;
 
 export const darkTheme: CustomTheme = {
-  colorBg: colors.neutral[800],
-  colorFg: colors.neutral[100],
+  colors: {
+    background: '#000',
+    foreground: '#fff',
+    ...colors,
+  },
   ...theme,
 } as const;
 

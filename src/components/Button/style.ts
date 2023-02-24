@@ -17,22 +17,22 @@ const setVariant = ({
     `;
   }
 
-  const colorDefault = 100;
-  const colorHover = 300;
+  const colorDefault = 'DEFAULT';
+  const colorHover = 400;
   const colorFocus = 500;
 
   const variantOptions = {
     default: {
-      color: theme.colors.neutral[colorDefault],
+      color: theme.colors.background,
       background: theme.colors[skin][colorDefault],
       border: theme.colors[skin][colorDefault],
       hover: {
-        color: theme.colors.neutral[colorDefault],
+        color: theme.colors.background,
         background: theme.colors[skin][colorHover],
         border: theme.colors[skin][colorHover],
       },
       focus: {
-        color: theme.colors.neutral[colorDefault],
+        color: theme.colors.background,
         background: theme.colors[skin][colorFocus],
         border: theme.colors[skin][colorFocus],
       },
@@ -47,7 +47,7 @@ const setVariant = ({
         border: theme.colors[skin][colorDefault],
       },
       focus: {
-        color: theme.colors.neutral[colorDefault],
+        color: theme.colors.background,
         background: theme.colors[skin][colorFocus],
         border: theme.colors[skin][colorFocus],
       },
@@ -68,6 +68,7 @@ const setVariant = ({
       },
     },
   };
+
   return css`
     color: ${variantOptions[variant].color};
     background-color: ${variantOptions[variant].background};

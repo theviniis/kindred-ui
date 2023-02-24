@@ -4,4 +4,4 @@ export * from './Flex';
 export * from './Toast';
 export * from './Hero';
 export * from './Button';
-export * from './Avatar';
+export * from './Avatar/index';

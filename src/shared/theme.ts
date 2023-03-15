@@ -122,8 +122,8 @@ export const colors = {
 };
 
 export const spacing = {
-  xxsm: 4,
-  xsm: 8,
+  xxs: 4,
+  xs: 8,
   sm: 16,
   md: 24,
   lg: 32,
@@ -133,7 +133,7 @@ export const spacing = {
 
 export const border = {
   radius: {
-    xsm: 4,
+    xs: 4,
     sm: 8,
     md: 16,
     lg: 24,
@@ -141,7 +141,7 @@ export const border = {
     circular: '50%',
   },
   width: {
-    xsm: 1,
+    xs: 1,
     sm: 2,
     md: 4,
     lg: 8,
@@ -149,7 +149,7 @@ export const border = {
 } as const;
 
 export const breakpoints = {
-  xsm: {
+  xs: {
     columns: 4,
   },
   sm: {

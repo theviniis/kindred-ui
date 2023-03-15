@@ -4,15 +4,15 @@ import { ButtonProps, SetVariantProps } from './types';
 
 export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
   display: flex;
-  gap: ${({ theme }) => theme.spacing.xsm}px;
+  gap: ${({ theme }) => theme.spacing.xs}px;
   align-items: center;
   flex-direction: row;
-  padding: ${({ theme }) => theme.spacing.xsm}px
+  padding: ${({ theme }) => theme.spacing.xs}px
     ${({ theme }) => theme.spacing.sm}px;
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  border-radius: ${({ theme }) => theme.border.radius.xsm}px;
+  border-radius: ${({ theme }) => theme.border.radius.xs}px;
   border-style: solid;
-  border-width: ${({ theme }) => theme.border.width.xsm}px;
+  border-width: ${({ theme }) => theme.border.width.xs}px;
   transition: ease-in-out 100ms;
 
   ${getTypographyStyles('subtitle2')}

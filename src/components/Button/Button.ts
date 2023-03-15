@@ -11,8 +11,8 @@ export const Button = styled.button<T.ButtonProps>`
   justify-content: space-between;
   border-style: solid;
   transition: ease-in-out 100ms;
-  border-radius: ${({ theme }) => theme.border.radius.xsm}px;
-  border-width: ${({ theme }) => theme.border.width.xsm}px;
+  border-radius: ${({ theme }) => theme.border.radius.xs}px;
+  border-width: ${({ theme }) => theme.border.width.xs}px;
   ${getTypographyStyles('subtitle2')};
   ${({ theme, skin, variant }) => setVariant({ theme, skin, variant })};
   ${({ theme, size }) => setSize({ size, theme })};
@@ -102,7 +102,7 @@ function setSize({ size = 'md', theme }: T.SetSizeProps) {
   const { spacing } = theme;
   const styles = {
     sm: {
-      padding: spacing.xsm,
+      padding: spacing.xs,
       height: spacing.md,
     },
     md: {

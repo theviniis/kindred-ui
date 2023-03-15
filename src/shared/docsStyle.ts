@@ -34,7 +34,7 @@ export const docsStyle = css`
     }
 
     h2.sbdocs {
-      padding-bottom: ${spacing.xsm}px !important;
+      padding-bottom: ${spacing.xs}px !important;
     }
 
     h3.sbdocs {

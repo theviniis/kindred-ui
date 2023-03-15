@@ -6,7 +6,7 @@ export const Wrapper = styled(P1)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-radius: ${border.radius.xsm}px;
+  border-radius: ${border.radius.xs}px;
   overflow: hidden;
 `;
 

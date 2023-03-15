@@ -7,11 +7,11 @@ export const Wrapper = styled.div`
   height: 300px;
   display: flex;
   flex-direction: column;
-  gap: ${spacing.xsm}px;
+  gap: ${spacing.xs}px;
   color: white;
   background: ${`linear-gradient(135deg, ${colors.primary[100]} 15%, ${colors.primary[600]} 100%)`};
   position: relative;
-  border-radius: ${border.radius.xsm}px;
+  border-radius: ${border.radius.xs}px;
   padding: var(--padding);
 `;
 

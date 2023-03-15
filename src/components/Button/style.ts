@@ -14,10 +14,9 @@ export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
   border-style: solid;
   border-width: ${({ theme }) => theme.border.width.xs}px;
   transition: ease-in-out 100ms;
-
-  ${getTypographyStyles('subtitle2')}
+  ${getTypographyStyles('subtitle2')};
   ${({ theme, skin, variant, disabled }) =>
-    setVariant({ theme, skin, variant, disabled })}
+    setVariant({ theme, skin, variant, disabled })};
 `;
 
 function setVariant({ theme, skin, variant }: SetVariantProps) {

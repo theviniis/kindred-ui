@@ -5,18 +5,18 @@ import { ViniisContext } from '../src/context';
 import { storybookThemeLight } from './manager';
 import { SchemeWrapper, Flex } from './styles';
 
-export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
-  controls: {
-    matchers: {
-      color: /(background|color)$/i,
-      date: /Date$/,
-    },
-  },
-  docs: {
-    theme: storybookThemeLight,
-  },
-};
+// export const parameters = {
+//   actions: { argTypesRegex: '^on[A-Z].*' },
+//   controls: {
+//     matchers: {
+//       color: /(background|color)$/i,
+//       date: /Date$/,
+//     },
+//   },
+//   docs: {
+//     theme: storybookThemeLight,
+//   },
+// };
 
 export const globalTypes = {
   theme: {

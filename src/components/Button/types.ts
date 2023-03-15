@@ -6,11 +6,14 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   skin: 'primary' | 'secondary' | 'success' | 'error';
   variant: 'default' | 'stroke' | 'ghost';
   disabled?: boolean;
-  icon?: JSX.Element;
-  iconPosition?: 'start' | 'end';
+  size?: 'small' | 'medium' | 'large';
 }
 
 export interface SetVariantProps
   extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'children'> {
+  theme: DefaultTheme;
+}
+
+export interface SetSizeProps extends Pick<ButtonProps, 'size'> {
   theme: DefaultTheme;
 }

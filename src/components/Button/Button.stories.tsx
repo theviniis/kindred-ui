@@ -27,16 +27,4 @@ Disabled.args = {
   disabled: true,
 };
 
-const Icon: Story<ButtonProps> = Template.bind({});
-Icon.args = {
-  children: 'Icon',
-  icon: <div style={{ backgroundColor: 'red' }}></div>,
-};
-
-const IconPosition: Story<ButtonProps> = Template.bind({});
-IconPosition.args = {
-  children: 'IconPosition',
-  iconPosition: 'start',
-};
-
-export { Default, Skin, Variant, Disabled, Icon, IconPosition };
+export { Default, Skin, Variant, Disabled };

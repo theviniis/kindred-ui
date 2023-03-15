@@ -1,26 +1,28 @@
+import * as T from './types';
 import styled, { css } from 'styled-components';
 import { getTypographyStyles } from '../Typography';
-import { ButtonProps, SetVariantProps } from './types';
 
-export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
+export const Button = styled.button<T.ButtonProps>`
+  box-sizing: border-box;
+  cursor: pointer;
   display: flex;
-  gap: ${({ theme }) => theme.spacing.xsmall}px;
   align-items: center;
   flex-direction: row;
-  padding: ${({ theme }) => theme.spacing.xsmall}px
-    ${({ theme }) => theme.spacing.small}px;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  border-radius: ${({ theme }) => theme.border.radius.xsmall}px;
+  justify-content: space-between;
   border-style: solid;
-  border-width: ${({ theme }) => theme.border.width.xsmall}px;
   transition: ease-in-out 100ms;
-
-  ${getTypographyStyles('subtitle2')}
-  ${({ theme, skin, variant, disabled }) =>
-    setVariant({ theme, skin, variant, disabled })}
+  border-radius: ${({ theme }) => theme.border.radius.xsmall}px;
+  border-width: ${({ theme }) => theme.border.width.xsmall}px;
+  ${getTypographyStyles('subtitle2')};
+  ${({ theme, skin, variant }) => setVariant({ theme, skin, variant })};
+  ${({ theme, size }) => setSize({ size, theme })};
 `;
 
-function setVariant({ theme, skin, variant }: SetVariantProps) {
+function setVariant({
+  theme,
+  skin = 'primary',
+  variant = 'default',
+}: T.SetVariantProps) {
   const { colors } = theme;
   const colorDefault = 'DEFAULT';
   const colorHover = 400;
@@ -72,7 +74,6 @@ function setVariant({ theme, skin, variant }: SetVariantProps) {
       },
     },
   };
-
   return css`
     color: ${variantOptions[variant].color};
     background-color: ${variantOptions[variant].background};
@@ -82,17 +83,41 @@ function setVariant({ theme, skin, variant }: SetVariantProps) {
       background-color: ${variantOptions[variant].hover.background};
       border-color: ${variantOptions[variant].hover.border};
     }
-    /* &:focus, */
+    &:focus,
     &:active {
       color: ${variantOptions[variant].focus.color};
       background-color: ${variantOptions[variant].focus.background};
       border-color: ${variantOptions[variant].focus.border};
     }
-
     &:disabled {
+      cursor: not-allowed;
       background-color: ${colors.neutral[200]};
       border-color: ${colors.neutral[200]};
       color: ${colors.neutral[900]};
     }
+  `;
+}
+
+function setSize({ size = 'medium', theme }: T.SetSizeProps) {
+  const { spacing } = theme;
+  const styles = {
+    small: {
+      padding: spacing.xsmall,
+      height: spacing.large,
+    },
+    medium: {
+      padding: spacing.small,
+      height: spacing.xlarge,
+    },
+    large: {
+      padding: spacing.medium,
+      height: spacing.xxlarge,
+    },
+  };
+
+  return css`
+    padding-inline: ${styles[size].padding}px;
+    gap: ${styles[size].padding}px;
+    min-height: ${styles[size].height}px;
   `;
 }

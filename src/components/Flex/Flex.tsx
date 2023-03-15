@@ -7,7 +7,7 @@ export const Flex = styled.div<T.FlexProps>`
   flex-direction: ${({ direction }): string =>
     direction === 'column' ? 'column' : 'row'};
   gap: ${({ gap }): string =>
-    gap || gap === 0 ? gap + 'px' : spacing.small + 'px'};
+    gap || gap === 0 ? gap + 'px' : spacing.sm + 'px'};
   justify-content: ${({ justifyContent }): T.JUSTIFY_CONTENT | undefined =>
     justifyContent && justifyContent};
   align-items: ${({ alignItems }): T.ALIGN_ITEMS | undefined =>

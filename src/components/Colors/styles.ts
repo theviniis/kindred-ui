@@ -6,7 +6,7 @@ export const Wrapper = styled(P1)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  border-radius: ${border.radius.xsmall}px;
+  border-radius: ${border.radius.xsm}px;
   overflow: hidden;
 `;
 
@@ -20,7 +20,7 @@ export const ColorPath = styled.span`
   display: none;
   background-color: rgb(0 0 0 / 0.2);
   place-content: center;
-  padding: ${spacing.medium}px;
+  padding: ${spacing.md}px;
   animation: ${keyframes.fadeIn} 50ms ease-in forwards;
   color: #fff;
 `;
@@ -29,7 +29,7 @@ export const Content = styled.li<{ background: string; expandable: boolean }>`
   text-align: center;
   background-color: ${({ background }) => background};
   flex-grow: 1;
-  padding: ${spacing.medium}px;
+  padding: ${spacing.md}px;
   cursor: pointer;
   position: relative;
 

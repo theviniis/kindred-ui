@@ -6,7 +6,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   skin: 'primary' | 'secondary' | 'success' | 'error';
   variant: 'default' | 'stroke' | 'ghost';
   disabled?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'sm' | 'md' | 'lg';
 }
 
 export interface SetVariantProps

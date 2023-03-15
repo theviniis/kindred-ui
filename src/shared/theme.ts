@@ -119,15 +119,16 @@ export const colors = {
       background: linear-gradient(225deg, #23CCEB 0%, #FEDB4D 100%);
     `,
   },
-} as const;
+};
 
 export const spacing = {
-  nano: 4,
+  xxsmal: 4,
   xsmall: 8,
   small: 16,
   medium: 24,
   large: 32,
   xlarge: 40,
+  xxlarge: 48,
 } as const;
 
 export const border = {
@@ -192,18 +193,32 @@ type CustomTheme = typeof theme & {
 
 export const lightTheme: CustomTheme = {
   colors: {
+    ...colors,
     background: '#fff',
     foreground: '#000',
-    ...colors,
   },
   ...theme,
 } as const;
 
 export const darkTheme: CustomTheme = {
   colors: {
+    ...colors,
     background: '#000',
     foreground: '#fff',
-    ...colors,
+    neutral: {
+      white: '#FFF',
+      black: '#000',
+      50: '#181818',
+      100: '#272727',
+      200: '#404040',
+      300: '#535353',
+      400: '#727272',
+      500: '#a2a2a2',
+      600: '#d4d4d4',
+      700: '#e6e6e6',
+      800: '#f4f4f4',
+      900: '#fafafa',
+    },
   },
   ...theme,
 } as const;

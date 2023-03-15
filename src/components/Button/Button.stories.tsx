@@ -21,10 +21,16 @@ Variant.args = {
   variant: 'stroke',
 };
 
+const Size: Story<ButtonProps> = Template.bind({});
+Size.args = {
+  children: 'Small',
+  size: 'small',
+};
+
 const Disabled: Story<ButtonProps> = Template.bind({});
 Disabled.args = {
   children: 'Disabled',
   disabled: true,
 };
 
-export { Default, Skin, Variant, Disabled };
+export { Default, Skin, Variant, Size, Disabled };

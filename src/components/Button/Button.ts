@@ -103,7 +103,7 @@ function setSize({ size = 'medium', theme }: T.SetSizeProps) {
   const styles = {
     small: {
       padding: spacing.xsmall,
-      height: spacing.large,
+      height: spacing.medium,
     },
     medium: {
       padding: spacing.small,

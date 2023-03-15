@@ -7,7 +7,7 @@ export const typography = {
   },
   weight: {
     regular: '400',
-    medium: '500',
+    md: '500',
     semiBold: '600',
     bold: '700',
   },
@@ -122,45 +122,45 @@ export const colors = {
 };
 
 export const spacing = {
-  xxsmal: 4,
-  xsmall: 8,
-  small: 16,
-  medium: 24,
-  large: 32,
-  xlarge: 40,
-  xxlarge: 48,
+  xxsm: 4,
+  xsm: 8,
+  sm: 16,
+  md: 24,
+  lg: 32,
+  xlg: 40,
+  xxlg: 48,
 } as const;
 
 export const border = {
   radius: {
-    xsmall: 4,
-    small: 8,
-    medium: 16,
-    large: 24,
+    xsm: 4,
+    sm: 8,
+    md: 16,
+    lg: 24,
     pill: 500,
     circular: '50%',
   },
   width: {
-    xsmall: 1,
-    small: 2,
-    medium: 4,
-    large: 8,
+    xsm: 1,
+    sm: 2,
+    md: 4,
+    lg: 8,
   },
 } as const;
 
 export const breakpoints = {
-  xsmall: {
+  xsm: {
     columns: 4,
   },
-  small: {
+  sm: {
     width: 600,
     columns: 8,
   },
-  medium: {
+  md: {
     width: 1024,
     columns: 12,
   },
-  large: {
+  lg: {
     width: 1440,
     columns: 12,
   },

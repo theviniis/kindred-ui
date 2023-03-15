@@ -47,7 +47,7 @@ export const TypographyDefinitions = {
   subtitle2: `
     font-family: ${typography.type.primary};
     font-size: ${typography.size.paragraph.xs};
-    font-weight: ${typography.weight.medium};
+    font-weight: ${typography.weight.md};
     line-height: ${typography.size.lineHeight.xs};
   `,
   subtitle3: `

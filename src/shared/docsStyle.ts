@@ -10,11 +10,11 @@ export const docsStyle = css`
     }
 
     .sbdocs-content {
-      padding: ${spacing.large}px !important;
+      padding: ${spacing.lg}px !important;
     }
 
     .sbdocs-ul {
-      margin-left: ${spacing.large}px !important;
+      margin-left: ${spacing.lg}px !important;
     }
 
     .sbdocs-li {
@@ -30,15 +30,15 @@ export const docsStyle = css`
     h4.sbdocs,
     h5.sbdocs,
     h6.sbdocs {
-      margin-block: ${spacing.medium}px !important;
+      margin-block: ${spacing.md}px !important;
     }
 
     h2.sbdocs {
-      padding-bottom: ${spacing.xsmall}px !important;
+      padding-bottom: ${spacing.xsm}px !important;
     }
 
     h3.sbdocs {
-      margin-block: ${spacing.small}px !important;
+      margin-block: ${spacing.sm}px !important;
     }
   }
 `;

@@ -23,8 +23,8 @@ Variant.args = {
 
 const Size: Story<ButtonProps> = Template.bind({});
 Size.args = {
-  children: 'Small',
-  size: 'small',
+  children: 'small',
+  size: 'sm',
 };
 
 const Disabled: Story<ButtonProps> = Template.bind({});

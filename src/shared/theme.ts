@@ -36,6 +36,7 @@ export const typography = {
 
 export const colors = {
   neutral: {
+    DEFAULT: '#272727',
     white: '#FFF',
     black: '#000',
     50: '#fafafa',
@@ -188,7 +189,7 @@ export const theme = {
 } as const;
 
 type CustomTheme = typeof theme & {
-  colors: Record<'background' | 'foreground', '#fff' | '#000'> & typeof colors;
+  colors: Record<'background' | 'foreground', string> & typeof colors;
 };
 
 export const lightTheme: CustomTheme = {
@@ -203,9 +204,10 @@ export const lightTheme: CustomTheme = {
 export const darkTheme: CustomTheme = {
   colors: {
     ...colors,
-    background: '#000',
+    background: '#181818',
     foreground: '#fff',
     neutral: {
+      DEFAULT: '#f4f4f4',
       white: '#FFF',
       black: '#000',
       50: '#181818',
@@ -221,7 +223,7 @@ export const darkTheme: CustomTheme = {
     },
   },
   ...theme,
-} as const;
+};
 
 declare module 'styled-components' {
   export interface DefaultTheme extends CustomTheme {}

@@ -12,7 +12,7 @@ export const Input: React.FC<T.InputProps> = ({
   disabled = false,
   variant = 'plain',
   skin = 'neutral',
-  size = 'md',
+  inputSize = 'md',
   error = false,
   supportingText,
   startIcon,
@@ -35,7 +35,7 @@ export const Input: React.FC<T.InputProps> = ({
         error={error}
         variant={variant}
         skin={skin}
-        // size={size}
+        inputSize={inputSize}
         loading={loading}
         value={value}
         onBlur={onBlur}

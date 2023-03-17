@@ -26,7 +26,6 @@ export const Input: React.FC<T.InputProps> = ({
     <S.InputWrapper>
       <S.Label htmlFor={id}>{label}</S.Label>
       <S.Input
-        {...props}
         id={id}
         name={name}
         type={type}
@@ -40,6 +39,7 @@ export const Input: React.FC<T.InputProps> = ({
         value={value}
         onBlur={onBlur}
         onChange={onChange}
+        {...props}
       />
       {supportingText && <S.SupportingText>{supportingText}</S.SupportingText>}
 

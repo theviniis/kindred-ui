@@ -24,21 +24,21 @@ function setVariant({
   variant = 'default',
 }: T.SetVariantProps) {
   const { colors } = theme;
-  const colorDefault = 'DEFAULT';
-  const colorHover = 400;
-  const colorFocus = 500;
+  const colorDefault = 400;
+  const colorHover = 300;
+  const colorFocus = 200;
   const variantOptions = {
     default: {
-      color: colors.neutral.white,
+      color: colors.white,
       background: colors[skin][colorDefault],
       border: colors[skin][colorDefault],
       hover: {
-        color: colors.neutral.white,
+        color: colors.white,
         background: colors[skin][colorHover],
         border: colors[skin][colorHover],
       },
       focus: {
-        color: colors.neutral.white,
+        color: colors.white,
         background: colors[skin][colorFocus],
         border: colors[skin][colorFocus],
       },
@@ -53,7 +53,7 @@ function setVariant({
         border: colors[skin][colorDefault],
       },
       focus: {
-        color: colors.neutral.white,
+        color: colors.white,
         background: colors[skin][colorFocus],
         border: colors[skin][colorFocus],
       },
@@ -98,7 +98,7 @@ function setVariant({
   `;
 }
 
-function setSize({ size = 'md', theme }: T.SetSizeProps) {
+export function setSize({ size = 'md', theme }: T.SetSizeProps) {
   const { spacing } = theme;
   const styles = {
     sm: {

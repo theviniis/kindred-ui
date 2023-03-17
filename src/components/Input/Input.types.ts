@@ -36,6 +36,7 @@ export type StyledInputProps = Pick<
   'error' | 'variant' | 'skin' | 'loading' | 'inputSize'
 >;
 
-export interface SetVariantProps extends Pick<InputProps, 'variant' | 'skin'> {
+export interface InputSetVariantProps
+  extends Pick<InputProps, 'variant' | 'skin'> {
   theme: DefaultTheme;
 }

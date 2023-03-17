@@ -13,7 +13,7 @@ export const Input = styled.input<T.StyledInputProps>`
   outline: none;
   width: 100%;
   border-style: solid;
-  border-width: ${({ theme }) => theme.border.width.xs}px;
+  border-width: ${({ theme }) => theme.border.width.sm}px;
   border-radius: ${({ theme }) => theme.border.radius.xs}px;
   height: 40px;
   padding-inline: 8px;
@@ -44,68 +44,284 @@ function setVariant({
   theme,
   variant = 'plain',
   skin = 'neutral',
-}: T.SetVariantProps) {
+}: T.InputSetVariantProps) {
   const { colors } = theme;
-  const fontColorIntensit = 'DEFAULT';
-  const hoverColorIntensit = 500;
-  const focusColorIntensit = 400;
-
-  const neutralFocusColor =
-    skin === 'neutral'
-      ? colors.primary[focusColorIntensit]
-      : colors[skin][focusColorIntensit];
+  const colorPrimary = colors[skin].DEFAULT;
+  const hoverColorIntensity = colors[skin][600];
 
   const styles = {
     plain: {
-      background: colors.neutral[200],
-      border: 'transparent',
-      color: colors[skin][focusColorIntensit],
-      focus: neutralFocusColor,
-      hover: colors[skin][hoverColorIntensit],
+      backgroundColor: colors.neutral[200],
+      error: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      neutral: {
+        fontColor: colors.neutral[500],
+        borderColor: 'transparent',
+        hover: {
+          fontColor: colors.neutral[600],
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colors.foreground,
+          borderColor: colors.primary.DEFAULT,
+        },
+      },
+      primary: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      secondary: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      success: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
     },
     outlined: {
-      background: 'transparent',
-      color:
-        skin === 'neutral'
-          ? colors.neutral[500]
-          : colors[skin][fontColorIntensit],
-      border:
-        skin === 'neutral'
-          ? colors.neutral[200]
-          : colors[skin][fontColorIntensit],
-      focus: neutralFocusColor,
-      hover: colors[skin][hoverColorIntensit],
+      backgroundColor: colors.background,
+      error: {
+        fontColor: colorPrimary,
+        borderColor: colorPrimary,
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: hoverColorIntensity,
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      neutral: {
+        fontColor: colors.neutral[500],
+        borderColor: colors.neutral[300],
+        hover: {
+          fontColor: colors.neutral[600],
+          borderColor: colors.neutral[400],
+        },
+        focus: {
+          fontColor: colors.foreground,
+          borderColor: colors.primary.DEFAULT,
+        },
+      },
+      primary: {
+        fontColor: colorPrimary,
+        borderColor: colorPrimary,
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: hoverColorIntensity,
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      secondary: {
+        fontColor: colorPrimary,
+        borderColor: colorPrimary,
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: hoverColorIntensity,
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      success: {
+        fontColor: colorPrimary,
+        borderColor: colorPrimary,
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: hoverColorIntensity,
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
     },
     soft: {
-      background: colors[skin][700],
-      color: colors[skin][fontColorIntensit],
-      border: 'transparent',
-      focus: neutralFocusColor,
-      hover: colors[skin][hoverColorIntensit],
+      backgroundColor: colors.neutral[200],
+      error: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      neutral: {
+        fontColor: colors.neutral[500],
+        borderColor: 'transparent',
+        hover: {
+          fontColor: colors.neutral[600],
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colors.foreground,
+          borderColor: colors.primary.DEFAULT,
+        },
+      },
+      primary: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      secondary: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      success: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
     },
     solid: {
-      background: colors.neutral[800],
-      color: colors[skin][fontColorIntensit],
-      border: 'transparent',
-      focus: neutralFocusColor,
-      hover: colors[skin][hoverColorIntensit],
+      backgroundColor: colors.neutral[200],
+      error: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      neutral: {
+        fontColor: colors.neutral[500],
+        borderColor: 'transparent',
+        hover: {
+          fontColor: colors.neutral[600],
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colors.foreground,
+          borderColor: colors.primary.DEFAULT,
+        },
+      },
+      primary: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      secondary: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
+      success: {
+        fontColor: colorPrimary,
+        borderColor: 'transparent',
+        hover: {
+          fontColor: hoverColorIntensity,
+          borderColor: 'transparent',
+        },
+        focus: {
+          fontColor: colorPrimary,
+          borderColor: colorPrimary,
+        },
+      },
     },
   } as const;
+
   return css`
-    background-color: ${styles[variant].background};
-    border-color: ${styles[variant].border};
+    background-color: ${styles[variant].backgroundColor};
+    border-color: ${styles[variant][skin].borderColor};
     &,
     &::placeholder {
-      color: ${styles[variant].color};
+      color: ${styles[variant][skin].fontColor};
     }
-    &:hover {
-      &,
-      &::placeholder {
-        color: ${styles[variant].hover};
-      }
+    &:hover,
+    &:hover::placeholder {
+      color: ${styles[variant][skin].hover.fontColor};
+      border-color: ${styles[variant][skin].hover.borderColor};
     }
     &:focus {
-      border-color: ${styles[variant].focus};
+      color: ${styles[variant][skin].focus.fontColor};
+      border-color: ${styles[variant][skin].focus.borderColor};
+    }
+    &:not(:placeholder-shown) {
+      color: ${styles[variant][skin].focus.fontColor};
     }
   `;
 }

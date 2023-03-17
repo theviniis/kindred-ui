@@ -36,7 +36,7 @@ export const typography = {
 
 export const colors = {
   neutral: {
-    DEFAULT: '#272727',
+    DEFAULT: '#333333',
     white: '#FFF',
     black: '#000',
     50: '#fafafa',
@@ -46,12 +46,12 @@ export const colors = {
     400: '#a2a2a2',
     500: '#727272',
     600: '#535353',
-    700: '#404040',
+    700: '#333333',
     800: '#272727',
     900: '#181818',
   },
   primary: {
-    DEFAULT: '#03a9f4',
+    DEFAULT: '#3fc0ff',
     50: '#f0f9ff',
     100: '#e2f3ff',
     200: '#bfe8ff',
@@ -64,7 +64,7 @@ export const colors = {
     900: '#104a6f',
   },
   secondary: {
-    DEFAULT: '#673ab7',
+    DEFAULT: '#7740de',
     50: '#f8f6ff',
     100: '#f2edff',
     200: '#e8dfff',
@@ -196,7 +196,7 @@ export const lightTheme: CustomTheme = {
   colors: {
     ...colors,
     background: '#fff',
-    foreground: '#000',
+    foreground: '#333',
   },
   ...theme,
 } as const;
@@ -205,14 +205,14 @@ export const darkTheme: CustomTheme = {
   colors: {
     ...colors,
     background: '#181818',
-    foreground: '#fff',
+    foreground: '#e6e6e6',
     neutral: {
       DEFAULT: '#f4f4f4',
       white: '#FFF',
       black: '#000',
       50: '#181818',
       100: '#272727',
-      200: '#404040',
+      200: '#333333',
       300: '#535353',
       400: '#727272',
       500: '#a2a2a2',

@@ -78,6 +78,7 @@ function setVariant({
     color: ${variantOptions[variant].color};
     background-color: ${variantOptions[variant].background};
     border-color: ${variantOptions[variant].border};
+
     &:hover {
       color: ${variantOptions[variant].hover.color};
       background-color: ${variantOptions[variant].hover.background};

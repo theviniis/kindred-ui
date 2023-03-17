@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { ViniisContext } from '../src/context';
 import { storybookThemeLight } from './manager';
 import { SchemeWrapper, Flex } from './styles';
+import { Story } from '@storybook/api';
 
 // export const parameters = {
 //   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -22,7 +23,7 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme for components',
-    defaultValue: 'dark',
+    defaultValue: 'both',
     toolbar: {
       icon: 'circlehollow',
       // Array of plain string values or MenuItem shape (see below)

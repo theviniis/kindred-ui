@@ -9,12 +9,12 @@ export const Default = Template.bind({});
 
 export const Placeholder = Template.bind({});
 Placeholder.args = {
-  placeholder: 'placeholder',
+  placeholder: 'Type something',
 };
 
 export const Label = Template.bind({});
 Label.args = {
-  label: 'label',
+  label: 'Label',
   placeholder: 'Type something...',
 };
 
@@ -26,7 +26,7 @@ Variant.args = {
 
 export const Skin = Template.bind({});
 Skin.args = {
-  skin: 'neutral',
+  skin: 'primary',
   placeholder: 'Type something...',
 };
 
@@ -39,12 +39,6 @@ inputSize.args = {
 export const SupportingText = Template.bind({});
 SupportingText.args = {
   supportingText: 'supporting text',
-  placeholder: 'Type something...',
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  error: true,
   placeholder: 'Type something...',
 };
 

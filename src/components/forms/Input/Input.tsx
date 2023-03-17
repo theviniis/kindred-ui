@@ -13,7 +13,6 @@ export const Input: React.FC<T.InputProps> = ({
   variant = 'plain',
   skin = 'neutral',
   inputSize = 'md',
-  error = false,
   supportingText,
   startIcon,
   endIcon,
@@ -31,7 +30,6 @@ export const Input: React.FC<T.InputProps> = ({
         type={type}
         placeholder={placeholder}
         disabled={disabled}
-        error={error}
         variant={variant}
         skin={skin}
         inputSize={inputSize}
@@ -42,7 +40,6 @@ export const Input: React.FC<T.InputProps> = ({
         {...props}
       />
       {supportingText && <S.SupportingText>{supportingText}</S.SupportingText>}
-
       {(startIcon || endIcon) && (
         <S.IconsWrapper>
           {startIcon && <span id="input-start-icon">{startIcon}</span>}

@@ -15,9 +15,7 @@ type InputStringProps = Partial<
   >
 >;
 
-type InputBooleanProps = Partial<
-  Record<'loading' | 'disabled' | 'error', boolean>
->;
+type InputBooleanProps = Partial<Record<'loading' | 'disabled', boolean>>;
 
 type InputIconsProps = Partial<Record<'startIcon' | 'endIcon', JSX.Element>>;
 
@@ -27,13 +25,13 @@ export interface InputProps
     InputBooleanProps,
     InputIconsProps {
   variant?: 'plain' | 'outlined' | 'soft' | 'solid';
-  skin?: Exclude<keyof typeof colors, 'gradients'>;
+  skin?: Exclude<keyof typeof colors, 'gradients' | 'white' | 'black'>;
   inputSize?: 'sm' | 'md' | 'lg';
 }
 
 export type StyledInputProps = Pick<
   InputProps,
-  'error' | 'variant' | 'skin' | 'loading' | 'inputSize'
+  'variant' | 'skin' | 'loading' | 'inputSize'
 >;
 
 export interface InputSetVariantProps

@@ -8,6 +8,8 @@ export const InputWrapper = styled.div`
 
 export const Label = styled.label`
   font: inherit;
+  display: inline-block;
+  margin-block-end: ${({ theme }) => theme.spacing.xxs}px;
   color: ${({ theme }) => theme.colors.foreground};
 `;
 
@@ -21,11 +23,10 @@ export const Input = styled.input<T.StyledInputProps>`
   border-style: solid;
   border-width: ${({ theme }) => theme.border.width.sm}px;
   border-radius: ${({ theme }) => theme.border.radius.xs}px;
-  transition: border-color ease-in 150ms;
-  ${({ theme, variant, skin }) => setVariant({ theme, variant, skin })};
-
   min-height: 40px;
   padding-inline: 8px;
+  transition: border-color ease-in 150ms;
+  ${({ theme, variant, skin }) => setVariant({ theme, variant, skin })};
   /* ${({ theme, inputSize }) => setSize({ size: inputSize, theme })}; */
 `;
 
@@ -34,6 +35,7 @@ export const SupportingText = styled.span`
   color: ${({ theme }) => theme.colors.neutral[400]};
   margin-block-start: ${({ theme }) => theme.spacing.xxs}px;
 `;
+
 export const IconsWrapper = styled.span``;
 
 function setVariant({
@@ -42,36 +44,45 @@ function setVariant({
   skin = 'neutral',
 }: T.InputSetVariantProps) {
   const { colors } = theme;
-  const colorPrimary = colors[skin][400];
-  const hoverColor =
-    skin === 'neutral' ? colors.neutral[500] : colors[skin][300];
-  const borderColor = skin === 'neutral' ? colors.primary[100] : colorPrimary;
+
+  let primaryColor = colors[skin][400];
+  let fontColor = colors[skin][400];
+  let hoverColor = colors[skin][300];
+  let borderColor = primaryColor;
+
+  if (skin === 'neutral') {
+    primaryColor = colors[skin][700];
+    hoverColor = colors[skin][800];
+    fontColor = colors[skin][700];
+    borderColor = colors.primary[400];
+  }
 
   const styles = {
     plain: {
-      color: colorPrimary,
+      color: fontColor,
       background: colors.neutral[200],
       border: 'transparent',
       hover: {
         border: 'transparent',
       },
       focus: {
+        color: colors.neutral[700],
         border: borderColor,
       },
     },
     outlined: {
-      color: colorPrimary,
+      color: fontColor,
       background: colors.background,
-      border: colorPrimary,
+      border: primaryColor,
       hover: {
         border: hoverColor,
       },
       focus: {
-        border: colorPrimary,
+        border: primaryColor,
       },
     },
     soft: {
-      color: colorPrimary,
+      color: fontColor,
       background: colors[skin][300],
       border: 'transparent',
       hover: {
@@ -107,11 +118,11 @@ function setVariant({
       border-color: ${styles[variant].hover.border};
     }
     &:focus {
-      color: ${colorPrimary};
+      color: ${primaryColor};
       border-color: ${styles[variant].focus.border};
     }
     &:not(:placeholder-shown) {
-      color: ${colorPrimary};
+      color: ${primaryColor};
     }
   `;
 }

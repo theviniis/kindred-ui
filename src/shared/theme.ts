@@ -207,7 +207,7 @@ export const darkTheme: CustomTheme = {
     background: '#181818',
     foreground: '#e6e6e6',
     neutral: {
-      DEFAULT: '#f4f4f4',
+      DEFAULT: '#e6e6e6',
       white: '#FFF',
       black: '#000',
       50: '#181818',

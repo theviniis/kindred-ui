@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import * as T from './types';
-import { spacing } from '../../shared';
+import * as T from './Flex.types';
+import { spacing } from '../../../';
 
 export const Flex = styled.div<T.FlexProps>`
   display: flex;

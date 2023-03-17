@@ -1,32 +1,29 @@
-import * as T from './types';
 import styled, { css } from 'styled-components';
 import { getTypographyStyles } from '../Typography';
+import { ButtonProps, SetVariantProps } from './Button.types';
 
-export const Button = styled.button<T.ButtonProps>`
-  box-sizing: border-box;
-  cursor: pointer;
+export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
   display: flex;
+  gap: ${({ theme }) => theme.spacing.xs}px;
   align-items: center;
   flex-direction: row;
-  justify-content: space-between;
-  border-style: solid;
-  transition: ease-in-out 100ms;
+  padding: ${({ theme }) => theme.spacing.xs}px
+    ${({ theme }) => theme.spacing.sm}px;
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   border-radius: ${({ theme }) => theme.border.radius.xs}px;
+  border-style: solid;
   border-width: ${({ theme }) => theme.border.width.xs}px;
+  transition: ease-in-out 100ms;
   ${getTypographyStyles('subtitle2')};
-  ${({ theme, skin, variant }) => setVariant({ theme, skin, variant })};
-  ${({ theme, size }) => setSize({ size, theme })};
+  ${({ theme, skin, variant, disabled }) =>
+    setVariant({ theme, skin, variant, disabled })};
 `;
 
-function setVariant({
-  theme,
-  skin = 'primary',
-  variant = 'default',
-}: T.SetVariantProps) {
+function setVariant({ theme, skin, variant }: SetVariantProps) {
   const { colors } = theme;
-  const colorDefault = 400;
-  const colorHover = 300;
-  const colorFocus = 200;
+  const colorDefault = 100;
+  const colorHover = 400;
+  const colorFocus = 500;
   const variantOptions = {
     default: {
       color: colors.white,
@@ -74,6 +71,7 @@ function setVariant({
       },
     },
   };
+
   return css`
     color: ${variantOptions[variant].color};
     background-color: ${variantOptions[variant].background};
@@ -83,41 +81,17 @@ function setVariant({
       background-color: ${variantOptions[variant].hover.background};
       border-color: ${variantOptions[variant].hover.border};
     }
-    &:focus,
+    /* &:focus, */
     &:active {
       color: ${variantOptions[variant].focus.color};
       background-color: ${variantOptions[variant].focus.background};
       border-color: ${variantOptions[variant].focus.border};
     }
+
     &:disabled {
-      cursor: not-allowed;
       background-color: ${colors.neutral[200]};
       border-color: ${colors.neutral[200]};
       color: ${colors.neutral[900]};
     }
-  `;
-}
-
-export function setSize({ size = 'md', theme }: T.SetSizeProps) {
-  const { spacing } = theme;
-  const styles = {
-    sm: {
-      padding: spacing.xs,
-      height: spacing.md,
-    },
-    md: {
-      padding: spacing.sm,
-      height: spacing.xlg,
-    },
-    lg: {
-      padding: spacing.md,
-      height: spacing.xxlg,
-    },
-  };
-
-  return css`
-    padding-inline: ${styles[size].padding}px;
-    gap: ${styles[size].padding}px;
-    min-height: ${styles[size].height}px;
   `;
 }

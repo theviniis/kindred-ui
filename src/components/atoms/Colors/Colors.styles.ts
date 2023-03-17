@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { border, keyframes, spacing } from '../../shared';
-import { P1 } from '../';
+import { border, keyframes, spacing } from '../../../shared';
+import { P1 } from '../Typography';
 
 export const Wrapper = styled(P1)`
   display: flex;

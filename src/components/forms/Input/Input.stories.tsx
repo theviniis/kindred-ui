@@ -16,7 +16,12 @@ const SkinsTemplate: Story<InputProps> = args => {
   return (
     <Flex>
       {inputSkins.map(skin => (
-        <Input {...args} skin={skin} placeholder={skin} />
+        <Input
+          {...args}
+          skin={skin}
+          placeholder={skin}
+          supportingText="This is an example text"
+        />
       ))}
     </Flex>
   );

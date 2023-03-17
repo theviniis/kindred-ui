@@ -52,7 +52,7 @@ function setVariant({
 
   if (skin === 'neutral') {
     primaryColor = colors[skin][700];
-    hoverColor = colors[skin][800];
+    hoverColor = colors[skin][300];
     fontColor = colors[skin][700];
     borderColor = colors.primary[400];
   }

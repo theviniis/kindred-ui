@@ -35,71 +35,46 @@ export const typography = {
 } as const;
 
 export const colors = {
+  white: '#FFF',
+  black: '#000',
   neutral: {
-    white: '#FFF',
-    black: '#000',
-    50: '#fafafa',
     100: '#f4f4f4',
     200: '#e6e6e6',
     300: '#d4d4d4',
     400: '#a2a2a2',
     500: '#727272',
     600: '#535353',
-    700: '#404040',
+    700: '#333333',
     800: '#272727',
     900: '#181818',
   },
   primary: {
-    DEFAULT: '#03a9f4',
-    50: '#f0f9ff',
-    100: '#e2f3ff',
-    200: '#bfe8ff',
-    300: '#85d6ff',
+    100: '#104a6f',
+    200: '#086aa5',
+    300: '#0486ce',
     400: '#3fc0ff',
-    500: '#03a9f4',
-    600: '#0486ce',
-    700: '#086aa5',
-    800: '#0c5987',
-    900: '#104a6f',
+    500: '#bfe8ff',
   },
   secondary: {
-    DEFAULT: '#673ab7',
-    50: '#f8f6ff',
-    100: '#f2edff',
-    200: '#e8dfff',
-    300: '#d4c3ff',
-    400: '#b899ff',
-    500: '#9e70ff',
-    600: '#8a4ffb',
-    700: '#7740de',
-    800: '#673ab7',
-    900: '#4e228e',
+    100: '#4e228e',
+    200: '#7740de',
+    300: '#8a4ffb',
+    400: '#9e70ff',
+    500: '#b899ff',
   },
   success: {
-    DEFAULT: '#8bc34a',
-    50: '#f7fee7',
-    100: '#ebfacc',
-    200: '#d9f5a2',
-    300: '#bfec75',
+    100: '#507921',
+    200: '#6a9d32',
+    300: '#8bc34a',
     400: '#a7de59',
-    500: '#8bc34a',
-    600: '#6a9d32',
-    700: '#507921',
-    800: '#406118',
-    900: '#365313',
+    500: '#bfec75',
   },
   error: {
-    DEFAULT: '#f44336',
-    50: '#fef2f1',
-    100: '#ffe3e1',
-    200: '#ffcbc9',
-    300: '#ffa6a1',
-    400: '#fc7269',
-    500: '#f44336',
-    600: '#df250d',
-    700: '#bb1c06',
-    800: '#9a1c0f',
-    900: '#7f1e16',
+    100: '#9a1c0f',
+    200: '#bb1c06',
+    300: '#df250d',
+    400: '#f44336',
+    500: '#fc7269',
   },
   gradients: {
     info: `
@@ -188,14 +163,14 @@ export const theme = {
 } as const;
 
 type CustomTheme = typeof theme & {
-  colors: Record<'background' | 'foreground', '#fff' | '#000'> & typeof colors;
+  colors: Record<'background' | 'foreground', string> & typeof colors;
 };
 
 export const lightTheme: CustomTheme = {
   colors: {
     ...colors,
     background: '#fff',
-    foreground: '#000',
+    foreground: '#333',
   },
   ...theme,
 } as const;
@@ -203,14 +178,11 @@ export const lightTheme: CustomTheme = {
 export const darkTheme: CustomTheme = {
   colors: {
     ...colors,
-    background: '#000',
-    foreground: '#fff',
+    background: '#181818',
+    foreground: '#e6e6e6',
     neutral: {
-      white: '#FFF',
-      black: '#000',
-      50: '#181818',
       100: '#272727',
-      200: '#404040',
+      200: '#333333',
       300: '#535353',
       400: '#727272',
       500: '#a2a2a2',
@@ -221,7 +193,7 @@ export const darkTheme: CustomTheme = {
     },
   },
   ...theme,
-} as const;
+};
 
 declare module 'styled-components' {
   export interface DefaultTheme extends CustomTheme {}

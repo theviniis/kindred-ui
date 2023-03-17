@@ -1,8 +1,8 @@
 import React from 'react';
-import { H2, P1 } from '../../';
+import { H2, P1 } from '../../components';
 import { Clouds } from './Clouds';
-import * as S from './styles';
-import * as T from './types';
+import * as S from './Hero.styles';
+import * as T from './Hero.types';
 
 export const Hero: React.FC<T.HeroProps> = ({ children, title }) => {
   return (

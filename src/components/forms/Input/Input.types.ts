@@ -1,6 +1,6 @@
 import React from 'react';
 import { DefaultTheme } from 'styled-components';
-import { colors } from '../../shared';
+import { colors } from '../../../';
 
 type InputStringProps = Partial<
   Record<

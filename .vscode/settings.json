@@ -1,0 +1,16 @@
+{
+  "files.exclude": {
+    "node_modules": true,
+    ".vscode": true,
+    ".gitignore": true,
+    "package.json": true,
+    "yarn.lock": true,
+    "public": true,
+    "tsconfig.json": true,
+    ".eslintrc": true,
+    "dist": true,
+    ".prettierignore": true,
+    "package-lock.json": true,
+    "LICENSE": true
+  }
+}

@@ -1,18 +1,16 @@
 import styled from 'styled-components';
-import { border, colors, spacing } from '../../shared/theme';
 
 export const Wrapper = styled.div`
-  --padding: ${spacing.xlg}px;
   width: 100%;
   height: 300px;
   display: flex;
   flex-direction: column;
-  gap: ${spacing.xs}px;
+  gap: ${({ theme }) => theme.spacing.xs}px;
   color: white;
-  background: ${`linear-gradient(135deg, ${colors.primary[100]} 15%, ${colors.primary[600]} 100%)`};
   position: relative;
-  border-radius: ${border.radius.xs}px;
-  padding: var(--padding);
+  border-radius: ${({ theme }) => theme.border.radius.xs}px;
+  padding: ${({ theme }) => theme.spacing.xlg}px;
+  ${({ theme }) => theme.colors.gradients.info};
 `;
 
 export const Image = styled.svg`

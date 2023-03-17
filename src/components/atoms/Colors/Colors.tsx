@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from './styles';
-import * as T from './types';
-import { colors } from '../../shared';
+import * as S from './Colors.styles';
+import * as T from './Colors.types';
+import { colors } from '../../../shared';
 
 const getColorsArray = ({ colorObject }: { colorObject: any }) => {
   const keys = Object.keys(colorObject);

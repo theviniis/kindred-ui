@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 import { Input, InputProps } from './';
-import { Icon } from '../Icon';
+import { Icon } from '../../';
 
 const Template: Story<InputProps> = args => <Input {...args} />;
 

@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import { setSize } from '../Button';
-import { getTypographyStyles } from '../Typography';
+import { setSize, getTypographyStyles } from '../../';
 import * as T from './Input.types';
 
 export const InputWrapper = styled.div`

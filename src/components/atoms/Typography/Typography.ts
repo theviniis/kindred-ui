@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { typography } from '../../shared';
+import { typography } from '../../../shared/';
 
 export const TypographyDefinitions = {
   h1: `

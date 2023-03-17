@@ -14,18 +14,20 @@ type InputStringProps = Partial<
     string
   >
 >;
-
 type InputBooleanProps = Partial<Record<'loading' | 'disabled', boolean>>;
-
 type InputIconsProps = Partial<Record<'startIcon' | 'endIcon', JSX.Element>>;
-
+export type InputSkinsProps = Exclude<
+  keyof typeof colors,
+  'gradients' | 'white' | 'black'
+>;
+export type InputVariantsProps = 'plain' | 'outlined' | 'soft' | 'solid';
 export interface InputProps
   extends Exclude<React.HtmlHTMLAttributes<HTMLInputElement>, 'inputSize'>,
     InputStringProps,
     InputBooleanProps,
     InputIconsProps {
-  variant?: 'plain' | 'outlined' | 'soft' | 'solid';
-  skin?: Exclude<keyof typeof colors, 'gradients' | 'white' | 'black'>;
+  variant?: InputVariantsProps;
+  skin?: InputSkinsProps;
   inputSize?: 'sm' | 'md' | 'lg';
 }
 

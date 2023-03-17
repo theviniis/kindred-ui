@@ -82,8 +82,8 @@ function setVariant({
       },
     },
     soft: {
-      color: fontColor,
-      background: colors[skin][300],
+      color: colors[skin][200],
+      background: colors[skin][500],
       border: 'transparent',
       hover: {
         border: 'transparent',
@@ -93,8 +93,8 @@ function setVariant({
       },
     },
     solid: {
-      color: colors[skin][400],
-      background: colors[skin][500],
+      color: colors[skin][200],
+      background: colors[skin][400],
       border: 'transparent',
       hover: {
         border: 'transparent',

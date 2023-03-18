@@ -28,13 +28,8 @@ export interface InputProps
     InputIconsProps {
   variant?: InputVariantsProps;
   skin?: InputSkinsProps;
-  inputSize?: 'sm' | 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
 }
-
-export type StyledInputProps = Pick<
-  InputProps,
-  'variant' | 'skin' | 'loading' | 'inputSize'
->;
 
 export interface InputSetVariantProps
   extends Pick<InputProps, 'variant' | 'skin'> {

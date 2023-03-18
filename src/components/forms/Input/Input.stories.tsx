@@ -16,12 +16,7 @@ const SkinsTemplate: Story<InputProps> = args => {
   return (
     <Flex>
       {inputSkins.map(skin => (
-        <Input
-          {...args}
-          skin={skin}
-          placeholder={skin}
-          supportingText="This is an example text"
-        />
+        <Input {...args} skin={skin} label={skin} />
       ))}
     </Flex>
   );
@@ -57,7 +52,7 @@ export const Skin = SkinsTemplate.bind({});
 
 export const inputSize = Template.bind({});
 inputSize.args = {
-  inputSize: 'sm',
+  size: 'sm',
   placeholder: 'Type something...',
 };
 

@@ -30,4 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   button {
     all: unset;
   }
+  label, span {
+    display: inline-block;
+  }
 `;

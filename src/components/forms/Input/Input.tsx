@@ -7,12 +7,12 @@ export const Input: React.FC<T.InputProps> = ({
   name,
   type = 'text',
   label,
-  placeholder,
+  placeholder = ' ',
   loading = false,
   disabled = false,
   variant = 'plain',
   skin = 'neutral',
-  inputSize = 'md',
+  size = 'md',
   supportingText,
   startIcon,
   endIcon,
@@ -22,18 +22,20 @@ export const Input: React.FC<T.InputProps> = ({
   ...props
 }) => {
   return (
-    <S.InputWrapper>
-      <S.Label htmlFor={id}>{label}</S.Label>
+    <S.InputWrapper
+      variant={variant}
+      skin={skin}
+      size={size}
+      loading={loading}
+      label={label}
+    >
+      <S.Label htmlFor={id}>{label ?? placeholder}</S.Label>
       <S.Input
         id={id}
         name={name}
         type={type}
         placeholder={placeholder}
         disabled={disabled}
-        variant={variant}
-        skin={skin}
-        inputSize={inputSize}
-        loading={loading}
         value={value}
         onBlur={onBlur}
         onChange={onChange}

@@ -1,19 +1,34 @@
 import styled, { css } from 'styled-components';
-import { setSize, getTypographyStyles } from '../../';
+import { getTypographyStyles } from '../../';
 import * as T from './Input.types';
 
-export const InputWrapper = styled.div`
-  ${getTypographyStyles('p1')};
+export const InputWrapper = styled.div<
+  Pick<T.InputProps, 'variant' | 'skin' | 'size' | 'loading' | 'label'>
+>`
+  // display: flex;
+  // flex-direction: column-reverse;
+  ${getTypographyStyles('p2')};
+  ${({ theme, variant, skin }) => setVariant({ theme, variant, skin })};
+
+  label {
+    ${({ label }) =>
+      !label &&
+      `
+        visibility: hidden;
+        width: 0;
+        height: 0;
+      `};
+  }
 `;
 
-export const Label = styled.label`
+export const Label = styled.label<Pick<T.InputProps, 'skin'>>`
   font: inherit;
   display: inline-block;
   margin-block-end: ${({ theme }) => theme.spacing.xxs}px;
-  color: ${({ theme }) => theme.colors.foreground};
+  text-transform: capitalize;
 `;
 
-export const Input = styled.input<T.StyledInputProps>`
+export const Input = styled.input`
   font: inherit;
   border: none;
   background: none;
@@ -21,13 +36,11 @@ export const Input = styled.input<T.StyledInputProps>`
   overflow: hidden;
   width: 100%;
   border-style: solid;
-  border-width: ${({ theme }) => theme.border.width.sm}px;
+  border-width: ${({ theme }) => theme.border.width.xs}px;
   border-radius: ${({ theme }) => theme.border.radius.xs}px;
-  min-height: 40px;
+  height: 40px;
   padding-inline: 8px;
   transition: border-color ease-in 150ms;
-  ${({ theme, variant, skin }) => setVariant({ theme, variant, skin })};
-  /* ${({ theme, inputSize }) => setSize({ size: inputSize, theme })}; */
 `;
 
 export const SupportingText = styled.span`
@@ -52,8 +65,8 @@ function setVariant({
 
   if (skin === 'neutral') {
     primaryColor = colors[skin][700];
-    hoverColor = colors[skin][300];
-    fontColor = colors[skin][700];
+    hoverColor = colors[skin][600];
+    fontColor = colors[skin][400];
     borderColor = colors.primary[400];
   }
 
@@ -106,23 +119,30 @@ function setVariant({
   } as const;
 
   return css`
-    background-color: ${styles[variant].background};
-    border-color: ${styles[variant].border};
-    &,
-    &::placeholder {
-      color: ${styles[variant].color};
+    &:focus-within label {
+      color: ${borderColor};
     }
-    &:hover,
-    &:hover::placeholder {
-      color: ${hoverColor};
-      border-color: ${styles[variant].hover.border};
+    input {
+      background-color: ${styles[variant].background};
+      border-color: ${styles[variant].border};
+      &,
+      &::placeholder {
+        color: ${styles[variant].color};
+      }
+      &:hover,
+      &:hover::placeholder {
+        border-color: ${styles[variant].hover.border};
+      }
+      &:focus {
+        color: ${borderColor};
+        border-color: ${styles[variant].focus.border};
+      }
+      &:not(:placeholder-shown) {
+        color: ${borderColor};
+      }
     }
-    &:focus {
-      color: ${primaryColor};
-      border-color: ${styles[variant].focus.border};
-    }
-    &:not(:placeholder-shown) {
-      color: ${primaryColor};
+    label {
+      color: ${colors.foreground};
     }
   `;
 }

@@ -3,33 +3,29 @@ import * as S from './Input.styles';
 import * as T from './Input.types';
 
 export const Input: React.FC<T.InputProps> = ({
-  id = 'input-id-' + crypto.randomUUID(),
-  name,
+  id = 'input-id-' + React.useId(),
+  name = '',
   type = 'text',
-  label,
+  label = '',
   placeholder = ' ',
   loading = false,
   disabled = false,
   variant = 'plain',
   skin = 'neutral',
   size = 'md',
-  supportingText,
-  startIcon,
-  endIcon,
+  supportingText = '',
+  startHelper,
+  endHelper,
   value,
   onBlur,
   onChange,
   ...props
 }) => {
   return (
-    <S.InputWrapper
-      variant={variant}
-      skin={skin}
-      size={size}
-      loading={loading}
-      label={label}
-    >
-      <S.Label htmlFor={id}>{label ?? placeholder}</S.Label>
+    <S.InputWrapper variant={variant} skin={skin} size={size} loading={loading}>
+      <S.Label htmlFor={id} label={label}>
+        {label ?? placeholder}
+      </S.Label>
       <S.Input
         id={id}
         name={name}
@@ -42,10 +38,10 @@ export const Input: React.FC<T.InputProps> = ({
         {...props}
       />
       {supportingText && <S.SupportingText>{supportingText}</S.SupportingText>}
-      {(startIcon || endIcon) && (
+      {(startHelper || endHelper) && (
         <S.IconsWrapper>
-          {startIcon && <span id="input-start-icon">{startIcon}</span>}
-          {endIcon && <span id="input-end-icon">{endIcon}</span>}
+          {startHelper && <span id="input-start-icon">{startHelper}</span>}
+          {endHelper && <span id="input-end-icon">{endHelper}</span>}
         </S.IconsWrapper>
       )}
     </S.InputWrapper>

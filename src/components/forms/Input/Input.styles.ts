@@ -3,29 +3,24 @@ import { getTypographyStyles } from '../../';
 import * as T from './Input.types';
 
 export const InputWrapper = styled.div<
-  Pick<T.InputProps, 'variant' | 'skin' | 'size' | 'loading' | 'label'>
+  Pick<T.InputProps, 'variant' | 'skin' | 'size' | 'loading'>
 >`
-  // display: flex;
-  // flex-direction: column-reverse;
-  ${getTypographyStyles('p2')};
   ${({ theme, variant, skin }) => setVariant({ theme, variant, skin })};
-
-  label {
-    ${({ label }) =>
-      !label &&
-      `
-        visibility: hidden;
-        width: 0;
-        height: 0;
-      `};
-  }
 `;
 
-export const Label = styled.label<Pick<T.InputProps, 'skin'>>`
+export const Label = styled.label<Pick<T.InputProps, 'skin' | 'label'>>`
   font: inherit;
   display: inline-block;
   margin-block-end: ${({ theme }) => theme.spacing.xxs}px;
   text-transform: capitalize;
+  ${getTypographyStyles('subtitle3')};
+  ${({ label }) =>
+    !label &&
+    css`
+      visibility: hidden;
+      width: 0;
+      height: 0;
+    `};
 `;
 
 export const Input = styled.input`
@@ -41,6 +36,7 @@ export const Input = styled.input`
   height: 40px;
   padding-inline: 8px;
   transition: border-color ease-in 150ms;
+  ${getTypographyStyles('p2')};
 `;
 
 export const SupportingText = styled.span`
@@ -143,6 +139,9 @@ function setVariant({
     }
     label {
       color: ${colors.foreground};
+    }
+    span {
+      ${skin === 'error' ? `color: ${colors.error[400]};` : ''};
     }
   `;
 }

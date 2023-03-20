@@ -2,7 +2,7 @@ import { keyframes as _keyframes } from 'styled-components';
 
 export const typography = {
   type: {
-    primary: `Lato, "Helvetica Neue", Helvetica, sans-serif`,
+    primary: `'Open Sans', sans-serif;`,
     secondary: 'arial',
   },
   weight: {

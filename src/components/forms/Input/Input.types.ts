@@ -15,7 +15,9 @@ type InputStringProps = Partial<
   >
 >;
 type InputBooleanProps = Partial<Record<'loading' | 'disabled', boolean>>;
-type InputIconsProps = Partial<Record<'startIcon' | 'endIcon', JSX.Element>>;
+type InputIconsProps = Partial<
+  Record<'startHelper' | 'endHelper', JSX.Element>
+>;
 export type InputSkinsProps = Exclude<
   keyof typeof colors,
   'gradients' | 'white' | 'black'

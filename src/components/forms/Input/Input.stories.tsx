@@ -14,7 +14,7 @@ const SkinsTemplate: Story<InputProps> = args => {
     'error',
   ];
   return (
-    <Flex>
+    <Flex wrap="wrap">
       {inputSkins.map(skin => (
         <Input {...args} skin={skin} label={skin} />
       ))}
@@ -25,7 +25,7 @@ const SkinsTemplate: Story<InputProps> = args => {
 const VariantsTemplate: Story<InputProps> = args => {
   const variants: InputVariantsProps[] = ['plain', 'outlined', 'soft', 'solid'];
   return (
-    <Flex>
+    <Flex wrap="wrap">
       {variants.map(variant => (
         <Input {...args} variant={variant} placeholder={variant} />
       ))}
@@ -64,12 +64,12 @@ SupportingText.args = {
 
 export const StartIcon = Template.bind({});
 StartIcon.args = {
-  startIcon: <Icon />,
+  startHelper: <Icon />,
   placeholder: 'Type something...',
 };
 
 export const EndIcon = Template.bind({});
 EndIcon.args = {
-  endIcon: <Icon />,
+  endHelper: <Icon />,
   placeholder: 'Type something...',
 };

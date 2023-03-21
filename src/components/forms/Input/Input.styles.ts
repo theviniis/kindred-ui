@@ -25,7 +25,11 @@ export const InputContainer = styled.div`
   /* When placeholder not showing */
   &:has(input:not(:placeholder-shown)) {
     label {
-      transform: translate(calc(var(--padding-left) / 2), -50%) scale(0.75);
+      transform: none;
+      top: 0;
+      left: calc(var(--padding) + 1px);
+      transform-origin: top;
+      transform: scale(0.75) translateY(-50%);
       color: var(--clr-focus);
     }
     input::placeholder {
@@ -53,9 +57,9 @@ export const InputContainer = styled.div`
 export const Label = styled.label`
   pointer-events: none;
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(var(--padding-left), calc(var(--height) / 2 - 50%));
+  top: 50%;
+  left: var(--padding-left);
+  transform: translateY(-50%);
   transition: transform ease-in-out 100ms;
 `;
 
@@ -77,14 +81,12 @@ export const Fieldset = styled.fieldset`
   border: solid;
   border-width: var(--border-width);
   border-radius: var(--border-radius);
-  padding-inline: calc(var(--padding) / 2);
+  padding-inline: var(--padding);
   border-color: var(--clr-primary);
   transition: border-color ease-in-out 100ms;
   legend {
     display: block;
     visibility: hidden;
-    width: auto;
-    text-align: left;
     max-width: 0;
     height: 0;
   }
@@ -99,7 +101,7 @@ export const IconsWrapper = styled.div`
   justify-content: space-between;
   padding-inline: var(--padding);
   background: none;
-  > * {
+  span {
     cursor: pointer;
     pointer-events: initial;
   }

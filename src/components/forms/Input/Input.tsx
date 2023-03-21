@@ -45,8 +45,8 @@ export const Input: React.FC<T.InputProps> = ({
         </S.Fieldset>
         {(startIcon || endIcon) && (
           <S.IconsWrapper>
-            {startIcon && startIcon}
-            {endIcon && endIcon}
+            <span>{startIcon && startIcon}</span>
+            <span>{endIcon && endIcon}</span>
           </S.IconsWrapper>
         )}
       </S.InputContainer>

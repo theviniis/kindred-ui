@@ -12,7 +12,7 @@ export const Wrapper = styled.div<InputWrapperProps>`
   ${({ theme, skin }) => setVariables({ theme, skin })};
   ${({ theme, startIcon, endIcon }) =>
     getPadding({ theme, startIcon, endIcon })}
-  div {
+  > div:first-child {
     position: relative;
   }
   label {

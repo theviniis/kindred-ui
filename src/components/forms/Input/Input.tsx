@@ -10,7 +10,7 @@ export const Input: React.FC<T.InputProps> = ({
   placeholder = ' ',
   value = '',
   skin = 'neutral',
-  supportingText = '',
+  supportingText,
   size = 'md',
   startIcon,
   endIcon,
@@ -47,13 +47,13 @@ export const Input: React.FC<T.InputProps> = ({
             <span>{label}</span>
           </legend>
         </fieldset>
+        {(startIcon || endIcon) && (
+          <S.IconsWrapper>
+            <span>{startIcon && startIcon}</span>
+            <span>{endIcon && endIcon}</span>
+          </S.IconsWrapper>
+        )}
       </div>
-      {(startIcon || endIcon) && (
-        <S.IconsWrapper>
-          <span>{startIcon && startIcon}</span>
-          <span>{endIcon && endIcon}</span>
-        </S.IconsWrapper>
-      )}
       {supportingText && (
         <S.SupportingText id={id + 'supportingText'}>
           {supportingText}

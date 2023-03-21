@@ -11,17 +11,17 @@ export const Wrapper = styled.div<InputWrapperProps>`
   ${() => getTypographyStyles('body1')};
   ${({ theme, skin }) => setVariables({ theme, skin })};
   ${({ theme, startIcon, endIcon }) =>
-    getPadding({ theme, startIcon, endIcon })}
-  > div:first-child {
+    getPadding({ theme, startIcon, endIcon })};
+
+  .input-container {
     position: relative;
   }
   label {
-    ${() => getTypographyStyles('body1')};
     pointer-events: none;
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(var(--padding), calc(var(--height) / 2 - 50%));
+    transform: translate(var(--padding-left), calc(var(--height) / 2 - 50%));
     transition: transform ease-in-out 100ms;
   }
   input {
@@ -41,10 +41,9 @@ export const Wrapper = styled.div<InputWrapperProps>`
     border: solid;
     border-width: var(--border-width);
     border-radius: var(--border-radius);
-    padding-inline: calc(var(--padding) / 2);
+    padding-inline: calc(var(--padding-left) / 2);
     border-color: var(--clr-primary);
     transition: border-color ease-in-out 100ms;
-
     legend {
       display: block;
       visibility: hidden;
@@ -63,7 +62,7 @@ export const Wrapper = styled.div<InputWrapperProps>`
   /* When placeholder not showing */
   &:has(input:not(:placeholder-shown)) {
     label {
-      transform: translate(calc(var(--padding) / 2), -50%) scale(0.75);
+      transform: translate(calc(var(--padding-left) / 2), -50%) scale(0.75);
       color: var(--clr-focus);
     }
     input::placeholder {
@@ -93,7 +92,7 @@ export const IconsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: var(--padding);
+  padding-inline: var(--padding-left);
   background: none;
   span {
     cursor: pointer;
@@ -114,7 +113,6 @@ function setVariables({ theme, skin = 'neutral' }: T.InputSetVariantProps) {
     colorFocus = colors.primary[400];
   }
   return css`
-    --padding: ${spacing.xs}px;
     --height: ${spacing.xlg}px;
     --clr-primary: ${colors[skin][400]};
     --clr-hover: ${colors[skin][500]};

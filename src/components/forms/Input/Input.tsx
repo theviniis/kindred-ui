@@ -27,7 +27,7 @@ export const Input: React.FC<T.InputProps> = ({
       endIcon={endIcon}
       label={label}
     >
-      <div>
+      <div className="input-container">
         <label htmlFor={id}>{label}</label>
         <input
           aria-invalid="false"

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Story } from '@storybook/react';
-import { Input, InputProps, InputSkinsProps } from './';
+import { Input, InputProps, SizesProps, SkinsProps } from './';
 import { Flex, Icon } from '../../';
 
 const Template: Story<InputProps> = args => {
@@ -19,13 +19,14 @@ const Template: Story<InputProps> = args => {
 const SkinsTemplate: Story<InputProps> = args => {
   const [value, setValue] = useState('');
 
-  const inputSkins: InputSkinsProps[] = [
+  const inputSkins: SkinsProps[] = [
     'neutral',
     'primary',
     'secondary',
     'success',
     'error',
   ];
+
   return (
     <Flex wrap="wrap">
       {inputSkins.map(skin => (
@@ -34,6 +35,29 @@ const SkinsTemplate: Story<InputProps> = args => {
           key={skin}
           skin={skin}
           label={skin}
+          value={value}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setValue(e.target.value)
+          }
+        />
+      ))}
+    </Flex>
+  );
+};
+
+const SizesTemplate: Story<InputProps> = args => {
+  const [value, setValue] = useState('');
+
+  const inputSizes: SizesProps[] = ['sm', 'md', 'lg'];
+
+  return (
+    <Flex wrap="wrap">
+      {inputSizes.map(size => (
+        <Input
+          {...args}
+          key={size}
+          size={size}
+          label={size}
           value={value}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setValue(e.target.value)
@@ -59,11 +83,7 @@ Label.args = {
 
 export const Skin = SkinsTemplate.bind({});
 
-export const inputSize = Template.bind({});
-inputSize.args = {
-  size: 'sm',
-  placeholder: 'Type something...',
-};
+export const Sizes = SizesTemplate.bind({});
 
 export const SupportingText = Template.bind({});
 SupportingText.args = {

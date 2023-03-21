@@ -4,55 +4,18 @@ import * as T from './Input.types';
 
 type InputWrapperProps = Pick<
   T.InputProps,
-  'skin' | 'startIcon' | 'endIcon' | 'label'
+  'skin' | 'startIcon' | 'endIcon' | 'size'
 >;
 
 export const Wrapper = styled.div<InputWrapperProps>`
   ${() => getTypographyStyles('body1')};
-  ${({ theme, skin }) => setVariables({ theme, skin })};
-  ${({ theme, startIcon, endIcon }) =>
-    getPadding({ theme, startIcon, endIcon })};
+  ${({ theme, skin }) => setSkin({ theme, skin })};
+  ${({ theme, startIcon, endIcon, size }) =>
+    getPadding({ theme, startIcon, endIcon, size })};
+`;
 
-  .input-container {
-    position: relative;
-  }
-  label {
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(var(--padding-left), calc(var(--height) / 2 - 50%));
-    transition: transform ease-in-out 100ms;
-  }
-  input {
-    height: var(--height);
-    padding-inline-start: var(--padding-left);
-    padding-inline-end: var(--padding-right);
-    &::placeholder {
-      font: inherit;
-      visibility: ${({ label }) => !!label && 'hidden'};
-    }
-  }
-  fieldset {
-    pointer-events: none;
-    position: absolute;
-    inset: 0;
-    top: 0;
-    border: solid;
-    border-width: var(--border-width);
-    border-radius: var(--border-radius);
-    padding-inline: calc(var(--padding-left) / 2);
-    border-color: var(--clr-primary);
-    transition: border-color ease-in-out 100ms;
-    legend {
-      display: block;
-      visibility: hidden;
-      width: auto;
-      text-align: left;
-      max-width: 0;
-      height: 0;
-    }
-  }
+export const InputContainer = styled.div`
+  position: relative;
   /* When is hovering */
   &:hover fieldset {
     border-color: var(--clr-hover);
@@ -87,6 +50,46 @@ export const Wrapper = styled.div<InputWrapperProps>`
   }
 `;
 
+export const Label = styled.label`
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(var(--padding-left), calc(var(--height) / 2 - 50%));
+  transition: transform ease-in-out 100ms;
+`;
+
+export const Input = styled.input<Pick<T.InputProps, 'label'>>`
+  height: var(--height);
+  padding-inline-start: var(--padding-left);
+  padding-inline-end: var(--padding-right);
+  &::placeholder {
+    font: inherit;
+    visibility: ${({ label }) => !!label && 'hidden'};
+  }
+`;
+
+export const Fieldset = styled.fieldset`
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  top: 0;
+  border: solid;
+  border-width: var(--border-width);
+  border-radius: var(--border-radius);
+  padding-inline: calc(var(--padding) / 2);
+  border-color: var(--clr-primary);
+  transition: border-color ease-in-out 100ms;
+  legend {
+    display: block;
+    visibility: hidden;
+    width: auto;
+    text-align: left;
+    max-width: 0;
+    height: 0;
+  }
+`;
+
 export const IconsWrapper = styled.div`
   position: absolute;
   inset: 0;
@@ -94,22 +97,22 @@ export const IconsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: var(--padding-left);
+  padding-inline: var(--padding);
   background: none;
-  span {
+  > * {
     cursor: pointer;
     pointer-events: initial;
   }
 `;
 
 export const SupportingText = styled.span`
-  display: block;
   ${() => getTypographyStyles('body2')};
+  display: block;
   color: var(--clr-neutral);
 `;
 
-function setVariables({ theme, skin = 'neutral' }: T.InputSetVariantProps) {
-  const { colors, spacing, border } = theme;
+function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
+  const { colors, border } = theme;
   const clr_default_intensity = 300;
   const clr_hover_intensity = 400;
   const clr_focus_intensity = 300;
@@ -118,7 +121,6 @@ function setVariables({ theme, skin = 'neutral' }: T.InputSetVariantProps) {
     colorFocus = colors.primary[clr_default_intensity];
   }
   return css`
-    --height: ${spacing.xlg}px;
     --clr-primary: ${colors[skin][clr_default_intensity]};
     --clr-neutral: ${colors.neutral[clr_default_intensity]};
     --clr-hover: ${colors[skin][clr_hover_intensity]};
@@ -129,13 +131,13 @@ function setVariables({ theme, skin = 'neutral' }: T.InputSetVariantProps) {
   `;
 }
 
-function getPadding({
-  theme,
-  startIcon,
-  endIcon,
-}: Pick<T.InputProps, 'startIcon' | 'endIcon'> &
-  Pick<T.InputSetVariantProps, 'theme'>) {
+function getPadding({ theme, startIcon, endIcon, size }: T.GetPaddingProps) {
   const { spacing } = theme;
+  const height_config = {
+    sm: spacing.lg,
+    md: spacing.xlg,
+    lg: spacing.xxlg,
+  };
   const default_padding = spacing.xs;
   const icon_size = default_padding;
   let padding_left = default_padding;
@@ -146,6 +148,8 @@ function getPadding({
     padding_right += default_padding + icon_size;
   }
   return css`
+    --height: ${height_config[size]}px;
+    --padding: ${default_padding}px;
     --padding-left: ${padding_left}px;
     --padding-right: ${padding_right}px;
     --icon-container-size: ${icon_size}px;

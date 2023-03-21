@@ -6,7 +6,7 @@ export const Input: React.FC<T.InputProps> = ({
   id = crypto.randomUUID() + '-input',
   name = '',
   type = 'text',
-  label,
+  label = '',
   placeholder = ' ',
   value = '',
   skin = 'neutral',
@@ -21,15 +21,10 @@ export const Input: React.FC<T.InputProps> = ({
   ...props
 }) => {
   return (
-    <S.Wrapper
-      skin={skin}
-      startIcon={startIcon}
-      endIcon={endIcon}
-      label={label}
-    >
-      <div className="input-container">
-        <label htmlFor={id}>{label}</label>
-        <input
+    <S.Wrapper skin={skin} startIcon={startIcon} endIcon={endIcon} size={size}>
+      <S.InputContainer className="input-container">
+        <S.Label htmlFor={id}>{label}</S.Label>
+        <S.Input
           aria-invalid="false"
           id={id}
           type={type}
@@ -38,22 +33,23 @@ export const Input: React.FC<T.InputProps> = ({
           onChange={onChange}
           onBlur={onBlur}
           name={name}
+          label={label}
           placeholder={placeholder}
           aria-describedby={id + 'supportingText'}
           {...props}
         />
-        <fieldset aria-hidden="true">
+        <S.Fieldset aria-hidden="true">
           <legend>
             <span>{label}</span>
           </legend>
-        </fieldset>
+        </S.Fieldset>
         {(startIcon || endIcon) && (
           <S.IconsWrapper>
-            <span>{startIcon && startIcon}</span>
-            <span>{endIcon && endIcon}</span>
+            {startIcon && startIcon}
+            {endIcon && endIcon}
           </S.IconsWrapper>
         )}
-      </div>
+      </S.InputContainer>
       {supportingText && (
         <S.SupportingText id={id + 'supportingText'}>
           {supportingText}

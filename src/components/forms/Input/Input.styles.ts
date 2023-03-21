@@ -78,7 +78,9 @@ export const Wrapper = styled.div<InputWrapperProps>`
   /* When is disabled */
   &:has(input:disabled) {
     cursor: not-allowed;
-    color: var(--clr-disabled);
+    * {
+      color: var(--clr-disabled);
+    }
     fieldset {
       border-color: currentColor;
     }
@@ -103,21 +105,25 @@ export const IconsWrapper = styled.div`
 export const SupportingText = styled.span`
   display: block;
   ${() => getTypographyStyles('body2')};
-  color: var(--clr-primary);
+  color: var(--clr-neutral);
 `;
 
 function setVariables({ theme, skin = 'neutral' }: T.InputSetVariantProps) {
   const { colors, spacing, border } = theme;
-  let colorFocus = colors[skin][500];
+  const clr_default_intensity = 300;
+  const clr_hover_intensity = 400;
+  const clr_focus_intensity = 300;
+  let colorFocus = colors[skin][clr_focus_intensity];
   if (skin === 'neutral') {
-    colorFocus = colors.primary[400];
+    colorFocus = colors.primary[clr_default_intensity];
   }
   return css`
     --height: ${spacing.xlg}px;
-    --clr-primary: ${colors[skin][400]};
-    --clr-hover: ${colors[skin][500]};
+    --clr-primary: ${colors[skin][clr_default_intensity]};
+    --clr-neutral: ${colors.neutral[clr_default_intensity]};
+    --clr-hover: ${colors[skin][clr_hover_intensity]};
+    --clr-disabled: ${colors.neutral[200]};
     --clr-focus: ${colorFocus};
-    --clr-disabled: ${colors.neutral[300]};
     --border-width: ${border.width.xs}px;
     --border-radius: ${border.radius.xs}px;
   `;

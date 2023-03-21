@@ -2,146 +2,148 @@ import styled, { css } from 'styled-components';
 import { getTypographyStyles } from '../../';
 import * as T from './Input.types';
 
-export const InputWrapper = styled.div<
-  Pick<T.InputProps, 'variant' | 'skin' | 'size' | 'loading'>
->`
-  ${({ theme, variant, skin }) => setVariant({ theme, variant, skin })};
-`;
+type InputWrapperProps = Pick<
+  T.InputProps,
+  'skin' | 'startIcon' | 'endIcon' | 'label'
+>;
 
-export const Label = styled.label<Pick<T.InputProps, 'skin' | 'label'>>`
-  font: inherit;
-  display: inline-block;
-  margin-block-end: ${({ theme }) => theme.spacing.xxs}px;
-  text-transform: capitalize;
-  ${getTypographyStyles('subtitle3')};
-  ${({ label }) =>
-    !label &&
-    css`
+export const Wrapper = styled.div<InputWrapperProps>`
+  ${() => getTypographyStyles('body1')};
+  ${({ theme, skin }) => setVariables({ theme, skin })};
+  ${({ theme, startIcon, endIcon }) =>
+    getPadding({ theme, startIcon, endIcon })}
+  div {
+    position: relative;
+  }
+  label {
+    ${() => getTypographyStyles('body1')};
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(var(--padding), calc(var(--height) / 2 - 50%));
+    transition: transform ease-in-out 100ms;
+  }
+  input {
+    height: var(--height);
+    padding-inline-start: var(--padding-left);
+    padding-inline-end: var(--padding-right);
+    &::placeholder {
+      font: inherit;
+      visibility: ${({ label }) => !!label && 'hidden'};
+    }
+  }
+  fieldset {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    top: 0;
+    border: solid;
+    border-width: var(--border-width);
+    border-radius: var(--border-radius);
+    padding-inline: calc(var(--padding) / 2);
+    border-color: var(--clr-primary);
+    transition: border-color ease-in-out 100ms;
+
+    legend {
+      display: block;
       visibility: hidden;
-      width: 0;
+      width: auto;
+      text-align: left;
+      max-width: 0;
       height: 0;
-    `};
+    }
+  }
+  /* When is hovering */
+  &:hover fieldset {
+    border-color: var(--clr-hover);
+  }
+  /* When is focused */
+  &:has(input:focus),
+  /* When placeholder not showing */
+  &:has(input:not(:placeholder-shown)) {
+    label {
+      transform: translate(calc(var(--padding) / 2), -50%) scale(0.75);
+      color: var(--clr-focus);
+    }
+    input::placeholder {
+      visibility: visible;
+    }
+    fieldset {
+      border-color: var(--clr-focus);
+      legend {
+        max-width: min-content;
+      }
+    }
+  }
+  /* When is disabled */
+  &:has(input:disabled) {
+    cursor: not-allowed;
+    color: var(--clr-disabled);
+    fieldset {
+      border-color: currentColor;
+    }
+  }
 `;
 
-export const Input = styled.input`
-  font: inherit;
-  border: none;
+export const IconsWrapper = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: var(--padding);
   background: none;
-  outline: none;
-  overflow: hidden;
-  width: 100%;
-  border-style: solid;
-  border-width: ${({ theme }) => theme.border.width.xs}px;
-  border-radius: ${({ theme }) => theme.border.radius.xs}px;
-  height: 40px;
-  padding-inline: 8px;
-  transition: border-color ease-in 150ms;
-  ${getTypographyStyles('p2')};
+  span {
+    cursor: pointer;
+    pointer-events: initial;
+  }
 `;
 
 export const SupportingText = styled.span`
-  ${getTypographyStyles('p2')};
-  color: ${({ theme }) => theme.colors.neutral[400]};
-  margin-block-start: ${({ theme }) => theme.spacing.xxs}px;
+  display: block;
+  ${() => getTypographyStyles('body2')};
+  color: var(--clr-primary);
 `;
 
-export const IconsWrapper = styled.span``;
-
-function setVariant({
-  theme,
-  variant = 'plain',
-  skin = 'neutral',
-}: T.InputSetVariantProps) {
-  const { colors } = theme;
-
-  let primaryColor = colors[skin][400];
-  let fontColor = colors[skin][400];
-  let hoverColor = colors[skin][300];
-  let borderColor = primaryColor;
-
+function setVariables({ theme, skin = 'neutral' }: T.InputSetVariantProps) {
+  const { colors, spacing, border } = theme;
+  let colorFocus = colors[skin][500];
   if (skin === 'neutral') {
-    primaryColor = colors[skin][700];
-    hoverColor = colors[skin][600];
-    fontColor = colors[skin][400];
-    borderColor = colors.primary[400];
+    colorFocus = colors.primary[400];
   }
-
-  const styles = {
-    plain: {
-      color: fontColor,
-      background: colors.neutral[200],
-      border: 'transparent',
-      hover: {
-        border: 'transparent',
-      },
-      focus: {
-        color: colors.neutral[700],
-        border: borderColor,
-      },
-    },
-    outlined: {
-      color: fontColor,
-      background: colors.background,
-      border: primaryColor,
-      hover: {
-        border: hoverColor,
-      },
-      focus: {
-        border: primaryColor,
-      },
-    },
-    soft: {
-      color: colors[skin][200],
-      background: colors[skin][500],
-      border: 'transparent',
-      hover: {
-        border: 'transparent',
-      },
-      focus: {
-        border: borderColor,
-      },
-    },
-    solid: {
-      color: colors[skin][200],
-      background: colors[skin][400],
-      border: 'transparent',
-      hover: {
-        border: 'transparent',
-      },
-      focus: {
-        border: borderColor,
-      },
-    },
-  } as const;
-
   return css`
-    &:focus-within label {
-      color: ${borderColor};
-    }
-    input {
-      background-color: ${styles[variant].background};
-      border-color: ${styles[variant].border};
-      &,
-      &::placeholder {
-        color: ${styles[variant].color};
-      }
-      &:hover,
-      &:hover::placeholder {
-        border-color: ${styles[variant].hover.border};
-      }
-      &:focus {
-        color: ${borderColor};
-        border-color: ${styles[variant].focus.border};
-      }
-      &:not(:placeholder-shown) {
-        color: ${borderColor};
-      }
-    }
-    label {
-      color: ${colors.foreground};
-    }
-    span {
-      ${skin === 'error' ? `color: ${colors.error[400]};` : ''};
-    }
+    --padding: ${spacing.xs}px;
+    --height: ${spacing.xlg}px;
+    --clr-primary: ${colors[skin][400]};
+    --clr-hover: ${colors[skin][500]};
+    --clr-focus: ${colorFocus};
+    --clr-disabled: ${colors.neutral[300]};
+    --border-width: ${border.width.xs}px;
+    --border-radius: ${border.radius.xs}px;
+  `;
+}
+
+function getPadding({
+  theme,
+  startIcon,
+  endIcon,
+}: Pick<T.InputProps, 'startIcon' | 'endIcon'> &
+  Pick<T.InputSetVariantProps, 'theme'>) {
+  const { spacing } = theme;
+  const default_padding = spacing.xs;
+  const icon_size = default_padding;
+  let padding_left = default_padding;
+  let padding_right = default_padding;
+  if (startIcon) {
+    padding_left += default_padding + icon_size;
+  } else if (endIcon) {
+    padding_right += default_padding + icon_size;
+  }
+  return css`
+    --padding-left: ${padding_left}px;
+    --padding-right: ${padding_right}px;
+    --icon-container-size: ${icon_size}px;
   `;
 }

@@ -1,49 +1,64 @@
 import React from 'react';
-import * as S from './Input.styles';
 import * as T from './Input.types';
+import * as S from './Input.styles';
 
 export const Input: React.FC<T.InputProps> = ({
-  id = 'input-id-' + React.useId(),
+  id = crypto.randomUUID() + '-input',
   name = '',
   type = 'text',
-  label = '',
+  label,
   placeholder = ' ',
+  value = '',
+  skin = 'neutral',
+  supportingText = '',
+  size = 'md',
+  startIcon,
+  endIcon,
   loading = false,
   disabled = false,
-  variant = 'plain',
-  skin = 'neutral',
-  size = 'md',
-  supportingText = '',
-  startHelper,
-  endHelper,
-  value,
-  onBlur,
   onChange,
+  onBlur,
   ...props
 }) => {
   return (
-    <S.InputWrapper variant={variant} skin={skin} size={size} loading={loading}>
-      <S.Label htmlFor={id} label={label}>
-        {label ?? placeholder}
-      </S.Label>
-      <S.Input
-        id={id}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        disabled={disabled}
-        value={value}
-        onBlur={onBlur}
-        onChange={onChange}
-        {...props}
-      />
-      {supportingText && <S.SupportingText>{supportingText}</S.SupportingText>}
-      {(startHelper || endHelper) && (
+    <S.Wrapper
+      skin={skin}
+      startIcon={startIcon}
+      endIcon={endIcon}
+      label={label}
+    >
+      <div>
+        <label htmlFor={id}>{label}</label>
+        <input
+          aria-invalid="false"
+          id={id}
+          type={type}
+          value={value}
+          disabled={disabled}
+          onChange={onChange}
+          onBlur={onBlur}
+          name={name}
+          placeholder={placeholder}
+          aria-describedby={id + 'supportingText'}
+          {...props}
+        />
+        <fieldset aria-hidden="true">
+          <legend>
+            <span>{label}</span>
+          </legend>
+        </fieldset>
+      </div>
+      {(startIcon || endIcon) && (
         <S.IconsWrapper>
-          {startHelper && <span id="input-start-icon">{startHelper}</span>}
-          {endHelper && <span id="input-end-icon">{endHelper}</span>}
+          <span>{startIcon && startIcon}</span>
+          <span>{endIcon && endIcon}</span>
         </S.IconsWrapper>
       )}
-    </S.InputWrapper>
+      {supportingText && (
+        <S.SupportingText id={id + 'supportingText'}>
+          {supportingText}
+        </S.SupportingText>
+      )}
+    </S.Wrapper>
   );
 };

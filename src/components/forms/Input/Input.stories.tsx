@@ -1,11 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Story } from '@storybook/react';
-import { Input, InputProps, InputSkinsProps, InputVariantsProps } from './';
+import { Input, InputProps, InputSkinsProps } from './';
 import { Flex, Icon } from '../../';
 
-const Template: Story<InputProps> = args => <Input {...args} />;
+const Template: Story<InputProps> = args => {
+  const [value, setValue] = useState('');
+  return (
+    <Input
+      {...args}
+      value={value}
+      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setValue(e.target.value)
+      }
+    />
+  );
+};
 
 const SkinsTemplate: Story<InputProps> = args => {
+  const [value, setValue] = useState('');
+
   const inputSkins: InputSkinsProps[] = [
     'neutral',
     'primary',
@@ -16,18 +29,16 @@ const SkinsTemplate: Story<InputProps> = args => {
   return (
     <Flex wrap="wrap">
       {inputSkins.map(skin => (
-        <Input {...args} skin={skin} label={skin} />
-      ))}
-    </Flex>
-  );
-};
-
-const VariantsTemplate: Story<InputProps> = args => {
-  const variants: InputVariantsProps[] = ['plain', 'outlined', 'soft', 'solid'];
-  return (
-    <Flex wrap="wrap">
-      {variants.map(variant => (
-        <Input {...args} variant={variant} placeholder={variant} />
+        <Input
+          {...args}
+          key={skin}
+          skin={skin}
+          label={skin}
+          value={value}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setValue(e.target.value)
+          }
+        />
       ))}
     </Flex>
   );
@@ -46,8 +57,6 @@ Label.args = {
   placeholder: 'Type something...',
 };
 
-export const Variant = VariantsTemplate.bind({});
-
 export const Skin = SkinsTemplate.bind({});
 
 export const inputSize = Template.bind({});
@@ -64,12 +73,12 @@ SupportingText.args = {
 
 export const StartIcon = Template.bind({});
 StartIcon.args = {
-  startHelper: <Icon />,
+  startIcon: <Icon onClick={() => console.log('start icon')} />,
   placeholder: 'Type something...',
 };
 
 export const EndIcon = Template.bind({});
 EndIcon.args = {
-  endHelper: <Icon />,
+  endIcon: <Icon onClick={() => console.log('end icon')} />,
   placeholder: 'Type something...',
 };

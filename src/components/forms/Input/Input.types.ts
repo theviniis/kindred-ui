@@ -1,6 +1,5 @@
 import React from 'react';
 import { DefaultTheme } from 'styled-components';
-import { colors } from '../../../';
 
 type InputStringProps = Partial<
   Record<
@@ -15,25 +14,23 @@ type InputStringProps = Partial<
   >
 >;
 type InputBooleanProps = Partial<Record<'loading' | 'disabled', boolean>>;
-type InputIconsProps = Partial<
-  Record<'startHelper' | 'endHelper', JSX.Element>
->;
-export type InputSkinsProps = Exclude<
-  keyof typeof colors,
-  'gradients' | 'white' | 'black'
->;
-export type InputVariantsProps = 'plain' | 'outlined' | 'soft' | 'solid';
+type InputIconsProps = Partial<Record<'startIcon' | 'endIcon', JSX.Element>>;
+export type InputSkinsProps =
+  | 'neutral'
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'error';
+
 export interface InputProps
   extends Exclude<React.HtmlHTMLAttributes<HTMLInputElement>, 'inputSize'>,
     InputStringProps,
     InputBooleanProps,
     InputIconsProps {
-  variant?: InputVariantsProps;
   skin?: InputSkinsProps;
   size?: 'sm' | 'md' | 'lg';
 }
 
-export interface InputSetVariantProps
-  extends Pick<InputProps, 'variant' | 'skin'> {
+export interface InputSetVariantProps extends Pick<InputProps, 'skin'> {
   theme: DefaultTheme;
 }

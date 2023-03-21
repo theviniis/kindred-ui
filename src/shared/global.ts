@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: ${typography.type.secondary};
   }
   body {
-    ${bodyStyles}
+    ${bodyStyles};
   }
   :focus:not(:focus-visible) {
     outline: none;
@@ -29,6 +29,14 @@ export const GlobalStyle = createGlobalStyle`
   }
   button {
     all: unset;
+  }
+  input, fieldset {
+    font: inherit;
+    border: none;
+    background: none;
+    outline: none;
+    overflow: hidden;
+    color: currentColor;
   }
   label, span {
     display: inline-block;

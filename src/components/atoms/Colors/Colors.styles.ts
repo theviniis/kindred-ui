@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { border, keyframes, spacing } from '../../../shared';
-import { P1 } from '../Typography';
 
-export const Wrapper = styled(P1)`
+export const Wrapper = styled.p`
   display: flex;
   flex-wrap: wrap;
   align-items: center;

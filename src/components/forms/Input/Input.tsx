@@ -1,54 +1,60 @@
 import React from 'react';
-import * as S from './Input.styles';
 import * as T from './Input.types';
+import * as S from './Input.styles';
 
 export const Input: React.FC<T.InputProps> = ({
-  id = 'input-id-' + crypto.randomUUID(),
-  name,
+  id = crypto.randomUUID() + '-input',
+  name = '',
   type = 'text',
-  label,
-  placeholder,
-  loading = false,
-  disabled = false,
-  variant = 'plain',
+  label = '',
+  placeholder = ' ',
+  value = '',
   skin = 'neutral',
-  inputSize = 'md',
-  error = false,
   supportingText,
+  size = 'md',
   startIcon,
   endIcon,
-  value,
-  onBlur,
+  loading = false,
+  disabled = false,
   onChange,
+  onBlur,
   ...props
 }) => {
   return (
-    <S.InputWrapper>
-      <S.Label htmlFor={id}>{label}</S.Label>
-      <S.Input
-        id={id}
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        disabled={disabled}
-        error={error}
-        variant={variant}
-        skin={skin}
-        inputSize={inputSize}
-        loading={loading}
-        value={value}
-        onBlur={onBlur}
-        onChange={onChange}
-        {...props}
-      />
-      {supportingText && <S.SupportingText>{supportingText}</S.SupportingText>}
-
-      {(startIcon || endIcon) && (
-        <S.IconsWrapper>
-          {startIcon && <span id="input-start-icon">{startIcon}</span>}
-          {endIcon && <span id="input-end-icon">{endIcon}</span>}
-        </S.IconsWrapper>
+    <S.Wrapper skin={skin} startIcon={startIcon} endIcon={endIcon} size={size}>
+      <S.InputContainer className="input-container">
+        <S.Label htmlFor={id}>{label}</S.Label>
+        <S.Input
+          aria-invalid="false"
+          id={id}
+          type={type}
+          value={value}
+          disabled={disabled}
+          onChange={onChange}
+          onBlur={onBlur}
+          name={name}
+          label={label}
+          placeholder={placeholder}
+          aria-describedby={id + 'supportingText'}
+          {...props}
+        />
+        <S.Fieldset aria-hidden="true">
+          <legend>
+            <span>{label}</span>
+          </legend>
+        </S.Fieldset>
+        {(startIcon || endIcon) && (
+          <S.IconsWrapper>
+            <span>{startIcon && startIcon}</span>
+            <span>{endIcon && endIcon}</span>
+          </S.IconsWrapper>
+        )}
+      </S.InputContainer>
+      {supportingText && (
+        <S.SupportingText id={id + 'supportingText'}>
+          {supportingText}
+        </S.SupportingText>
       )}
-    </S.InputWrapper>
+    </S.Wrapper>
   );
 };

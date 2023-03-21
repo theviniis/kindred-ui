@@ -1,6 +1,6 @@
 import React from 'react';
 import { DefaultTheme } from 'styled-components';
-import { colors } from '../../../';
+import { colors } from '../../../shared';
 
 type InputStringProps = Partial<
   Record<
@@ -14,29 +14,29 @@ type InputStringProps = Partial<
     string
   >
 >;
-
-type InputBooleanProps = Partial<
-  Record<'loading' | 'disabled' | 'error', boolean>
->;
-
+type InputBooleanProps = Partial<Record<'loading' | 'disabled', boolean>>;
 type InputIconsProps = Partial<Record<'startIcon' | 'endIcon', JSX.Element>>;
 
+export type SkinsProps = Exclude<
+  keyof typeof colors,
+  'gradients' | 'white' | 'black'
+>;
+
+export type SizesProps = 'sm' | 'md' | 'lg';
 export interface InputProps
   extends Exclude<React.HtmlHTMLAttributes<HTMLInputElement>, 'inputSize'>,
     InputStringProps,
     InputBooleanProps,
     InputIconsProps {
-  variant?: 'plain' | 'outlined' | 'soft' | 'solid';
-  skin?: Exclude<keyof typeof colors, 'gradients'>;
-  inputSize?: 'sm' | 'md' | 'lg';
+  skin?: SkinsProps;
+  size: SizesProps;
 }
 
-export type StyledInputProps = Pick<
-  InputProps,
-  'error' | 'variant' | 'skin' | 'loading' | 'inputSize'
->;
+export interface InputSetSkinProps extends Pick<InputProps, 'skin'> {
+  theme: DefaultTheme;
+}
 
-export interface InputSetVariantProps
-  extends Pick<InputProps, 'variant' | 'skin'> {
+export interface GetPaddingProps
+  extends Pick<InputProps, 'startIcon' | 'endIcon' | 'size'> {
   theme: DefaultTheme;
 }

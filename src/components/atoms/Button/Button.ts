@@ -1,6 +1,6 @@
 import * as T from './Button.types';
 import styled, { css } from 'styled-components';
-import { getTypographyStyles } from '../Typography';
+// import { getTypographyStyles } from '../Typography';
 
 export const Button = styled.button<T.ButtonProps>`
   box-sizing: border-box;
@@ -13,7 +13,6 @@ export const Button = styled.button<T.ButtonProps>`
   transition: ease-in-out 100ms;
   border-radius: ${({ theme }) => theme.border.radius.xs}px;
   border-width: ${({ theme }) => theme.border.width.xs}px;
-  ${getTypographyStyles('subtitle2')};
   ${({ theme, skin, variant }) => setVariant({ theme, skin, variant })};
   ${({ theme, size }) => setSize({ size, theme })};
 `;
@@ -78,6 +77,7 @@ function setVariant({
     color: ${variantOptions[variant].color};
     background-color: ${variantOptions[variant].background};
     border-color: ${variantOptions[variant].border};
+
     &:hover {
       color: ${variantOptions[variant].hover.color};
       background-color: ${variantOptions[variant].hover.background};

@@ -3,12 +3,20 @@
 import { Meta, Typeset } from '@storybook/addon-docs/blocks';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme } from '../../../';
-import * as template from './Typography.stories.tsx';
+import { Typesystem } from './Typography.stories.tsx';
 
 <Meta title="Tokens/Typesystem" />
 
 # Typesystem
 
-<template.Typesystem theme="light" />
+## Light theme
 
-<template.Typesystem theme="dark" />
+**Font:** Open Sans
+
+<Typesystem theme="light" />
+
+## Dark theme
+
+**Font:** Open Sans
+
+<Typesystem theme="dark" />

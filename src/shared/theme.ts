@@ -7,7 +7,8 @@ export const typography = {
   },
   weight: {
     regular: '400',
-    semiBold: '500',
+    medium: '500',
+    semibold: '500',
     bold: '700',
   },
   size: {

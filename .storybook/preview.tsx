@@ -1,10 +1,9 @@
 import React from 'react';
-import { lightTheme, darkTheme, GlobalStyle } from '../src/shared';
+import { lightTheme, darkTheme } from '../src/shared';
+import { darkTheme as storybookDarkTheme } from '../src/shared';
 import { ThemeProvider } from 'styled-components';
 import { ViniisContext } from '../src/context';
-import { storybookThemeLight } from './manager';
 import { SchemeWrapper, Flex } from './styles';
-import { Story } from '@storybook/api';
 
 // export const parameters = {
 //   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -15,7 +14,7 @@ import { Story } from '@storybook/api';
 //     },
 //   },
 //   docs: {
-//     theme: storybookThemeLight,
+//     theme: storybookDarkTheme,
 //   },
 // };
 
@@ -38,7 +37,6 @@ export const globalTypes = {
 
 const withThemeProvider = (Story, context) => {
   let theme = context.globals.theme as 'light' | 'dark' | 'both';
-
   function Content() {
     switch (theme) {
       case 'light':
@@ -78,7 +76,6 @@ const withThemeProvider = (Story, context) => {
   return (
     <ViniisContext>
       <Content />
-      <GlobalStyle />
     </ViniisContext>
   );
 };

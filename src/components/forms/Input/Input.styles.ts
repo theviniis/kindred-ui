@@ -60,7 +60,7 @@ export const Label = styled.label`
   top: 50%;
   left: var(--padding-left);
   transform: translateY(-50%);
-  transition: transform ease-in-out 100ms;
+  transition: ease-in-out 100ms;
 `;
 
 export const Input = styled.input<Pick<T.InputProps, 'label'>>`
@@ -115,9 +115,9 @@ export const SupportingText = styled.span`
 
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   const { colors, border } = theme;
-  const clr_default_intensity = 300;
+  const clr_default_intensity = 200;
   const clr_hover_intensity = 400;
-  const clr_focus_intensity = 300;
+  const clr_focus_intensity = 200;
   let colorFocus = colors[skin][clr_focus_intensity];
   if (skin === 'neutral') {
     colorFocus = colors.primary[clr_default_intensity];

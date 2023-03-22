@@ -1,5 +1,5 @@
 import React from 'react';
-import { lightTheme } from '../shared';
+import { GlobalStyle, lightTheme } from '../shared';
 
 export const GlobalContext = React.createContext({});
 
@@ -13,7 +13,10 @@ export const ViniisContext = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <GlobalContext.Provider value={{ theme, setTheme, themeToggle }}>
-      {children}
+      <>
+        {children}
+        <GlobalStyle />
+      </>
     </GlobalContext.Provider>
   );
 };

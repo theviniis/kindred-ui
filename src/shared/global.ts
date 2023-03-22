@@ -22,8 +22,13 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     margin: 0;
+    margin-block: 0;
+    margin-inline: 0;
     padding: 0;
+    padding-block: 0;
+    padding-inline: 0;
   }
+
   ul, li {
     list-style: none;
   }

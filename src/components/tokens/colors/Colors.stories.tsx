@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import { themes } from '../../';
+import { themes } from '../../..';
 import { ColorPalette, ColorItem } from '@storybook/addon-docs';
 import styled, { css } from 'styled-components';
 

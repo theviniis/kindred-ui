@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { spacing } from '../../../shared';
 
 export type JUSTIFY_CONTENT =
   | 'flex-start'
@@ -29,7 +30,7 @@ export type FLEX_WRAP =
 export interface FlexProps {
   children?: ReactNode;
   direction?: 'column' | 'row';
-  gap?: number;
+  gap?: keyof typeof spacing;
   justifyContent?: JUSTIFY_CONTENT;
   alignItems?: ALIGN_ITEMS;
   wrap?: FLEX_WRAP;

@@ -4,10 +4,10 @@ import * as S from './Button.style';
 
 export const Button: React.FC<T.ButtonProps> = ({
   children,
-  skin,
-  variant,
-  disabled,
-  size,
+  skin = 'neutral',
+  variant = 'default',
+  disabled = false,
+  size = 'md',
   ...props
 }) => {
   return (

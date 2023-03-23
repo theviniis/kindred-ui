@@ -27,7 +27,7 @@ export const InputContainer = styled.div`
     label {
       transform: none;
       top: 0;
-      left: calc(var(--padding) + 0.75px);
+      left: calc(var(--padding) + 0.25px);
       transform-origin: top;
       transform: scale(0.75) translateY(-50%);
       color: var(--clr-focus);
@@ -126,7 +126,7 @@ function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
     --clr-primary: ${colors[skin][clr_default_intensity]};
     --clr-neutral: ${colors.neutral[clr_default_intensity]};
     --clr-hover: ${colors[skin][clr_hover_intensity]};
-    --clr-disabled: ${colors.neutral[200]};
+    --clr-disabled: ${colors.neutral[600]};
     --clr-focus: ${colorFocus};
     --border-width: ${border.width.xs}px;
     --border-radius: ${border.radius.xs}px;

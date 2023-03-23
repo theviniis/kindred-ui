@@ -39,7 +39,7 @@ const SizesTemplate: Story<InputProps> = args => {
   const inputSizes: SizesProps[] = ['sm', 'md', 'lg'];
 
   return (
-    <Flex wrap="wrap">
+    <Flex wrap="wrap" gap="xs">
       {inputSizes.map(size => (
         <Input
           {...args}
@@ -89,4 +89,10 @@ export const EndIcon = Template.bind({});
 EndIcon.args = {
   endIcon: <Icon onClick={() => console.log('end icon')} />,
   placeholder: 'Type something...',
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  placeholder: 'disabled',
+  disabled: true,
 };

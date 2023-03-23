@@ -2,7 +2,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import { Button, ButtonProps } from '.';
 import { useTheme } from 'styled-components';
-import { SKIN_PROPS } from '../../../utils';
+import { COMPONENTS_SIZES, SKIN_PROPS } from '../../../utils';
 import { Flex } from '../Flex';
 
 const Template: Story<ButtonProps> = args => (
@@ -26,28 +26,33 @@ const SkinsTemplate: Story<ButtonProps> = args => {
   );
 };
 
+const SizesTemplate: Story<ButtonProps> = args => {
+  const sizes_list: COMPONENTS_SIZES[] = ['sm', 'md', 'lg'];
+  return (
+    <Flex gap="xs" wrap="wrap">
+      {sizes_list.map(size => (
+        <Button {...args} key={size} size={size}>
+          {size}
+        </Button>
+      ))}
+    </Flex>
+  );
+};
+
 const Default: Story<ButtonProps> = Template.bind({});
 Default.args = {
   children: 'Default',
 };
 
 const Skin: Story<ButtonProps> = SkinsTemplate.bind({});
-Skin.args = {
-  children: 'Skin',
-  skin: 'secondary',
-};
 
 const Variant: Story<ButtonProps> = Template.bind({});
 Variant.args = {
   children: 'Variant',
-  variant: 'stroke',
+  variant: 'outlined',
 };
 
-const Size: Story<ButtonProps> = Template.bind({});
-Size.args = {
-  children: 'small',
-  size: 'sm',
-};
+const Size: Story<ButtonProps> = SizesTemplate.bind({});
 
 const Disabled: Story<ButtonProps> = Template.bind({});
 Disabled.args = {

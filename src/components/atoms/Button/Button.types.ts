@@ -1,20 +1,13 @@
 import React from 'react';
-import { DefaultTheme } from 'styled-components';
-import { SKIN_PROPS } from '../../../utils';
+import { COMPONENTS_SIZES, SKIN_PROPS } from '../../../utils';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
   skin?: SKIN_PROPS;
-  variant?: 'default' | 'stroke' | 'ghost';
+  variant?: 'default' | 'outlined' | 'ghost';
   disabled?: boolean;
-  size?: 'sm' | 'md' | 'lg';
+  size?: COMPONENTS_SIZES;
 }
 
 export interface SetVariantProps
-  extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'children'> {
-  theme: DefaultTheme;
-}
-
-export interface SetSizeProps extends Pick<ButtonProps, 'size'> {
-  theme: DefaultTheme;
-}
+  extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'children'> {}

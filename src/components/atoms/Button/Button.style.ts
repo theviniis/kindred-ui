@@ -1,4 +1,5 @@
 import styled, { css, useTheme } from 'styled-components';
+import { COMPONENTS_SIZES } from '../../../utils';
 import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
@@ -12,8 +13,8 @@ export const Button = styled.button<T.ButtonProps>`
   transition: ease-in-out 100ms;
   border-radius: ${({ theme }) => theme.border.radius.xs}px;
   border-width: ${({ theme }) => theme.border.width.xs}px;
-  ${({ theme, skin, variant }) => setVariant({ theme, skin, variant })};
-  ${({ theme, size }) => setSize({ size, theme })};
+  ${({ skin, variant }) => setVariant({ skin, variant })};
+  ${({ size }) => setSize(size)};
 `;
 
 function setVariant({
@@ -40,7 +41,7 @@ function setVariant({
         border: colors[skin][colorFocus],
       },
     },
-    stroke: {
+    outlined: {
       color: colors[skin][colorDefault],
       background: 'transparent',
       border: colors[skin][colorDefault],
@@ -89,14 +90,14 @@ function setVariant({
     }
     &:disabled {
       cursor: not-allowed;
-      background-color: ${colors.neutral[200]};
-      border-color: ${colors.neutral[200]};
       color: ${colors.neutral[900]};
+      background-color: ${colors.neutral[600]};
+      border-color: ${colors.neutral[600]};
     }
   `;
 }
-function setSize({ size = 'md', theme }: T.SetSizeProps) {
-  const { spacing } = theme;
+function setSize(size: Partial<COMPONENTS_SIZES> = 'md') {
+  const { spacing } = useTheme();
   const styles = {
     sm: {
       padding: spacing.xs,
@@ -111,10 +112,9 @@ function setSize({ size = 'md', theme }: T.SetSizeProps) {
       height: spacing.xlg,
     },
   };
-
   return css`
     padding-inline: ${styles[size].padding}px;
     gap: ${styles[size].padding}px;
-    min-height: ${styles[size].height}px;
+    height: ${styles[size].height}px;
   `;
 }

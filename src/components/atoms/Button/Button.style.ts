@@ -1,5 +1,5 @@
 import styled, { css, useTheme } from 'styled-components';
-import { COMPONENTS_SIZES } from '../../../utils';
+import { SIZES } from '../../../utils';
 import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
@@ -96,7 +96,7 @@ function setVariant({
     }
   `;
 }
-function setSize(size: Partial<COMPONENTS_SIZES> = 'md') {
+function setSize(size: Partial<SIZES> = 'md') {
   const { spacing } = useTheme();
   const styles = {
     sm: {

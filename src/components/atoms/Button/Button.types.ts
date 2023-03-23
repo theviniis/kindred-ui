@@ -1,12 +1,12 @@
 import React from 'react';
-import { COMPONENTS_SIZES, SKIN_PROPS } from '../../../utils';
+import { SIZES, SKINS } from '../../../utils';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
-  skin?: SKIN_PROPS;
+  skin?: SKINS;
   variant?: 'default' | 'outlined' | 'ghost';
   disabled?: boolean;
-  size?: COMPONENTS_SIZES;
+  size?: SIZES;
 }
 
 export interface SetVariantProps

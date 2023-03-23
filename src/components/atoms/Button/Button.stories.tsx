@@ -2,7 +2,7 @@ import React from 'react';
 import { Story } from '@storybook/react';
 import { Button, ButtonProps } from '.';
 import { useTheme } from 'styled-components';
-import { COMPONENTS_SIZES, SKIN_PROPS } from '../../../utils';
+import { SIZES, SKINS } from '../../../utils';
 import { Flex } from '../Flex';
 
 const Template: Story<ButtonProps> = args => (
@@ -10,10 +10,10 @@ const Template: Story<ButtonProps> = args => (
 );
 
 const SkinsTemplate: Story<ButtonProps> = args => {
-  let skins_list: SKIN_PROPS[] = [];
+  let skins_list: SKINS[] = [];
   const { colors } = useTheme();
   Object.entries(colors).map(([key, value]) => {
-    if (typeof value === 'object') skins_list.push(key as SKIN_PROPS);
+    if (typeof value === 'object') skins_list.push(key as SKINS);
   });
   return (
     <Flex gap="xs" wrap="wrap">
@@ -27,7 +27,7 @@ const SkinsTemplate: Story<ButtonProps> = args => {
 };
 
 const SizesTemplate: Story<ButtonProps> = args => {
-  const sizes_list: COMPONENTS_SIZES[] = ['sm', 'md', 'lg'];
+  const sizes_list: SIZES[] = ['sm', 'md', 'lg'];
   return (
     <Flex gap="xs" wrap="wrap">
       {sizes_list.map(size => (

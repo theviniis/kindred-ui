@@ -3,7 +3,7 @@ import * as T from './Input.types';
 import * as S from './Input.styles';
 
 export const Input: React.FC<T.InputProps> = ({
-  id = crypto.randomUUID() + '-input',
+  id = React.useId() + '-input',
   name = '',
   type = 'text',
   label = '',

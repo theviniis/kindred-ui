@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Story } from '@storybook/react';
-import { Input, InputProps, SizesProps, SkinsProps } from './';
+import { Input, InputProps } from './';
 import { Flex, Icon } from '../../';
-import { SKIN_PROPS } from '../../../utils';
+import { SIZES, SKINS } from '../../../utils';
 import { useTheme } from 'styled-components';
 
 const Template: Story<InputProps> = args => {
@@ -19,10 +19,10 @@ const Template: Story<InputProps> = args => {
 };
 
 const SkinsTemplate: Story<InputProps> = args => {
-  let skins_list: SKIN_PROPS[] = [];
+  let skins_list: SKINS[] = [];
   const { colors } = useTheme();
   Object.entries(colors).map(([key, value]) => {
-    if (typeof value === 'object') skins_list.push(key as SKIN_PROPS);
+    if (typeof value === 'object') skins_list.push(key as SKINS);
   });
   return (
     <Flex gap="xs" wrap="wrap">
@@ -36,7 +36,7 @@ const SkinsTemplate: Story<InputProps> = args => {
 const SizesTemplate: Story<InputProps> = args => {
   const [value, setValue] = useState('');
 
-  const inputSizes: SizesProps[] = ['sm', 'md', 'lg'];
+  const inputSizes: SIZES[] = ['sm', 'md', 'lg'];
 
   return (
     <Flex wrap="wrap" gap="xs">

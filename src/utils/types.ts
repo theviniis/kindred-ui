@@ -1,8 +1,8 @@
 import { colors } from '../shared';
 
-export type SKIN_PROPS = Exclude<
+export type SKINS = Exclude<
   keyof typeof colors,
   'background' | 'foreground' | 'white' | 'black'
 >;
 
-export type COMPONENTS_SIZES = 'sm' | 'md' | 'lg';
+export type SIZES = 'sm' | 'md' | 'lg';

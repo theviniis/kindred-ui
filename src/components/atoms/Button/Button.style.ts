@@ -1,28 +1,29 @@
-import styled, { css } from 'styled-components';
-// import { getTypographyStyles } from '../Typography';
-import { ButtonProps, SetVariantProps } from './Button.types';
+import styled, { css, useTheme } from 'styled-components';
+import * as T from './Button.types';
 
-export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
+export const Button = styled.button<T.ButtonProps>`
+  box-sizing: border-box;
+  cursor: pointer;
   display: flex;
-  gap: ${({ theme }) => theme.spacing.xs}px;
   align-items: center;
   flex-direction: row;
-  padding: ${({ theme }) => theme.spacing.xs}px
-    ${({ theme }) => theme.spacing.sm}px;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  border-radius: ${({ theme }) => theme.border.radius.xs}px;
+  justify-content: space-between;
   border-style: solid;
-  border-width: ${({ theme }) => theme.border.width.xs}px;
   transition: ease-in-out 100ms;
-  ${({ theme, skin, variant, disabled }) =>
-    setVariant({ theme, skin, variant, disabled })};
+  border-radius: ${({ theme }) => theme.border.radius.xs}px;
+  border-width: ${({ theme }) => theme.border.width.xs}px;
+  ${({ theme, skin, variant }) => setVariant({ theme, skin, variant })};
+  ${({ theme, size }) => setSize({ size, theme })};
 `;
 
-function setVariant({ theme, skin, variant }: SetVariantProps) {
-  const { colors } = theme;
+function setVariant({
+  skin = 'primary',
+  variant = 'default',
+}: T.SetVariantProps) {
+  const { colors } = useTheme();
   const colorDefault = 100;
-  const colorHover = 400;
-  const colorFocus = 500;
+  const colorHover = 200;
+  const colorFocus = 100;
   const variantOptions = {
     default: {
       color: colors.white,
@@ -70,27 +71,50 @@ function setVariant({ theme, skin, variant }: SetVariantProps) {
       },
     },
   };
-
   return css`
     color: ${variantOptions[variant].color};
     background-color: ${variantOptions[variant].background};
     border-color: ${variantOptions[variant].border};
+
     &:hover {
       color: ${variantOptions[variant].hover.color};
       background-color: ${variantOptions[variant].hover.background};
       border-color: ${variantOptions[variant].hover.border};
     }
-    /* &:focus, */
+    &:focus,
     &:active {
       color: ${variantOptions[variant].focus.color};
       background-color: ${variantOptions[variant].focus.background};
       border-color: ${variantOptions[variant].focus.border};
     }
-
     &:disabled {
+      cursor: not-allowed;
       background-color: ${colors.neutral[200]};
       border-color: ${colors.neutral[200]};
       color: ${colors.neutral[900]};
     }
+  `;
+}
+function setSize({ size = 'md', theme }: T.SetSizeProps) {
+  const { spacing } = theme;
+  const styles = {
+    sm: {
+      padding: spacing.xs,
+      height: spacing.md,
+    },
+    md: {
+      padding: spacing.sm,
+      height: spacing.lg,
+    },
+    lg: {
+      padding: spacing.md,
+      height: spacing.xlg,
+    },
+  };
+
+  return css`
+    padding-inline: ${styles[size].padding}px;
+    gap: ${styles[size].padding}px;
+    min-height: ${styles[size].height}px;
   `;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import { DefaultTheme } from 'styled-components';
+import { SKIN_PROPS } from '../../../utils';
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
-  skin: 'primary' | 'secondary' | 'success' | 'error';
-  variant: 'default' | 'stroke' | 'ghost';
+  skin?: SKIN_PROPS;
+  variant?: 'default' | 'stroke' | 'ghost';
   disabled?: boolean;
   size?: 'sm' | 'md' | 'lg';
 }

@@ -14,15 +14,11 @@ const Template = ({ theme = 'light' }: { theme: 'light' | 'dark' }) => {
           <Flex alignItems="center" gap="md" key={key}>
             <S.InfoContainer>
               <S.Title>{key}</S.Title>
+              <S.InfoItem>font-size: {typography[key].fontSize}px</S.InfoItem>
               <S.InfoItem>
-                font-size: {typography.typesystem[key].fontSize}px
+                line-height: {typography[key].lineHeight}px
               </S.InfoItem>
-              <S.InfoItem>
-                line-height: {typography.typesystem[key].lineHeight}px
-              </S.InfoItem>
-              <S.InfoItem>
-                weight: {typography.typesystem[key].fontWeight}
-              </S.InfoItem>
+              <S.InfoItem>weight: {typography[key].fontWeight}</S.InfoItem>
             </S.InfoContainer>
             <S.SampleText className={key}>{inner_text}</S.SampleText>
           </Flex>
@@ -32,4 +28,4 @@ const Template = ({ theme = 'light' }: { theme: 'light' | 'dark' }) => {
   );
 };
 
-export const Typesystem = Template.bind({});
+export const Typography = Template.bind({});

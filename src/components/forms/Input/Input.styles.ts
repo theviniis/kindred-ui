@@ -27,7 +27,7 @@ export const InputContainer = styled.div`
     label {
       transform: none;
       top: 0;
-      left: calc(var(--padding) + 1px);
+      left: calc(var(--padding) + 0.75px);
       transform-origin: top;
       transform: scale(0.75) translateY(-50%);
       color: var(--clr-focus);

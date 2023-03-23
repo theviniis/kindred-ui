@@ -10,7 +10,6 @@ export const Wrapper = styled.div`
   position: relative;
   border-radius: ${({ theme }) => theme.border.radius.xs}px;
   padding: ${({ theme }) => theme.spacing.xlg}px;
-  ${({ theme }) => theme.colors.gradients.info};
 `;
 
 export const Image = styled.svg`

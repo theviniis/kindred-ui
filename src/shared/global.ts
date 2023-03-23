@@ -1,9 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import { typography } from './theme';
-
-export const bodyStyles = css`
-  font-family: ${typography.type.primary};
-`;
 
 export const fontUrl =
   'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap';
@@ -11,10 +7,9 @@ export const fontUrl =
 export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
-    font-family: ${typography.type.secondary};
   }
   body {
-    ${bodyStyles};
+    font-family: ${typography.body1.fontFamily};
   }
   :focus:not(:focus-visible) {
     outline: none;

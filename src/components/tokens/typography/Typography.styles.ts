@@ -3,7 +3,7 @@ import { Flex, getTypographyStyles, TypographyVariantsProps } from '../../';
 import { typography } from '../../../shared';
 
 export const TYPOGRAPHY_VARIANTS_LIST = Object.keys(
-  typography.typesystem
+  typography
 ) as TypographyVariantsProps[];
 
 export const Wrapper = styled(Flex).attrs({ direction: 'column', gap: 'md' })`

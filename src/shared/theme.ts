@@ -1,110 +1,127 @@
 import { css } from 'styled-components';
 
 export const typography = {
-  type: {
-    primary: `'Open Sans', sans-serif;`,
-    secondary: 'arial',
+  display1: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 57,
+    lineHeight: 64,
+    letterSpacing: -0.25,
   },
-  weight: {
-    regular: '400',
-    medium: '500',
-    semibold: '500',
-    bold: '700',
+  display2: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 45,
+    lineHeight: 52,
+    letterSpacing: 0,
   },
-  size: {
-    xxxs: 12,
-    xxs: 14,
-    xs: 16,
-    sm: 22,
-    md: 24,
-    lg: 28,
-    xl: 32,
-    xlg: 36,
-    xxlg: 45,
-    xxxlg: 57,
+  display3: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 36,
+    lineHeight: 44,
+    letterSpacing: 0,
   },
-  typesystem: {
-    display1: { fontSize: 57, lineHeight: 64, fontWeight: 400 },
-    display2: { fontSize: 45, lineHeight: 52, fontWeight: 400 },
-    display3: { fontSize: 36, lineHeight: 44, fontWeight: 400 },
-    headline1: { fontSize: 32, lineHeight: 40, fontWeight: 400 },
-    headline2: { fontSize: 28, lineHeight: 36, fontWeight: 400 },
-    headline3: { fontSize: 24, lineHeight: 32, fontWeight: 400 },
-    title1: { fontSize: 22, lineHeight: 28, fontWeight: 400 },
-    title2: { fontSize: 16, lineHeight: 24, fontWeight: 500 },
-    title3: { fontSize: 14, lineHeight: 20, fontWeight: 500 },
-    label1: { fontSize: 14, lineHeight: 20, fontWeight: 500 },
-    label2: { fontSize: 12, lineHeight: 16, fontWeight: 500 },
-    label3: { fontSize: 11, lineHeight: 16, fontWeight: 500 },
-    body1: { fontSize: 16, lineHeight: 24, fontWeight: 400 },
-    body2: { fontSize: 14, lineHeight: 20, fontWeight: 400 },
-    body3: { fontSize: 12, lineHeight: 16, fontWeight: 500 },
+  headline1: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 32,
+    lineHeight: 40,
+    letterSpacing: 0,
+  },
+  headline2: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 28,
+    lineHeight: 36,
+    letterSpacing: 0,
+  },
+  headline3: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 24,
+    lineHeight: 32,
+    letterSpacing: 0,
+  },
+  body1: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 16,
+    lineHeight: 24,
+    letterSpacing: 0.5,
+  },
+  body2: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0.25,
+  },
+  body3: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 0.4000000059604645,
+  },
+  label1: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Medium',
+    fontWeight: 500,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0.10000000149011612,
+  },
+  label2: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Medium',
+    fontWeight: 500,
+    fontSize: 12,
+    lineHeight: 16,
+    letterSpacing: 0.5,
+  },
+  label3: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Medium',
+    fontWeight: 500,
+    fontSize: 11,
+    lineHeight: 16,
+    letterSpacing: 0.5,
+  },
+  title1: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Regular',
+    fontWeight: 400,
+    fontSize: 22,
+    lineHeight: 28,
+    letterSpacing: 0,
+  },
+  title2: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Medium',
+    fontWeight: 500,
+    fontSize: 16,
+    lineHeight: 24,
+    letterSpacing: 0.15000000596046448,
+  },
+  title3: {
+    fontFamily: "'Open Sans', sans-serif",
+    fontFamilyStyle: 'Medium',
+    fontWeight: 500,
+    fontSize: 14,
+    lineHeight: 20,
+    letterSpacing: 0.10000000149011612,
   },
 } as const;
-
-export const colors = {
-  white: '#ffffff',
-  black: '#000000',
-  background: '#ffffff',
-  foreground: '#333333',
-  neutral: {
-    100: '#f4f4f4',
-    200: '#e6e6e6',
-    300: '#d4d4d4',
-    400: '#a2a2a2',
-    500: '#727272',
-    600: '#535353',
-    700: '#333333',
-    800: '#202020',
-    900: '#181818',
-  },
-  primary: {
-    100: '#bfe8ff',
-    200: '#3fc0ff',
-    300: '#0486ce',
-    400: '#086aa5',
-    500: '#104a6f',
-  },
-  secondary: {
-    100: '#b899ff',
-    200: '#9e70ff',
-    300: '#8a4ffb',
-    400: '#7740de',
-    500: '#4e228e',
-  },
-  success: {
-    100: '#bfec75',
-    200: '#a7de59',
-    300: '#8bc34a',
-    400: '#6a9d32',
-    500: '#507921',
-  },
-  error: {
-    100: '#fc7269',
-    200: '#f44336',
-    300: '#df250d',
-    400: '#bb1c06',
-    500: '#9a1c0f',
-  },
-  gradients: {
-    info: `
-      background: #2328EB;
-      background: linear-gradient(225deg, #2328EB 0%, #23CCEB 100%);
-    `,
-    highlight: `
-      background: #E0157A;
-      background: linear-gradient(225deg, #E0157A 0%, #FEDB4D 100%);
-    `,
-    secondary: `
-      background: #7116E9;
-      background: linear-gradient(225deg, #7116E9 0%, #E0157A 100%);
-    `,
-    communication: `
-      background: #23CCEB;
-      background: linear-gradient(225deg, #23CCEB 0%, #FEDB4D 100%);
-    `,
-  },
-};
 
 export const spacing = {
   xxxs: 4,
@@ -180,6 +197,84 @@ export const keyframes = {
       }
     }
   `,
+};
+
+export const colors = {
+  foreground: '#333333',
+  background: '#ffffff',
+  white: '#ffffff',
+  black: '#000000',
+  neutral: {
+    100: '#000000',
+    200: '#191c1d',
+    300: '#393c3d',
+    400: '#505354',
+    500: '#747878',
+    600: '#a9acac',
+    700: '#e1e3e3',
+    800: '#f8fafa',
+    900: '#ffffff',
+  },
+  primary: {
+    100: '#ff4785',
+    200: '#ff5e94 ',
+    300: '#ff75a4 ',
+    400: '#ff8cb3',
+    500: '#ffa3c2',
+    600: '#ffbad1',
+    700: '#ffd1e1',
+    800: '#ffe8f0 ',
+  },
+  secondary: {
+    100: '#245DFF',
+    200: '#3f71ff',
+    300: '#5b86ff',
+    400: '#769aff',
+    500: '#92aeff',
+    600: '#adc2ff',
+    700: '#c8d7ff',
+    800: '#e4ebff',
+  },
+  tertiary: {
+    100: '#ffae00',
+    200: '#ffb820',
+    300: '#ffc240',
+    400: '#ffcc60',
+    500: '#ffd780',
+    600: '#ffe19f',
+    700: '#ffebbf',
+    800: '#fff5df',
+  },
+  info: {
+    100: '#47e1ff',
+    200: '#5ee5ff',
+    300: '#75e9ff',
+    400: '#8cecff',
+    500: '#a3f0ff',
+    600: '#baf4ff',
+    700: '#d1f8ff',
+    800: '#e8fbff',
+  },
+  success: {
+    100: '#47ff65',
+    200: '#5eff78',
+    300: '#75ff8c',
+    400: '#8cff9f',
+    500: '#a3ffb2',
+    600: '#baffc5',
+    700: '#d1ffd9',
+    800: '#e8ffec',
+  },
+  error: {
+    100: '#f44336',
+    200: '#f55b4f',
+    300: '#f77268',
+    400: '#f88a81',
+    500: '#faa19b',
+    600: '#fbb9b4',
+    700: '#fcd0cd',
+    800: '#fee8e6',
+  },
 };
 
 // Theme config

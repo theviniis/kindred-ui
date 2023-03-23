@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Story } from '@storybook/react';
 import { Input, InputProps, SizesProps, SkinsProps } from './';
 import { Flex, Icon } from '../../';
+import { SKIN_PROPS } from '../../../utils';
+import { useTheme } from 'styled-components';
 
 const Template: Story<InputProps> = args => {
   const [value, setValue] = useState('');
@@ -17,29 +19,15 @@ const Template: Story<InputProps> = args => {
 };
 
 const SkinsTemplate: Story<InputProps> = args => {
-  const [value, setValue] = useState('');
-
-  const inputSkins: SkinsProps[] = [
-    'neutral',
-    'primary',
-    'secondary',
-    'success',
-    'error',
-  ];
-
+  let skins_list: SKIN_PROPS[] = [];
+  const { colors } = useTheme();
+  Object.entries(colors).map(([key, value]) => {
+    if (typeof value === 'object') skins_list.push(key as SKIN_PROPS);
+  });
   return (
-    <Flex wrap="wrap">
-      {inputSkins.map(skin => (
-        <Input
-          {...args}
-          key={skin}
-          skin={skin}
-          label={skin}
-          value={value}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setValue(e.target.value)
-          }
-        />
+    <Flex gap="xs" wrap="wrap">
+      {skins_list.map(skin => (
+        <Input {...args} key={skin} skin={skin} label={skin} />
       ))}
     </Flex>
   );

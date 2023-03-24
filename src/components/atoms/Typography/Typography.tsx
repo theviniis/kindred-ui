@@ -2,6 +2,7 @@ import React from 'react';
 import { css, useTheme } from 'styled-components';
 import * as T from './Typography.types';
 import * as S from './Typography.styles';
+import { SIZES } from '../../../utils';
 
 export const Typography = ({
   children,
@@ -29,15 +30,14 @@ export const Typography = ({
   );
 };
 
-export const getTypographyStyles = ({
-  type = 'body',
-  size = 'md',
-  weight,
-  color,
-  spacing,
-}: Exclude<T.TypographyProps, 'children'>) => {
+export const getTypographyStyles = (
+  type: T.TYPOGRAPHY_VARIANTS = 'body',
+  size: SIZES = 'lg',
+  weight?: T.TYPOGRAPHY_WEIGHTS,
+  color?: string,
+  spacing?: string
+) => {
   const { typography, typesystem, colors } = useTheme();
-  console.log(weight);
   return css`
     font-family: ${typesystem[type][size].fontFamily};
     font-size: ${typesystem[type][size].fontSize / 16}rem;

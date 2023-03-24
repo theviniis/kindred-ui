@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { themes, typesystem } from '../../../shared';
-import { Flex, Typography } from '../../atoms';
+import { Typography } from '../../atoms';
 import * as S from './Typesystem.styles';
 
 const inner_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
@@ -14,7 +14,7 @@ const Template = ({ theme = 'light' }: { theme: 'light' | 'dark' }) => {
       <S.Wrapper>
         {list.map(item => {
           return (
-            <Flex gap="md" alignItems="center">
+            <S.Container>
               <S.InfoContainer>
                 <Typography type="title" size="md">
                   {item.type}
@@ -31,7 +31,7 @@ const Template = ({ theme = 'light' }: { theme: 'light' | 'dark' }) => {
               >
                 {inner_text}
               </S.Typography>
-            </Flex>
+            </S.Container>
           );
         })}
       </S.Wrapper>

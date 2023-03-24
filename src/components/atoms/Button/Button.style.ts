@@ -1,8 +1,10 @@
 import styled, { css, useTheme } from 'styled-components';
 import { SIZES } from '../../../utils';
+import { getTypographyStyles } from '../Typography';
 import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
+  ${() => getTypographyStyles('body', 'lg')};
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
@@ -22,51 +24,57 @@ function setVariant({
   variant = 'default',
 }: T.SetVariantProps) {
   const { colors } = useTheme();
-  const colorDefault = 100;
-  const colorHover = 200;
-  const colorFocus = 100;
+  let clr_primary = colors[skin][100];
+  let clr_hover = colors[skin][200];
+  let clr_focus = colors[skin][100];
+  let clr_white = colors.white;
+  if (skin === 'neutral') {
+    clr_primary = colors.neutral[600];
+    clr_hover = colors.neutral[700];
+    clr_focus = colors.neutral[600];
+  }
   const variantOptions = {
     default: {
-      color: colors.white,
-      background: colors[skin][colorDefault],
-      border: colors[skin][colorDefault],
+      color: clr_white,
+      background: clr_primary,
+      border: clr_primary,
       hover: {
-        color: colors.white,
-        background: colors[skin][colorHover],
-        border: colors[skin][colorHover],
+        color: clr_white,
+        background: clr_hover,
+        border: clr_hover,
       },
       focus: {
-        color: colors.white,
-        background: colors[skin][colorFocus],
-        border: colors[skin][colorFocus],
+        color: clr_white,
+        background: clr_focus,
+        border: clr_focus,
       },
     },
     outlined: {
-      color: colors[skin][colorDefault],
+      color: clr_primary,
       background: 'transparent',
-      border: colors[skin][colorDefault],
+      border: clr_primary,
       hover: {
-        color: colors[skin][colorDefault],
-        background: colors[skin][colorHover],
-        border: colors[skin][colorDefault],
+        color: clr_primary,
+        background: clr_hover,
+        border: clr_primary,
       },
       focus: {
-        color: colors.white,
-        background: colors[skin][colorFocus],
-        border: colors[skin][colorFocus],
+        color: clr_white,
+        background: clr_focus,
+        border: clr_focus,
       },
     },
     ghost: {
-      color: colors[skin][colorDefault],
+      color: clr_primary,
       background: 'transparent',
       border: 'transparent',
       hover: {
-        color: colors[skin][colorHover],
+        color: clr_hover,
         background: 'transparent',
         border: 'transparent',
       },
       focus: {
-        color: colors[skin][colorFocus],
+        color: clr_focus,
         background: 'transparent',
         border: 'transparent',
       },
@@ -76,7 +84,6 @@ function setVariant({
     color: ${variantOptions[variant].color};
     background-color: ${variantOptions[variant].background};
     border-color: ${variantOptions[variant].border};
-
     &:hover {
       color: ${variantOptions[variant].hover.color};
       background-color: ${variantOptions[variant].hover.background};
@@ -90,12 +97,13 @@ function setVariant({
     }
     &:disabled {
       cursor: not-allowed;
-      color: ${colors.neutral[900]};
+      color: ${clr_white};
       background-color: ${colors.neutral[600]};
       border-color: ${colors.neutral[600]};
     }
   `;
 }
+
 function setSize(size: Partial<SIZES> = 'md') {
   const { spacing } = useTheme();
   const styles = {

@@ -8,7 +8,7 @@ type InputWrapperProps = Pick<
 >;
 
 export const Wrapper = styled.div<InputWrapperProps>`
-  ${() => getTypographyStyles('body1')};
+  ${() => getTypographyStyles('body', 'lg')};
   ${({ theme, skin }) => setSkin({ theme, skin })};
   ${({ theme, startIcon, endIcon, size }) =>
     getPadding({ theme, startIcon, endIcon, size })};
@@ -108,26 +108,29 @@ export const IconsWrapper = styled.div`
 `;
 
 export const SupportingText = styled.span`
-  ${() => getTypographyStyles('body2')};
+  ${() => getTypographyStyles('body', 'md')};
   display: block;
   color: var(--clr-neutral);
 `;
 
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   const { colors, border } = theme;
-  const clr_default_intensity = 200;
-  const clr_hover_intensity = 400;
-  const clr_focus_intensity = 200;
-  let colorFocus = colors[skin][clr_focus_intensity];
+  let clr_primary = colors[skin][100];
+  let clr_hover = colors[skin][200];
+  let clr_focus = colors[skin][100];
+  const clr_neutral = colors.neutral[600];
+  const clr_disabled = colors.neutral[600];
   if (skin === 'neutral') {
-    colorFocus = colors.primary[clr_default_intensity];
+    clr_primary = colors.neutral[600];
+    clr_hover = colors.neutral[700];
+    clr_focus = colors.primary[100];
   }
   return css`
-    --clr-primary: ${colors[skin][clr_default_intensity]};
-    --clr-neutral: ${colors.neutral[clr_default_intensity]};
-    --clr-hover: ${colors[skin][clr_hover_intensity]};
-    --clr-disabled: ${colors.neutral[600]};
-    --clr-focus: ${colorFocus};
+    --clr-primary: ${clr_primary};
+    --clr-neutral: ${clr_neutral};
+    --clr-hover: ${clr_hover};
+    --clr-disabled: ${clr_disabled};
+    --clr-focus: ${clr_focus};
     --border-width: ${border.width.xs}px;
     --border-radius: ${border.radius.xs}px;
   `;

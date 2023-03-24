@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { typography } from './theme';
+import { typesystem } from './theme';
 
 export const fontUrl =
   'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap';
@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
   }
   body {
-    font-family: ${typography.body1.fontFamily};
+    font-family: ${typesystem.body.lg.fontFamily};
   }
   :focus:not(:focus-visible) {
     outline: none;

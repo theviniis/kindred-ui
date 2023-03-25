@@ -46,6 +46,6 @@ export const getTypographyStyles = (
       ? typography.weight[weight]
       : typesystem[type][size].weight};
     letter-spacing: ${spacing ?? typesystem[type][size].letterSpacing}px;
-    color: ${color ?? colors.text};
+    color: ${color ?? colors.text.primary};
   `;
 };

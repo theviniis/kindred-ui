@@ -16,11 +16,9 @@ export const Container = styled(Flex).attrs({
   alignItems: 'center',
 })`
   padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.lg}px`};
+  border-radius: ${({ theme }) => theme.border.radius.xs}px;
   &:nth-child(odd) {
-    background-color: ${({ theme }) =>
-      theme.scheme === 'light'
-        ? theme.colors.neutral[100]
-        : theme.colors.neutral[800]};
+    background-color: ${({ theme }) => theme.colors.text.disabled};
   }
 `;
 

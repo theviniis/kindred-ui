@@ -14,7 +14,7 @@ const Wrapper = styled.div<{ scheme: 'light' | 'dark' }>`
     }
     div,
     div::before {
-      color: ${themes[scheme].colors.neutral[500]} !important;
+      color: ${themes[scheme].colors.palette.neutral[500]} !important;
     }
     .css-wk618k {
       background: none;

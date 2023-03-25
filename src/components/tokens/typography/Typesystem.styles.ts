@@ -33,6 +33,7 @@ export const InfoContainer = styled(Typography).attrs({
   forwardedAs: 'div',
 })`
   min-width: 150px;
+  color: ${({ theme }) => theme.colors.text.secondary};
   span {
     display: block;
     font: inherit;

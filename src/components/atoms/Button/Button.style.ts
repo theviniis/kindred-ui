@@ -14,7 +14,6 @@ export const Button = styled.button<T.ButtonProps>`
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  border-style: solid;
   transition: ease-in-out 100ms;
   ${({ skin, variant }) => setSkin({ skin, variant })};
   ${({ size }) => setSize(size)};
@@ -23,7 +22,7 @@ export const Button = styled.button<T.ButtonProps>`
 function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
   const { colors, border } = useTheme();
   let colorPrimary =
-    skin === 'neutral' ? colors.neutral[400] : colors[skin][300];
+    skin === 'neutral' ? colors.neutral[400] : colors[skin].DEFAULT;
   if (skin === 'neutral' && variant === 'ghost') {
     colorPrimary = colors.text;
   }

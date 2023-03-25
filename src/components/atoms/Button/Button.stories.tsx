@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { Button, ButtonProps } from '.';
+import { Button, ButtonProps, BUTTON_VARIANTS } from '.';
 import { useTheme } from 'styled-components';
 import { SIZES, SKINS } from '../../../utils';
 import { Flex } from '../Flex';
@@ -20,6 +20,19 @@ const SkinsTemplate: Story<ButtonProps> = args => {
       {skins_list.map(skin => (
         <Button {...args} key={skin} skin={skin}>
           {skin}
+        </Button>
+      ))}
+    </Flex>
+  );
+};
+
+const VariantsTemplate: Story<ButtonProps> = args => {
+  const variants: BUTTON_VARIANTS[] = ['default', 'outlined', 'ghost'];
+  return (
+    <Flex gap="xs" wrap="wrap">
+      {variants.map(variant => (
+        <Button {...args} key={variant} variant={variant}>
+          {variant}
         </Button>
       ))}
     </Flex>
@@ -46,11 +59,7 @@ Default.args = {
 
 const Skin: Story<ButtonProps> = SkinsTemplate.bind({});
 
-const Variant: Story<ButtonProps> = Template.bind({});
-Variant.args = {
-  children: 'Variant',
-  variant: 'outlined',
-};
+const Variant: Story<ButtonProps> = VariantsTemplate.bind({});
 
 const Size: Story<ButtonProps> = SizesTemplate.bind({});
 

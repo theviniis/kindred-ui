@@ -11,14 +11,17 @@ export const Button: React.FC<T.ButtonProps> = ({
   ...props
 }) => {
   return (
-    <S.Button
-      skin={skin}
-      variant={variant}
-      disabled={disabled}
-      size={size}
-      {...props}
-    >
-      {children}
-    </S.Button>
+    <>
+      {/* <NewButton>NEW</NewButton> */}
+      <S.Button
+        skin={skin}
+        variant={variant}
+        disabled={disabled}
+        size={size}
+        {...props}
+      >
+        {children}
+      </S.Button>
+    </>
   );
 };

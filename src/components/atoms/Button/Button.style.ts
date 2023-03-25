@@ -1,10 +1,13 @@
 import styled, { css, useTheme } from 'styled-components';
-import { SIZES } from '../../../utils';
+import { darken, lighten, SIZES } from '../../../utils';
+import { getContrastingColor } from '../../../utils/getContrastingColor';
 import { getTypographyStyles } from '../Typography';
 import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
-  ${() => getTypographyStyles('body', 'lg')};
+  ${() => getTypographyStyles('label', 'lg')};
+  border: none;
+  background: none;
   box-sizing: border-box;
   cursor: pointer;
   display: flex;
@@ -13,96 +16,84 @@ export const Button = styled.button<T.ButtonProps>`
   justify-content: space-between;
   border-style: solid;
   transition: ease-in-out 100ms;
-  border-radius: ${({ theme }) => theme.border.radius.xs}px;
-  border-width: ${({ theme }) => theme.border.width.xs}px;
-  ${({ skin, variant }) => setVariant({ skin, variant })};
+  ${({ skin, variant }) => setSkin({ skin, variant })};
   ${({ size }) => setSize(size)};
 `;
 
-function setVariant({
-  skin = 'primary',
-  variant = 'default',
-}: T.SetVariantProps) {
-  const { colors } = useTheme();
-  let clr_primary = colors[skin][300];
-  let clr_hover = colors[skin][400];
-  let clr_focus = colors[skin][500];
-  let clr_white = colors.white;
-  let clr_neutral = colors.text;
-  let clr_neutral_muted = colors.text_muted;
-
-  if (skin === 'neutral') {
-    clr_primary = clr_neutral_muted;
-    clr_hover = clr_neutral;
-    clr_focus = colors.neutral[700];
+function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
+  const { colors, border } = useTheme();
+  let colorPrimary =
+    skin === 'neutral' ? colors.neutral[400] : colors[skin][300];
+  if (skin === 'neutral' && variant === 'ghost') {
+    colorPrimary = colors.text;
   }
-  const variantOptions = {
+  const colorHover = darken(colorPrimary, 0.1);
+  const colorFocus = darken(colorPrimary, 0.1);
+  const textColor = getContrastingColor(colorPrimary);
+  const styles = {
     default: {
-      color: clr_white,
-      background: clr_primary,
-      border: clr_primary,
+      color: textColor,
+      background: colorPrimary,
+      borderColor: 'transparent',
       hover: {
-        color: clr_white,
-        background: clr_hover,
-        border: clr_hover,
+        color: textColor,
+        background: colorHover,
+        border: 'transparent',
       },
       focus: {
-        color: clr_white,
-        background: clr_focus,
-        border: clr_focus,
+        color: textColor,
+        background: colorFocus,
+        border: 'transparent',
       },
     },
     outlined: {
-      color: clr_primary,
+      color: colorPrimary,
       background: 'transparent',
-      border: clr_primary,
+      borderColor: colorPrimary,
       hover: {
-        color: clr_primary,
-        background: colors[skin][100],
-        border: clr_primary,
+        color: textColor,
+        background: lighten(colorHover, 0.25),
+        border: colorPrimary,
       },
       focus: {
-        color: clr_white,
-        background: clr_focus,
-        border: clr_focus,
+        color: textColor,
+        background: colorFocus,
+        border: colorFocus,
       },
     },
     ghost: {
-      color: clr_primary,
+      color: colorPrimary,
       background: 'transparent',
-      border: 'transparent',
+      borderColor: 'transparent',
       hover: {
-        color: clr_hover,
+        color: colorHover,
         background: 'transparent',
         border: 'transparent',
       },
       focus: {
-        color: clr_focus,
+        color: colorFocus,
         background: 'transparent',
         border: 'transparent',
       },
     },
   };
+
   return css`
-    color: ${variantOptions[variant].color};
-    background-color: ${variantOptions[variant].background};
-    border-color: ${variantOptions[variant].border};
+    border-style: solid;
+    border-width: ${border.width.xs}px;
+    border-radius: ${border.radius.xs}px;
+    border-color: ${styles[variant].borderColor};
+    background-color: ${styles[variant].background};
+    color: ${styles[variant].color};
     &:hover {
-      color: ${variantOptions[variant].hover.color};
-      background-color: ${variantOptions[variant].hover.background};
-      border-color: ${variantOptions[variant].hover.border};
+      background-color: ${styles[variant].hover.background};
+      border-color: ${styles[variant].hover.border};
+      color: ${styles[variant].hover.color};
     }
-    &:focus,
-    &:active {
-      color: ${variantOptions[variant].focus.color};
-      background-color: ${variantOptions[variant].focus.background};
-      border-color: ${variantOptions[variant].focus.border};
-    }
-    &:disabled {
-      cursor: not-allowed;
-      color: ${clr_white};
-      background-color: ${colors.neutral[200]};
-      border-color: ${colors.neutral[200]};
+    &:focus {
+      background-color: ${styles[variant].focus.background};
+      border-color: ${styles[variant].focus.border};
+      color: ${styles[variant].focus.color};
     }
   `;
 }

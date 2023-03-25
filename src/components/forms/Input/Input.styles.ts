@@ -2,6 +2,22 @@ import styled, { css } from 'styled-components';
 import { getTypographyStyles } from '../../';
 import * as T from './Input.types';
 
+const lighten = (value: number) => css`
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, ${value}) 0%,
+    rgba(255, 255, 255, ${value}) 100%
+  );
+`;
+
+const darken = (value: number) => css`
+  background-image: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, ${value}) 0%,
+    rgba(0, 0, 0, ${value}) 100%
+  );
+`;
+
 type InputWrapperProps = Pick<
   T.InputProps,
   'skin' | 'startIcon' | 'endIcon' | 'size'
@@ -18,7 +34,10 @@ export const InputContainer = styled.div`
   position: relative;
   /* When is hovering */
   &:hover fieldset {
-    border-color: var(--clr-hover);
+    /* ${darken(0.25)}; */
+    /* border-color: var(--clr-hover); */
+    /* box-shadow: inset 999em 0 0 0 rgb(0 0 0 /0.2); */
+    /* filter: brightness(0.85); */
   }
   /* When is focused */
   &:has(input:focus),
@@ -37,6 +56,8 @@ export const InputContainer = styled.div`
     }
     fieldset {
       border-color: var(--clr-focus);
+      /* filter: brightness(1); */
+
       legend {
         max-width: min-content;
       }
@@ -115,16 +136,17 @@ export const SupportingText = styled.span`
 `;
 
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
-  const { colors, border } = theme;
+  const { colors, border, scheme } = theme;
   let clr_primary = colors[skin][300];
   let clr_hover = colors[skin][400];
   let clr_focus = colors[skin][300];
   let clr_neutral = colors.text;
   let clr_neutral_muted = colors.text_muted;
-  let clr_disabled = colors.neutral[200];
+  let clr_disabled =
+    scheme === 'light' ? colors.neutral[200] : colors.neutral[800];
   if (skin === 'neutral') {
     clr_primary = clr_neutral_muted;
-    clr_hover = clr_neutral;
+    clr_hover = colors.neutral[700];
     clr_focus = colors.primary[300];
   }
   return css`

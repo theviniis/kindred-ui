@@ -17,7 +17,10 @@ export const Container = styled(Flex).attrs({
 })`
   padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.lg}px`};
   &:nth-child(odd) {
-    background-color: ${({ theme }) => theme.colors.neutral[50]};
+    background-color: ${({ theme }) =>
+      theme.scheme === 'light'
+        ? theme.colors.neutral[100]
+        : theme.colors.neutral[800]};
   }
 `;
 

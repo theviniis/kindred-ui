@@ -1,11 +1,14 @@
-export function darken(color: string, darkenValue: number): string {
+export function darken(
+  color: string,
+  darkenValue: Partial<number> = 0.1
+): string {
   // Parse the input color string into separate R, G, B values
   let r: number, g: number, b: number;
-  if (color.startsWith('#')) {
+  if (color?.startsWith('#')) {
     r = parseInt(color.substr(1, 2), 16);
     g = parseInt(color.substr(3, 2), 16);
     b = parseInt(color.substr(5, 2), 16);
-  } else if (color.startsWith('rgb(')) {
+  } else if (color?.startsWith('rgb(')) {
     const values = color.slice(4, -1).split(',');
     r = parseInt(values[0], 10);
     g = parseInt(values[1], 10);

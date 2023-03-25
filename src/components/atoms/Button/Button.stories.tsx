@@ -12,9 +12,7 @@ const Template: Story<ButtonProps> = args => (
 const SkinsTemplate: Story<ButtonProps> = args => {
   let skins_list: SKINS[] = [];
   const { colors } = useTheme();
-  Object.entries(colors).map(([key, value]) => {
-    if (typeof value === 'object') skins_list.push(key as SKINS);
-  });
+  Object.keys(colors.coreColors).map(color => skins_list.push(color as SKINS));
   return (
     <Flex gap="xs" wrap="wrap">
       {skins_list.map(skin => (

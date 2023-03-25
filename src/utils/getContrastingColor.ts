@@ -2,8 +2,10 @@ import { useTheme } from 'styled-components';
 
 export function getContrastingColor(background: string): string {
   const { colors } = useTheme();
-  if (background === 'transparent') return colors.text;
-  const hex = background.replace(/\s/g, '').match(/^#(?:[0-9a-fA-F]{3}){1,2}$/);
+  if (background === 'transparent') return colors.text.primary;
+  const hex = background
+    ?.replace(/\s/g, '')
+    .match(/^#(?:[0-9a-fA-F]{3}){1,2}$/);
   if (!hex) {
     throw new Error('Invalid color value');
   }
@@ -17,7 +19,9 @@ export function getContrastingColor(background: string): string {
   const b = hexValue & 255;
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
   const textColor =
-    brightness >= 128 ? colors.neutral[900] : colors.neutral[100];
+    brightness >= 128
+      ? colors.palette.neutral[900]
+      : colors.palette.neutral[100];
 
   return textColor;
 }

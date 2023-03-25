@@ -1,8 +1,5 @@
-import { colors } from '../shared';
+import { palette } from '../shared';
 
-export type SKINS = Exclude<
-  keyof typeof colors,
-  'background' | 'text' | 'white' | 'black' | 'text_muted'
->;
+export type SKINS = keyof typeof palette;
 
 export type SIZES = 'sm' | 'md' | 'lg';

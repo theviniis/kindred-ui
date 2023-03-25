@@ -2,22 +2,6 @@ import styled, { css } from 'styled-components';
 import { getTypographyStyles } from '../../';
 import * as T from './Input.types';
 
-const lighten = (value: number) => css`
-  background-image: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, ${value}) 0%,
-    rgba(255, 255, 255, ${value}) 100%
-  );
-`;
-
-const darken = (value: number) => css`
-  background-image: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, ${value}) 0%,
-    rgba(0, 0, 0, ${value}) 100%
-  );
-`;
-
 type InputWrapperProps = Pick<
   T.InputProps,
   'skin' | 'startIcon' | 'endIcon' | 'size'
@@ -34,10 +18,7 @@ export const InputContainer = styled.div`
   position: relative;
   /* When is hovering */
   &:hover fieldset {
-    /* ${darken(0.25)}; */
-    /* border-color: var(--clr-hover); */
-    /* box-shadow: inset 999em 0 0 0 rgb(0 0 0 /0.2); */
-    /* filter: brightness(0.85); */
+    border-color: var(--clr-hover);
   }
   /* When is focused */
   &:has(input:focus),
@@ -56,8 +37,6 @@ export const InputContainer = styled.div`
     }
     fieldset {
       border-color: var(--clr-focus);
-      /* filter: brightness(1); */
-
       legend {
         max-width: min-content;
       }
@@ -82,6 +61,7 @@ export const Label = styled.label`
   left: var(--padding-left);
   transform: translateY(-50%);
   transition: ease-in-out 100ms;
+  color: var(--clr_text);
 `;
 
 export const Input = styled.input<Pick<T.InputProps, 'label'>>`
@@ -90,7 +70,7 @@ export const Input = styled.input<Pick<T.InputProps, 'label'>>`
   padding-inline-end: var(--padding-right);
   &::placeholder {
     font: inherit;
-    color: var(--clr-neutral-muted);
+    color: var(--clr_text_secondary);
     visibility: ${({ label }) => !!label && 'hidden'};
   }
 `;
@@ -132,30 +112,32 @@ export const IconsWrapper = styled.div`
 export const SupportingText = styled.span`
   ${() => getTypographyStyles('body', 'md')};
   display: block;
-  color: var(--clr-neutral-muted);
+  color: var(--clr_text_secondary);
 `;
 
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   const { colors, border, scheme } = theme;
-  let clr_primary = colors[skin][300];
-  let clr_hover = colors[skin][400];
-  let clr_focus = colors[skin][300];
-  let clr_neutral = colors.text;
-  let clr_neutral_muted = colors.text_muted;
-  let clr_disabled =
-    scheme === 'light' ? colors.neutral[200] : colors.neutral[800];
+  const { coreColors, palette, text } = colors;
+
+  let colorPrimary = coreColors[skin];
+  let colorHover = palette[skin][200];
+  let colorFocus = colorPrimary;
+  let clr_disabled = text.disabled;
+
   if (skin === 'neutral') {
-    clr_primary = clr_neutral_muted;
-    clr_hover = colors.neutral[700];
-    clr_focus = colors.primary[300];
+    colorPrimary = text.secondary;
+    colorHover =
+      scheme === 'light' ? palette.neutral[600] : palette.neutral[400];
+    colorFocus = palette.primary[300];
   }
+
   return css`
-    --clr-neutral: ${clr_neutral};
-    --clr-neutral-muted: ${clr_neutral_muted};
-    --clr-primary: ${clr_primary};
-    --clr-hover: ${clr_hover};
+    --clr-primary: ${colorPrimary};
+    --clr-hover: ${colorHover};
     --clr-disabled: ${clr_disabled};
-    --clr-focus: ${clr_focus};
+    --clr-focus: ${colorFocus};
+    --clr_text: ${text.primary};
+    --clr_text_secondary: ${text.secondary};
     --border-width: ${border.width.xs}px;
     --border-radius: ${border.radius.xs}px;
   `;

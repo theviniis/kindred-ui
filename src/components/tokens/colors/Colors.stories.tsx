@@ -10,7 +10,7 @@ const Wrapper = styled.div<{ scheme: 'light' | 'dark' }>`
     background: ${themes[scheme].colors.background};
     border-radius: ${themes[scheme].border.radius.xs + 'px'};
     .css-1cic1f4 {
-      color: ${themes[scheme].colors.foreground} !important;
+      color: ${themes[scheme].colors.text} !important;
     }
     div,
     div::before {

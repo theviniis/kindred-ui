@@ -23,7 +23,6 @@ export const GlobalStyle = createGlobalStyle`
     padding-block: 0;
     padding-inline: 0;
   }
-
   ul, li {
     list-style: none;
   }
@@ -40,5 +39,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   label, span {
     display: inline-block;
+  }
+  img {
+    display: block;
+    width: 100%;
   }
 `;

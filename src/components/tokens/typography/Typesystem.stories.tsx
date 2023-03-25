@@ -8,13 +8,12 @@ const inner_text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
 const Template = ({ theme = 'light' }: { theme: 'light' | 'dark' }) => {
   const { list } = convertTypesystemToArray<typeof typesystem>(typesystem);
-
   return (
     <ThemeProvider theme={themes[theme]}>
       <S.Wrapper>
         {list.map(item => {
           return (
-            <S.Container>
+            <S.Container key={`${item.type}-${item.size}`}>
               <S.InfoContainer>
                 <Typography type="title" size="md">
                   {item.type}

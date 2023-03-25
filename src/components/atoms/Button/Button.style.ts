@@ -24,14 +24,17 @@ function setVariant({
   variant = 'default',
 }: T.SetVariantProps) {
   const { colors } = useTheme();
-  let clr_primary = colors[skin][100];
-  let clr_hover = colors[skin][200];
-  let clr_focus = colors[skin][100];
+  let clr_primary = colors[skin][300];
+  let clr_hover = colors[skin][400];
+  let clr_focus = colors[skin][500];
   let clr_white = colors.white;
+  let clr_neutral = colors.text;
+  let clr_neutral_muted = colors.text_muted;
+
   if (skin === 'neutral') {
-    clr_primary = colors.neutral[600];
-    clr_hover = colors.neutral[700];
-    clr_focus = colors.neutral[600];
+    clr_primary = clr_neutral_muted;
+    clr_hover = clr_neutral;
+    clr_focus = colors.neutral[700];
   }
   const variantOptions = {
     default: {
@@ -55,7 +58,7 @@ function setVariant({
       border: clr_primary,
       hover: {
         color: clr_primary,
-        background: clr_hover,
+        background: colors[skin][100],
         border: clr_primary,
       },
       focus: {
@@ -98,8 +101,8 @@ function setVariant({
     &:disabled {
       cursor: not-allowed;
       color: ${clr_white};
-      background-color: ${colors.neutral[600]};
-      border-color: ${colors.neutral[600]};
+      background-color: ${colors.neutral[200]};
+      border-color: ${colors.neutral[200]};
     }
   `;
 }

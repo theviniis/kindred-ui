@@ -17,7 +17,7 @@ export const Container = styled(Flex).attrs({
 })`
   padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.lg}px`};
   &:nth-child(odd) {
-    background-color: ${({ theme }) => theme.colors.neutral[900]};
+    background-color: ${({ theme }) => theme.colors.neutral[50]};
   }
 `;
 

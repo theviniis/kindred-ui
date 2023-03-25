@@ -4,17 +4,17 @@ import { GlobalStyle, themes } from '../shared';
 
 export const GlobalContext = React.createContext({});
 
-export interface KindredUiContextProps {
+export interface KindredContextProps {
   scheme?: 'light' | 'dark';
   children?: ReactNode;
   theme?: DefaultTheme;
 }
 
-export const KindredUIContext = ({
+export const KindredContext = ({
   scheme = 'dark',
   theme,
   children,
-}: KindredUiContextProps) => {
+}: KindredContextProps) => {
   const [currentTheme, setCurrentTheme] = React.useState(theme || themes.light);
 
   function themeToggle() {

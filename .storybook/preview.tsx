@@ -1,5 +1,5 @@
 import React from 'react';
-import { KindredUIContext } from '../src/context';
+import { KindredContext } from '../src/context';
 import { SchemeWrapper, Flex } from './styles';
 import { SBdarkTheme } from './manager';
 import { createTheme } from '../src';
@@ -35,31 +35,31 @@ const withThemeProvider = (Story, context) => {
 
   const lookup = {
     light: (
-      <KindredUIContext scheme="light">
+      <KindredContext scheme="light">
         <Flex>
           <Story {...Story} {...context} />
         </Flex>
-      </KindredUIContext>
+      </KindredContext>
     ),
     dark: (
-      <KindredUIContext scheme="dark">
+      <KindredContext scheme="dark">
         <Flex>
           <Story {...Story} {...context} />
         </Flex>
-      </KindredUIContext>
+      </KindredContext>
     ),
     both: (
       <SchemeWrapper>
-        <KindredUIContext scheme="light">
+        <KindredContext scheme="light">
           <Flex>
             <Story {...Story} {...context} />
           </Flex>
-        </KindredUIContext>
-        <KindredUIContext scheme="dark">
+        </KindredContext>
+        <KindredContext scheme="dark">
           <Flex>
             <Story {...Story} {...context} />
           </Flex>
-        </KindredUIContext>
+        </KindredContext>
       </SchemeWrapper>
     ),
   } as const;

@@ -16,7 +16,6 @@ export const Container = styled(Flex).attrs({
   alignItems: 'center',
 })`
   padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.lg}px`};
-  border-radius: ${({ theme }) => theme.border.radius.xs}px;
   &:nth-child(odd) {
     background-color: ${({ theme }) => theme.colors.text.disabled};
   }
@@ -34,7 +33,6 @@ export const InfoContainer = styled(Typography).attrs({
   forwardedAs: 'div',
 })`
   min-width: 150px;
-
   span {
     display: block;
     font: inherit;

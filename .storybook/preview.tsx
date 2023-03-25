@@ -1,22 +1,20 @@
-import React, { JSXElementConstructor } from 'react';
-import { lightTheme, darkTheme, themes } from '../src/shared';
-import { ThemeProvider } from 'styled-components';
+import React from 'react';
 import { KindredUIContext } from '../src/context';
 import { SchemeWrapper, Flex } from './styles';
-import { JSXElement } from '@babel/types';
+import { SBdarkTheme } from './manager';
 
-// export const parameters = {
-//   actions: { argTypesRegex: '^on[A-Z].*' },
-//   controls: {
-//     matchers: {
-//       color: /(background|color)$/i,
-//       date: /Date$/,
-//     },
-//   },
-//   docs: {
-//     theme: storybookDarkTheme,
-//   },
-// };
+export const parameters = {
+  actions: { argTypesRegex: '^on[A-Z].*' },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+  docs: {
+    theme: SBdarkTheme,
+  },
+};
 
 export const globalTypes = {
   theme: {

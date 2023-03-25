@@ -17,7 +17,7 @@ const Wrapper = styled.div<{ scheme: 'light' | 'dark' }>`
       color: ${themes[scheme].colors.palette.neutral[500]} !important;
     }
     .css-wk618k {
-      background: none;
+      /* background: none; */
     }
   `}
 `;
@@ -40,7 +40,8 @@ export const Dark: Story = () => {
                 colors={{ [k]: v }}
               />
             );
-          } else if (typeof v === 'object' && !k.match(/gradient/i)) {
+          } else if (typeof v === 'object' && !k.match(/palette/i)) {
+            console.log(k);
             return (
               <ColorItem
                 subtitle={`theme.colors.${k}`}
@@ -58,6 +59,26 @@ export const Dark: Story = () => {
                 )}
               />
             );
+          } else if (k === 'palette') {
+            return Object.entries(themes.dark.colors.palette).map(([k, v]) => {
+              return (
+                <ColorItem
+                  subtitle={`theme.colors.palette${k}`}
+                  key={k}
+                  title={k}
+                  colors={Object.entries(v).reduce(
+                    (acc, [key, value]) =>
+                      typeof value === 'string' &&
+                      (value.match(/^#/) ||
+                        value.match(/^rgb/) ||
+                        key.match(/color/i))
+                        ? { ...acc, [key]: value }
+                        : acc,
+                    {}
+                  )}
+                />
+              );
+            });
           }
           return null;
         })}
@@ -84,7 +105,7 @@ export const Light: Story = () => {
                 colors={{ [k]: v }}
               />
             );
-          } else if (typeof v === 'object' && !k.match(/gradient/i)) {
+          } else if (typeof v === 'object' && !k.match(/palette/i)) {
             return (
               <ColorItem
                 subtitle={`theme.colors.${k}`}
@@ -102,6 +123,26 @@ export const Light: Story = () => {
                 )}
               />
             );
+          } else if (k === 'palette') {
+            return Object.entries(themes.dark.colors.palette).map(([k, v]) => {
+              return (
+                <ColorItem
+                  subtitle={`theme.colors.palette.${k}`}
+                  key={k}
+                  title={k}
+                  colors={Object.entries(v).reduce(
+                    (acc, [key, value]) =>
+                      typeof value === 'string' &&
+                      (value.match(/^#/) ||
+                        value.match(/^rgb/) ||
+                        key.match(/color/i))
+                        ? { ...acc, [key]: value }
+                        : acc,
+                    {}
+                  )}
+                />
+              );
+            });
           }
           return null;
         })}

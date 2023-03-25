@@ -35,16 +35,16 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "viniis_storybook",
-  "author": "Vinicius Costa",
-  "module": "dist/viniis_storybook.esm.js",
+  "name": "kindred_ui",
+  "author": "theviniis",
+  "module": "dist/kindred_ui.esm.js",
   "size-limit": [
     {
-      "path": "dist/viniis_storybook.cjs.production.min.js",
+      "path": "dist/kindred_ui.cjs.production.min.js",
       "limit": "10 KB"
     },
     {
-      "path": "dist/viniis_storybook.esm.js",
+      "path": "dist/kindred_ui.esm.js",
       "limit": "10 KB"
     }
   ],

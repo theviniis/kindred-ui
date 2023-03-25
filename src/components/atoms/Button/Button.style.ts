@@ -1,6 +1,5 @@
 import styled, { css, useTheme } from 'styled-components';
 import { SIZES } from '../../../utils';
-import { getContrastingColor } from '../../../utils/getContrastingColor';
 import { getTypographyStyles } from '../Typography';
 import * as T from './Button.types';
 
@@ -27,7 +26,7 @@ function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
   }
   const colorHover = colors.palette[skin][200];
   const colorFocus = colors.palette[skin][400];
-  const textColor = getContrastingColor(colorPrimary);
+  const textColor = colors.white;
   const styles = {
     default: {
       color: textColor,

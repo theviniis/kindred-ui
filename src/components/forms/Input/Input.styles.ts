@@ -128,7 +128,7 @@ function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
     colorPrimary = text.secondary;
     colorHover =
       scheme === 'light' ? palette.neutral[600] : palette.neutral[400];
-    colorFocus = palette.primary[300];
+    colorFocus = palette.fuchsia[300];
   }
 
   return css`

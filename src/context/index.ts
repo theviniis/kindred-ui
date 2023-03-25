@@ -1,1 +1,1 @@
-export * from './GlobalContex';
+export * from './KindredContext';

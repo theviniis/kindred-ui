@@ -1,27 +1,31 @@
 import React, { ReactNode } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle, lightTheme, themes } from '../shared';
+import { DefaultTheme, ThemeProvider } from 'styled-components';
+import { GlobalStyle, themes } from '../shared';
 
 export const GlobalContext = React.createContext({});
 
 export interface KindredUiContextProps {
   scheme?: 'light' | 'dark';
   children?: ReactNode;
+  theme?: DefaultTheme;
 }
 
 export const KindredUIContext = ({
   scheme = 'dark',
+  theme,
   children,
 }: KindredUiContextProps) => {
-  const [theme, setTheme] = React.useState(lightTheme);
+  const [currentTheme, setCurrentTheme] = React.useState(theme || themes.light);
 
   function themeToggle() {
-    // const currentTheme = theme.name === 'light' ? darkTheme : lightTheme;
-    // setTheme(currentTheme);
+    const currentTheme = scheme === 'light' ? themes.light : themes.dark;
+    setCurrentTheme(currentTheme);
   }
 
   return (
-    <GlobalContext.Provider value={{ theme, setTheme, themeToggle }}>
+    <GlobalContext.Provider
+      value={{ currentTheme, setCurrentTheme, themeToggle }}
+    >
       <ThemeProvider theme={themes[scheme]}>
         {children}
         <GlobalStyle />

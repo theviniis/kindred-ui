@@ -260,7 +260,7 @@ export const palette = {
     800: '#212121',
     900: '#181818',
   },
-  primary: {
+  fuchsia: {
     100: '#FF4785',
     200: '#FF5E94',
     300: '#FF75A4',
@@ -270,7 +270,7 @@ export const palette = {
     700: '#FFD1E1',
     800: '#FFE8F0',
   },
-  secondary: {
+  blue: {
     100: '#1EA7FD',
     200: '#3AB2FD',
     300: '#56BDfE',
@@ -280,7 +280,7 @@ export const palette = {
     700: '#C7E9FF',
     800: '#E3F4FF',
   },
-  tertiary: {
+  yellow: {
     100: '#FFAE00',
     200: '#FFB820',
     300: '#FFC240',
@@ -290,7 +290,7 @@ export const palette = {
     700: '#FFEBBF',
     800: '#FFF5DF',
   },
-  info: {
+  cyan: {
     100: '#47E1FF',
     200: '#5EE5FF',
     300: '#75E9FF',
@@ -300,7 +300,7 @@ export const palette = {
     700: '#D1F8FF',
     800: '#E8FBFF',
   },
-  success: {
+  green: {
     100: '#66BF3C',
     200: '#79C754',
     300: '#8CCF6D',
@@ -310,7 +310,7 @@ export const palette = {
     700: '#D9EfCE',
     800: '#ECF7E7',
   },
-  error: {
+  red: {
     100: '#F44336',
     200: '#F55B4F',
     300: '#F77268',
@@ -332,12 +332,12 @@ export const colors = {
     disabled: palette.neutral[200],
   },
   coreColors: {
-    primary: palette.primary[100],
-    secondary: palette.secondary[100],
-    tertiary: palette.tertiary[100],
-    info: palette.info[100],
-    success: palette.success[100],
-    error: palette.error[100],
+    fuchsia: palette.fuchsia[100],
+    blue: palette.blue[100],
+    yellow: palette.yellow[100],
+    cyan: palette.cyan[100],
+    green: palette.green[100],
+    red: palette.red[100],
     neutral: palette.neutral[400],
   },
   palette: {
@@ -372,7 +372,7 @@ export const darkTheme: CustomTheme = {
     background: palette.neutral[900],
     text: {
       primary: palette.neutral[200],
-      secondary: palette.neutral[600],
+      secondary: palette.neutral[400],
       disabled: palette.neutral[800],
     },
   },

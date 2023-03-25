@@ -19,13 +19,23 @@ const Template: Story<InputProps> = args => {
 };
 
 const SkinsTemplate: Story<InputProps> = args => {
+  const [value, setValue] = useState('');
   let skins_list: SKINS[] = [];
   const { colors } = useTheme();
   Object.keys(colors.coreColors).map(color => skins_list.push(color as SKINS));
   return (
     <Flex gap="xs" wrap="wrap">
       {skins_list.map(skin => (
-        <Input {...args} key={skin} skin={skin} label={skin} />
+        <Input
+          {...args}
+          key={skin}
+          skin={skin}
+          label={skin}
+          value={value}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setValue(e.target.value)
+          }
+        />
       ))}
     </Flex>
   );
@@ -33,9 +43,7 @@ const SkinsTemplate: Story<InputProps> = args => {
 
 const SizesTemplate: Story<InputProps> = args => {
   const [value, setValue] = useState('');
-
   const inputSizes: SIZES[] = ['sm', 'md', 'lg'];
-
   return (
     <Flex wrap="wrap" gap="xs">
       {inputSizes.map(size => (

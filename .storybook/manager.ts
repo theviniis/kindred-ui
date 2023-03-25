@@ -18,9 +18,9 @@ const baseTheme = {
   fontCode: typography.type.secondary,
 
   // baseColors
-  colorPrimary: colors.coreColors.primary,
-  colorSecondary: colors.coreColors.secondary,
-  barSelectedColor: colors.coreColors.secondary,
+  colorPrimary: colors.coreColors.fuchsia,
+  colorSecondary: colors.coreColors.blue,
+  barSelectedColor: colors.coreColors.blue,
   barTextColor: colors.text.disabled,
 
   ...branding,

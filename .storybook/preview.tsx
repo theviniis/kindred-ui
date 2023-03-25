@@ -2,6 +2,7 @@ import React from 'react';
 import { KindredUIContext } from '../src/context';
 import { SchemeWrapper, Flex } from './styles';
 import { SBdarkTheme } from './manager';
+import { createTheme } from '../src';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -31,6 +32,7 @@ export const globalTypes = {
 
 const withThemeProvider = (Story, context) => {
   let scheme = context.globals.theme as 'light' | 'dark' | 'both';
+
   const lookup = {
     light: (
       <KindredUIContext scheme="light">

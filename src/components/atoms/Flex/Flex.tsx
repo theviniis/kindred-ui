@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 import * as T from './Flex.types';
-import { spacing } from '../../../';
 
 export const Flex = styled.div<T.FlexProps>`
   display: flex;
   flex-direction: ${({ direction }): string =>
     direction === 'column' ? 'column' : 'row'};
-  gap: ${({ gap }): string =>
-    gap || gap === 0 ? gap + 'px' : spacing.sm + 'px'};
+  gap: ${({ theme, gap }) => (gap ? theme.spacing[gap] : '0')}px;
   justify-content: ${({ justifyContent }): T.JUSTIFY_CONTENT | undefined =>
     justifyContent && justifyContent};
   align-items: ${({ alignItems }): T.ALIGN_ITEMS | undefined =>

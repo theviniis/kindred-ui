@@ -8,7 +8,7 @@ type InputWrapperProps = Pick<
 >;
 
 export const Wrapper = styled.div<InputWrapperProps>`
-  ${() => getTypographyStyles('body1')};
+  ${() => getTypographyStyles('body', 'lg')};
   ${({ theme, skin }) => setSkin({ theme, skin })};
   ${({ theme, startIcon, endIcon, size }) =>
     getPadding({ theme, startIcon, endIcon, size })};
@@ -27,7 +27,7 @@ export const InputContainer = styled.div`
     label {
       transform: none;
       top: 0;
-      left: calc(var(--padding) + 1px);
+      left: calc(var(--padding) + 0.25px);
       transform-origin: top;
       transform: scale(0.75) translateY(-50%);
       color: var(--clr-focus);
@@ -61,6 +61,7 @@ export const Label = styled.label`
   left: var(--padding-left);
   transform: translateY(-50%);
   transition: ease-in-out 100ms;
+  color: var(--clr_text);
 `;
 
 export const Input = styled.input<Pick<T.InputProps, 'label'>>`
@@ -69,6 +70,7 @@ export const Input = styled.input<Pick<T.InputProps, 'label'>>`
   padding-inline-end: var(--padding-right);
   &::placeholder {
     font: inherit;
+    color: var(--clr_text_secondary);
     visibility: ${({ label }) => !!label && 'hidden'};
   }
 `;
@@ -108,26 +110,34 @@ export const IconsWrapper = styled.div`
 `;
 
 export const SupportingText = styled.span`
-  ${() => getTypographyStyles('body2')};
+  ${() => getTypographyStyles('body', 'md')};
   display: block;
-  color: var(--clr-neutral);
+  color: var(--clr_text_secondary);
 `;
 
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
-  const { colors, border } = theme;
-  const clr_default_intensity = 200;
-  const clr_hover_intensity = 400;
-  const clr_focus_intensity = 200;
-  let colorFocus = colors[skin][clr_focus_intensity];
+  const { colors, border, scheme } = theme;
+  const { coreColors, palette, text } = colors;
+
+  let colorPrimary = coreColors[skin];
+  let colorHover = palette[skin][200];
+  let colorFocus = colorPrimary;
+  let clr_disabled = text.disabled;
+
   if (skin === 'neutral') {
-    colorFocus = colors.primary[clr_default_intensity];
+    colorPrimary = text.secondary;
+    colorHover =
+      scheme === 'light' ? palette.neutral[600] : palette.neutral[400];
+    colorFocus = palette.primary[300];
   }
+
   return css`
-    --clr-primary: ${colors[skin][clr_default_intensity]};
-    --clr-neutral: ${colors.neutral[clr_default_intensity]};
-    --clr-hover: ${colors[skin][clr_hover_intensity]};
-    --clr-disabled: ${colors.neutral[200]};
+    --clr-primary: ${colorPrimary};
+    --clr-hover: ${colorHover};
+    --clr-disabled: ${clr_disabled};
     --clr-focus: ${colorFocus};
+    --clr_text: ${text.primary};
+    --clr_text_secondary: ${text.secondary};
     --border-width: ${border.width.xs}px;
     --border-radius: ${border.radius.xs}px;
   `;

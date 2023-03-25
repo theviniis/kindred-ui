@@ -1,35 +1,18 @@
-import React from 'react';
+import { InputHTMLAttributes } from 'react';
 import { DefaultTheme } from 'styled-components';
-import { colors } from '../../../shared';
+import { SIZES, SKINS } from '../../../utils';
 
-type InputStringProps = Partial<
-  Record<
-    | 'id'
-    | 'name'
-    | 'type'
-    | 'label'
-    | 'placeholder'
-    | 'value'
-    | 'supportingText',
-    string
-  >
->;
-type InputBooleanProps = Partial<Record<'loading' | 'disabled', boolean>>;
+type InputStringProps = Partial<Record<'label' | 'supportingText', string>>;
+
 type InputIconsProps = Partial<Record<'startIcon' | 'endIcon', JSX.Element>>;
 
-export type SkinsProps = Exclude<
-  keyof typeof colors,
-  'gradients' | 'white' | 'black'
->;
-
-export type SizesProps = 'sm' | 'md' | 'lg';
 export interface InputProps
-  extends Exclude<React.HtmlHTMLAttributes<HTMLInputElement>, 'inputSize'>,
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>,
     InputStringProps,
-    InputBooleanProps,
     InputIconsProps {
-  skin?: SkinsProps;
-  size: SizesProps;
+  skin?: SKINS;
+  size: SIZES;
+  loading: boolean;
 }
 
 export interface InputSetSkinProps extends Pick<InputProps, 'skin'> {

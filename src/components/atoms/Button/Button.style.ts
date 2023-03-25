@@ -1,70 +1,75 @@
-import styled, { css } from 'styled-components';
-// import { getTypographyStyles } from '../Typography';
-import { ButtonProps, SetVariantProps } from './Button.types';
+import styled, { css, useTheme } from 'styled-components';
+import { SIZES } from '../../../utils';
+import { getContrastingColor } from '../../../utils/getContrastingColor';
+import { getTypographyStyles } from '../Typography';
+import * as T from './Button.types';
 
-export const Button = styled.button<Omit<ButtonProps, 'icon' | 'children'>>`
+export const Button = styled.button<T.ButtonProps>`
+  ${() => getTypographyStyles('label', 'lg')};
+  border: none;
+  background: none;
+  box-sizing: border-box;
+  cursor: pointer;
   display: flex;
-  gap: ${({ theme }) => theme.spacing.xs}px;
   align-items: center;
   flex-direction: row;
-  padding: ${({ theme }) => theme.spacing.xs}px
-    ${({ theme }) => theme.spacing.sm}px;
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-  border-radius: ${({ theme }) => theme.border.radius.xs}px;
-  border-style: solid;
-  border-width: ${({ theme }) => theme.border.width.xs}px;
+  justify-content: space-between;
   transition: ease-in-out 100ms;
-  ${({ theme, skin, variant, disabled }) =>
-    setVariant({ theme, skin, variant, disabled })};
+  ${({ skin, variant }) => setSkin({ skin, variant })};
+  ${({ size }) => setSize(size)};
 `;
 
-function setVariant({ theme, skin, variant }: SetVariantProps) {
-  const { colors } = theme;
-  const colorDefault = 100;
-  const colorHover = 400;
-  const colorFocus = 500;
-  const variantOptions = {
+function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
+  const { colors, border } = useTheme();
+  let colorPrimary = colors.coreColors[skin];
+  if (skin === 'neutral' && variant === 'ghost') {
+    colorPrimary = colors.text.primary;
+  }
+  const colorHover = colors.palette[skin][200];
+  const colorFocus = colors.palette[skin][400];
+  const textColor = getContrastingColor(colorPrimary);
+  const styles = {
     default: {
-      color: colors.white,
-      background: colors[skin][colorDefault],
-      border: colors[skin][colorDefault],
+      color: textColor,
+      background: colorPrimary,
+      borderColor: 'transparent',
       hover: {
-        color: colors.white,
-        background: colors[skin][colorHover],
-        border: colors[skin][colorHover],
+        color: textColor,
+        background: colorHover,
+        border: 'transparent',
       },
       focus: {
-        color: colors.white,
-        background: colors[skin][colorFocus],
-        border: colors[skin][colorFocus],
+        color: textColor,
+        background: colorFocus,
+        border: 'transparent',
       },
     },
-    stroke: {
-      color: colors[skin][colorDefault],
+    outlined: {
+      color: colorPrimary,
       background: 'transparent',
-      border: colors[skin][colorDefault],
+      borderColor: colorPrimary,
       hover: {
-        color: colors[skin][colorDefault],
-        background: colors[skin][colorHover],
-        border: colors[skin][colorDefault],
+        color: textColor,
+        background: colorHover,
+        border: colorPrimary,
       },
       focus: {
-        color: colors.white,
-        background: colors[skin][colorFocus],
-        border: colors[skin][colorFocus],
+        color: textColor,
+        background: colorFocus,
+        border: colorFocus,
       },
     },
     ghost: {
-      color: colors[skin][colorDefault],
+      color: colorPrimary,
       background: 'transparent',
-      border: 'transparent',
+      borderColor: 'transparent',
       hover: {
-        color: colors[skin][colorHover],
+        color: colorHover,
         background: 'transparent',
         border: 'transparent',
       },
       focus: {
-        color: colors[skin][colorFocus],
+        color: colorFocus,
         background: 'transparent',
         border: 'transparent',
       },
@@ -72,25 +77,44 @@ function setVariant({ theme, skin, variant }: SetVariantProps) {
   };
 
   return css`
-    color: ${variantOptions[variant].color};
-    background-color: ${variantOptions[variant].background};
-    border-color: ${variantOptions[variant].border};
+    border-style: solid;
+    border-width: ${border.width.xs}px;
+    border-radius: ${border.radius.xs}px;
+    border-color: ${styles[variant].borderColor};
+    background-color: ${styles[variant].background};
+    color: ${styles[variant].color};
     &:hover {
-      color: ${variantOptions[variant].hover.color};
-      background-color: ${variantOptions[variant].hover.background};
-      border-color: ${variantOptions[variant].hover.border};
+      background-color: ${styles[variant].hover.background};
+      border-color: ${styles[variant].hover.border};
+      color: ${styles[variant].hover.color};
     }
-    /* &:focus, */
-    &:active {
-      color: ${variantOptions[variant].focus.color};
-      background-color: ${variantOptions[variant].focus.background};
-      border-color: ${variantOptions[variant].focus.border};
+    &:focus {
+      background-color: ${styles[variant].focus.background};
+      border-color: ${styles[variant].focus.border};
+      color: ${styles[variant].focus.color};
     }
+  `;
+}
 
-    &:disabled {
-      background-color: ${colors.neutral[200]};
-      border-color: ${colors.neutral[200]};
-      color: ${colors.neutral[900]};
-    }
+function setSize(size: Partial<SIZES> = 'md') {
+  const { spacing } = useTheme();
+  const styles = {
+    sm: {
+      padding: spacing.xs,
+      height: spacing.md,
+    },
+    md: {
+      padding: spacing.sm,
+      height: spacing.lg,
+    },
+    lg: {
+      padding: spacing.md,
+      height: spacing.xlg,
+    },
+  };
+  return css`
+    padding-inline: ${styles[size].padding}px;
+    gap: ${styles[size].padding}px;
+    height: ${styles[size].height}px;
   `;
 }

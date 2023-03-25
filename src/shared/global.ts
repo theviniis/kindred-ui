@@ -1,9 +1,5 @@
-import { createGlobalStyle, css } from 'styled-components';
-import { typography } from './theme';
-
-export const bodyStyles = css`
-  font-family: ${typography.type.primary};
-`;
+import { createGlobalStyle } from 'styled-components';
+import { typesystem } from './theme';
 
 export const fontUrl =
   'https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap';
@@ -11,10 +7,9 @@ export const fontUrl =
 export const GlobalStyle = createGlobalStyle`
   html {
     scroll-behavior: smooth;
-    font-family: ${typography.type.secondary};
   }
   body {
-    ${bodyStyles};
+    font-family: ${typesystem.body.lg.fontFamily};
   }
   :focus:not(:focus-visible) {
     outline: none;
@@ -22,7 +17,11 @@ export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
     margin: 0;
+    margin-block: 0;
+    margin-inline: 0;
     padding: 0;
+    padding-block: 0;
+    padding-inline: 0;
   }
   ul, li {
     list-style: none;
@@ -40,5 +39,9 @@ export const GlobalStyle = createGlobalStyle`
   }
   label, span {
     display: inline-block;
+  }
+  img {
+    display: block;
+    width: 100%;
   }
 `;

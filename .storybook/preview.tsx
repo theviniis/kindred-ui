@@ -1,9 +1,9 @@
-import React from 'react';
-import { lightTheme, darkTheme } from '../src/shared';
-import { darkTheme as storybookDarkTheme } from '../src/shared';
+import React, { JSXElementConstructor } from 'react';
+import { lightTheme, darkTheme, themes } from '../src/shared';
 import { ThemeProvider } from 'styled-components';
-import { ViniisContext } from '../src/context';
+import { KindredUIContext } from '../src/context';
 import { SchemeWrapper, Flex } from './styles';
+import { JSXElement } from '@babel/types';
 
 // export const parameters = {
 //   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -25,59 +25,47 @@ export const globalTypes = {
     defaultValue: 'both',
     toolbar: {
       icon: 'circlehollow',
-      // Array of plain string values or MenuItem shape (see below)
       items: ['light', 'dark', 'both'],
-      // Property that specifies if the name of the item will be displayed
-      // showName: true,
-      // Change title based on selected value
       dynamicTitle: true,
     },
   },
 };
 
 const withThemeProvider = (Story, context) => {
-  let theme = context.globals.theme as 'light' | 'dark' | 'both';
-  function Content() {
-    switch (theme) {
-      case 'light':
-        return (
-          <ThemeProvider theme={lightTheme}>
-            <Flex>
-              <Story />
-            </Flex>
-          </ThemeProvider>
-        );
-      case 'dark':
-        return (
-          <ThemeProvider theme={darkTheme}>
-            <Flex>
-              <Story />
-            </Flex>
-          </ThemeProvider>
-        );
-      default:
-        return (
-          <SchemeWrapper>
-            <ThemeProvider theme={lightTheme}>
-              <Flex>
-                <Story />
-              </Flex>
-            </ThemeProvider>
-            <ThemeProvider theme={darkTheme}>
-              <Flex>
-                <Story />
-              </Flex>
-            </ThemeProvider>
-          </SchemeWrapper>
-        );
-    }
-  }
+  let scheme = context.globals.theme as 'light' | 'dark' | 'both';
+  const lookup = {
+    light: (
+      <KindredUIContext scheme="light">
+        <Flex>
+          <Story {...Story} {...context} />
+        </Flex>
+      </KindredUIContext>
+    ),
+    dark: (
+      <KindredUIContext scheme="dark">
+        <Flex>
+          <Story {...Story} {...context} />
+        </Flex>
+      </KindredUIContext>
+    ),
+    both: (
+      <SchemeWrapper>
+        <KindredUIContext scheme="light">
+          <Flex>
+            <Story {...Story} {...context} />
+          </Flex>
+        </KindredUIContext>
+        <KindredUIContext scheme="dark">
+          <Flex>
+            <Story {...Story} {...context} />
+          </Flex>
+        </KindredUIContext>
+      </SchemeWrapper>
+    ),
+  } as const;
+  const Component = lookup[scheme];
 
-  return (
-    <ViniisContext>
-      <Content />
-    </ViniisContext>
-  );
+  return <>{Component}</>;
 };
 
 export const decorators = [withThemeProvider];

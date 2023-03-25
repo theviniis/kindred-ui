@@ -1,6 +1,6 @@
 import { Story } from '@storybook/react';
 import React from 'react';
-import { themes } from '../../';
+import { themes } from '../../..';
 import { ColorPalette, ColorItem } from '@storybook/addon-docs';
 import styled, { css } from 'styled-components';
 
@@ -10,11 +10,11 @@ const Wrapper = styled.div<{ scheme: 'light' | 'dark' }>`
     background: ${themes[scheme].colors.background};
     border-radius: ${themes[scheme].border.radius.xs + 'px'};
     .css-1cic1f4 {
-      color: ${themes[scheme].colors.foreground} !important;
+      color: ${themes[scheme].colors.text} !important;
     }
     div,
     div::before {
-      color: ${themes[scheme].colors.neutral[500]} !important;
+      color: ${themes[scheme].colors.palette.neutral[500]} !important;
     }
     .css-wk618k {
       background: none;

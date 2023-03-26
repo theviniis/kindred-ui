@@ -35,7 +35,6 @@ export const Input: React.FC<T.InputProps> = ({
           name={name}
           label={label}
           placeholder={placeholder}
-          aria-describedby={id + 'supportingText'}
           {...props}
         />
         <S.Fieldset aria-hidden="true">
@@ -50,11 +49,7 @@ export const Input: React.FC<T.InputProps> = ({
           </S.IconsWrapper>
         )}
       </S.InputContainer>
-      {supportingText && (
-        <S.SupportingText id={id + 'supportingText'}>
-          {supportingText}
-        </S.SupportingText>
-      )}
+      {supportingText && <S.SupportingText>{supportingText}</S.SupportingText>}
     </S.Wrapper>
   );
 };

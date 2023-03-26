@@ -4,7 +4,7 @@ import * as S from './Avatar.styles';
 
 export const Avatar: React.FC<T.AvatarProps> = ({
   src,
-  alt,
+  alt = "User's avatar image",
   size = 'md',
   ...props
 }) => {

@@ -2,7 +2,6 @@ import React from 'react';
 import { KindredContext } from '../src/context';
 import { SchemeWrapper, Flex } from './styles';
 import { SBdarkTheme } from './manager';
-import { createTheme } from '../src';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -32,40 +31,25 @@ export const globalTypes = {
 
 const withThemeProvider = (Story, context) => {
   let scheme = context.globals.theme as 'light' | 'dark' | 'both';
-
+  const StoryWrapper = (
+    <>
+      <Flex>
+        <Story {...Story} {...context} />
+      </Flex>
+    </>
+  );
   const lookup = {
-    light: (
-      <KindredContext scheme="light">
-        <Flex>
-          <Story {...Story} {...context} />
-        </Flex>
-      </KindredContext>
-    ),
-    dark: (
-      <KindredContext scheme="dark">
-        <Flex>
-          <Story {...Story} {...context} />
-        </Flex>
-      </KindredContext>
-    ),
+    light: <KindredContext scheme="light">{StoryWrapper}</KindredContext>,
+    dark: <KindredContext scheme="dark">{StoryWrapper}</KindredContext>,
     both: (
       <SchemeWrapper>
-        <KindredContext scheme="light">
-          <Flex>
-            <Story {...Story} {...context} />
-          </Flex>
-        </KindredContext>
-        <KindredContext scheme="dark">
-          <Flex>
-            <Story {...Story} {...context} />
-          </Flex>
-        </KindredContext>
+        <KindredContext scheme="light">{StoryWrapper}</KindredContext>
+        <KindredContext scheme="dark">{StoryWrapper}</KindredContext>
       </SchemeWrapper>
     ),
-  } as const;
+  };
   const Component = lookup[scheme];
-
-  return <>{Component}</>;
+  return Component;
 };
 
 export const decorators = [withThemeProvider];

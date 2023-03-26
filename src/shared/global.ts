@@ -27,7 +27,10 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   button {
-    all: unset;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    cursor: pointer;
   }
   input, fieldset {
     font: inherit;

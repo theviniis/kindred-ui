@@ -63,7 +63,7 @@ export const Dark: Story = () => {
                 ([k, v]) => {
                   return (
                     <ColorItem
-                      subtitle={`theme.colors.palette${k}`}
+                      subtitle={`theme.colors.palette.${k}`}
                       key={k}
                       title={k}
                       colors={Object.entries(v).reduce(

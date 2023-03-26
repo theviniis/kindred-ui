@@ -9,6 +9,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   variant?: BUTTON_VARIANTS;
   disabled?: boolean;
   size?: SIZES;
+  fullWidth?: boolean;
 }
 
 export interface SetVariantProps

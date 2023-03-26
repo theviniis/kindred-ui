@@ -8,6 +8,7 @@ export const Button: React.FC<T.ButtonProps> = ({
   variant = 'default',
   disabled = false,
   size = 'md',
+  fullWidth = false,
   ...props
 }) => {
   return (
@@ -16,6 +17,7 @@ export const Button: React.FC<T.ButtonProps> = ({
       variant={variant}
       disabled={disabled}
       size={size}
+      fullWidth={fullWidth}
       {...props}
     >
       {children}

@@ -10,6 +10,7 @@ export const Button = styled.button<T.ButtonProps>`
   display: flex;
   align-items: center;
   flex-direction: row;
+  justify-content: center;
   gap: var(--padding);
   border-style: solid;
   color: var(--clr-text);
@@ -18,6 +19,7 @@ export const Button = styled.button<T.ButtonProps>`
   padding-inline: var(--padding);
   height: var(--height);
   transition: ease-in-out 100ms;
+  width: ${({ fullWidth }) => fullWidth && '100%'};
   &:hover {
     color: var(--clr-text-hover);
     background-color: var(--clr-background-hover);
@@ -113,22 +115,22 @@ function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
 
 function setSize(size: Partial<SIZES> = 'md') {
   const { spacing } = useTheme();
-  const styles = {
+  const sizes = {
     sm: {
       padding: spacing.xs,
-      height: spacing.md,
+      height: spacing.lg,
     },
     md: {
       padding: spacing.sm,
-      height: spacing.lg,
+      height: spacing.xlg,
     },
     lg: {
       padding: spacing.md,
-      height: spacing.xlg,
+      height: spacing.xxlg,
     },
   };
   return css`
-    --padding: ${styles[size].padding}px;
-    --height: ${styles[size].height}px;
+    --padding: ${sizes[size].padding}px;
+    --height: ${sizes[size].height}px;
   `;
 }

@@ -9,7 +9,6 @@ export const SchemeWrapper = styled.div`
 export const Flex = styled.div`
   display: flex;
   justify-content: center;
-  padding: ${({ theme }) => theme.spacing.lg}px 0
-    ${({ theme }) => theme.spacing.lg}px;
+  padding: ${({ theme }) => theme.spacing.lg}px;
   background-color: ${({ theme }) => theme.colors.background};
 `;

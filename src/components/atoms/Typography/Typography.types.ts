@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
-import { typography, typesystem } from '../../../shared';
-import { SIZES } from '../../../utils';
+import { typography, typesystem, SIZES } from '../../../';
 
 export type TYPOGRAPHY_VARIANTS = keyof typeof typesystem;
 

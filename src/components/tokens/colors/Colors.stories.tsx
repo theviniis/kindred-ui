@@ -11,8 +11,8 @@ const Wrapper = styled.div`
   * div {
     color: ${({ theme }) => theme.colors.text.primary};
   }
-  .css-1k3ehpp,
-  .css-1mmxhot span {
+  .css-h1uigl,
+  .css-1lv261h span {
     color: ${({ theme }) => theme.colors.text.secondary} !important;
   }
   .css-wk618k,
@@ -37,7 +37,7 @@ export const Dark: Story = () => {
                   subtitle={`theme.colors.${k}`}
                   key={k}
                   title={k}
-                  colors={{ [k]: v }}
+                  colors={{ [k]: v.toUpperCase() }}
                 />
               );
             } else if (typeof v === 'object' && !k.match(/palette/i)) {
@@ -105,7 +105,7 @@ export const Light: Story = () => {
                   subtitle={`theme.colors.${k}`}
                   key={k}
                   title={k}
-                  colors={{ [k]: v }}
+                  colors={{ [k]: v.toUpperCase() }}
                 />
               );
             } else if (typeof v === 'object' && !k.match(/palette/i)) {
@@ -140,7 +140,7 @@ export const Light: Story = () => {
                           (value.match(/^#/) ||
                             value.match(/^rgb/) ||
                             key.match(/color/i))
-                            ? { ...acc, [key]: value }
+                            ? { ...acc, [key]: value.toUpperCase() }
                             : acc,
                         {}
                       )}

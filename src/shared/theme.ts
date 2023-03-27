@@ -341,7 +341,7 @@ export const colors = {
   text: {
     primary: palette.neutral[800],
     secondary: palette.neutral[500],
-    disabled: palette.neutral[400],
+    disabled: palette.neutral[300],
   },
   coreColors: {
     neutral: palette.neutral[500],

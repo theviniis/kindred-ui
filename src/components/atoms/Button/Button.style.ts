@@ -30,6 +30,13 @@ export const Button = styled.button<T.ButtonProps>`
     background-color: var(--clr-background-focus);
     border-color: var(--clr-border-focus);
   }
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: var(--clr-text-secondary);
+    background-color: var(--clr-text-disabled);
+    border-color: var(--clr-text-disabled);
+  }
   ${({ theme }) => css`
     border-width: ${theme.border.width.xs}px;
     border-radius: ${theme.border.radius.xs}px;
@@ -99,13 +106,16 @@ function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
   return css`
     --clr-text: ${styles[variant].color};
     --clr-background: ${styles[variant].background};
+    --clr-background-hover: ${styles[variant].hover.background};
+    --clr-background-focus: ${styles[variant].focus.background};
+    --clr-border-hover: ${styles[variant].hover.border};
     --clr-border: ${styles[variant].border};
     --clr-text-hover: ${styles[variant].hover.color};
-    --clr-background-hover: ${styles[variant].hover.background};
-    --clr-border-hover: ${styles[variant].hover.border};
     --clr-text-focus: ${styles[variant].focus.color};
-    --clr-background-focus: ${styles[variant].focus.background};
     --clr-border-focus: ${styles[variant].focus.border};
+
+    --clr-text-secondary: ${colors.text.secondary};
+    --clr-text-disabled: ${colors.text.disabled};
   `;
 }
 

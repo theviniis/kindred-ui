@@ -1,6 +1,6 @@
 import { addons } from '@storybook/addons';
 import { create } from '@storybook/theming';
-import { border, colors, palette, typography } from '../src';
+import { border, colors, palette, themes, typography } from '../src';
 
 const branding = {
   brandTitle: 'KindredUI',
@@ -36,6 +36,14 @@ const SBdarkTheme = create({
   base: 'dark',
   appBg: palette.neutral[900],
   appContentBg: palette.neutral[800],
+  textColor: themes.dark.colors.text.primary,
+  barTextColor: themes.dark.colors.text.secondary,
+  textInverseColor: themes.light.colors.text.primary,
+  // input
+  inputBg: palette.neutral[900],
+  inputBorder: palette.neutral[700],
+  inputTextColor: themes.dark.colors.text.primary,
+  inputBorderRadius: 8,
 });
 
 addons.setConfig({

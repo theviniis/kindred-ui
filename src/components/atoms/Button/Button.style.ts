@@ -1,5 +1,5 @@
 import styled, { css, useTheme } from 'styled-components';
-import { getContrastingColor, SIZES } from '../../../utils';
+import { darken, getContrastingColor, SIZES } from '../../../utils';
 import { getTypographyStyles } from '../Typography';
 import * as T from './Button.types';
 
@@ -39,8 +39,8 @@ export const Button = styled.button<T.ButtonProps>`
 function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
   const { colors } = useTheme();
   let colorPrimary = colors.coreColors[skin];
-  let colorHover = colors.palette[skin][200];
-  let colorFocus = colors.palette[skin][400];
+  let colorHover = darken(colorPrimary);
+  let colorFocus = darken(colorHover);
   const colorTextPrimary = getContrastingColor(colorPrimary);
 
   if (skin === 'neutral') {

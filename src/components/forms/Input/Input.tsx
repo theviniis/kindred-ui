@@ -16,6 +16,7 @@ export const Input: React.FC<T.InputProps> = ({
   endIcon,
   loading = false,
   disabled = false,
+  required = false,
   onChange,
   onBlur,
   ...props
@@ -23,7 +24,10 @@ export const Input: React.FC<T.InputProps> = ({
   return (
     <S.Wrapper skin={skin} startIcon={startIcon} endIcon={endIcon} size={size}>
       <S.InputContainer className="input-container">
-        <S.Label htmlFor={id}>{label}</S.Label>
+        <S.Label htmlFor={id}>
+          {label}
+          {required && ' *'}
+        </S.Label>
         <S.Input
           aria-invalid="false"
           id={id}
@@ -37,9 +41,13 @@ export const Input: React.FC<T.InputProps> = ({
           placeholder={placeholder}
           {...props}
         />
-        <S.Fieldset aria-hidden="true">
+
+        <S.Fieldset aria-hidden="true" label={label}>
           <legend>
-            <span>{label}</span>
+            <span>
+              {label}
+              {required && ' *'}
+            </span>
           </legend>
         </S.Fieldset>
         {(startIcon || endIcon) && (

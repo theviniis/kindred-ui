@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { getTypographyStyles } from '../../';
+import { darken, lighten } from '../../../utils';
 import * as T from './Input.types';
 
 type InputWrapperProps = Pick<
@@ -27,8 +28,8 @@ export const InputContainer = styled.div`
     label {
       transform: none;
       top: 0;
-      left: calc(var(--padding) + 0.25px);
-      transform-origin: top;
+      left: var(--padding);
+      transform-origin: top left;
       transform: scale(0.75) translateY(-50%);
       color: var(--clr-focus);
     }
@@ -60,7 +61,7 @@ export const Label = styled.label`
   top: 50%;
   left: var(--padding-left);
   transform: translateY(-50%);
-  transition: ease-in-out 100ms;
+  transition: 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
   color: var(--clr_text);
 `;
 
@@ -75,22 +76,34 @@ export const Input = styled.input<Pick<T.InputProps, 'label'>>`
   }
 `;
 
-export const Fieldset = styled.fieldset`
+export const Fieldset = styled.fieldset<Pick<T.InputProps, 'label'>>`
   pointer-events: none;
   position: absolute;
   inset: 0;
-  top: 0;
   border: solid;
   border-width: var(--border-width);
   border-radius: var(--border-radius);
-  padding-inline: var(--padding);
+  padding-inline: 8.775px;
   border-color: var(--clr-primary);
-  transition: border-color ease-in-out 100ms;
+  transition: border-color 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
   legend {
     display: block;
     visibility: hidden;
-    max-width: 0;
     height: 0;
+    max-width: 0;
+    font-size: 0.75em;
+    white-space: nowrap;
+    span {
+      display: inline-block;
+      opacity: 0;
+      visibility: visible;
+      ${({ label }) =>
+        label &&
+        css`
+          padding-left: 5px;
+          padding-right: 5px;
+        `}
+    }
   }
 `;
 
@@ -120,14 +133,16 @@ function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   const { coreColors, palette, text } = colors;
 
   let colorPrimary = coreColors[skin];
-  let colorHover = palette[skin][200];
+  let colorHover = darken(colorPrimary);
   let colorFocus = colorPrimary;
   let clr_disabled = text.disabled;
 
   if (skin === 'neutral') {
     colorPrimary = text.secondary;
     colorHover =
-      scheme === 'light' ? palette.neutral[600] : palette.neutral[400];
+      scheme === 'light'
+        ? darken(colorPrimary, 0.2)
+        : lighten(colorPrimary, 0.2);
     colorFocus = palette.fuchsia[300];
   }
 
@@ -136,9 +151,9 @@ function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
     --clr-hover: ${colorHover};
     --clr-disabled: ${clr_disabled};
     --clr-focus: ${colorFocus};
-    --clr_text: ${text.primary};
-    --clr_text_secondary: ${text.secondary};
-    --border-width: ${border.width.xs}px;
+    --clr_text: ${text.secondary};
+    --clr_text_secondary: ${text.disabled};
+    --border-width: ${border.width.sm}px;
     --border-radius: ${border.radius.xs}px;
   `;
 }

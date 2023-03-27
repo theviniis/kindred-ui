@@ -30,7 +30,7 @@ const SkinsTemplate: Story<InputProps> = args => {
           {...args}
           key={skin}
           skin={skin}
-          label={skin}
+          label={skin.charAt(0).toUpperCase() + skin.slice(1)}
           value={value}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setValue(e.target.value)

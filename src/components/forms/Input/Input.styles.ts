@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { getTypographyStyles } from '../../';
-import { darken, lighten } from '../../../utils';
 import * as T from './Input.types';
 
 type InputWrapperProps = Pick<
@@ -129,24 +128,19 @@ export const SupportingText = styled.span`
 `;
 
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
-  const { colors, border, scheme } = theme;
-  const { coreColors, palette, text } = colors;
+  const { colors, border } = theme;
+  const { palette, text } = colors;
 
-  let colorPrimary = coreColors[skin];
-  let colorHover = darken(colorPrimary);
-  let colorFocus = colorPrimary;
+  let colorPrimary = palette[skin][500];
+  let colorHover = palette[skin][600];
+  let colorFocus = palette[skin][500];
   let clr_disabled = text.disabled;
   let clr_text = colorPrimary;
 
   if (skin === 'neutral') {
-    colorHover =
-      scheme === 'light'
-        ? darken(colorPrimary, 0.2)
-        : lighten(colorPrimary, 0.2);
-    colorFocus = palette.fuchsia[300];
-    colorPrimary = text.secondary;
-    clr_text = text.secondary;
+    colorFocus = palette.fuchsia[500];
   }
+
   return css`
     --clr-primary: ${colorPrimary};
     --clr-hover: ${colorHover};

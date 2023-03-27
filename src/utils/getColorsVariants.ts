@@ -33,34 +33,37 @@ type ColorVariants = {
   [key in ColorVariantKeys]: string;
 };
 
-export function getColorsVariants(color: string): ColorVariants | null {
+export function getColorsVariants(
+  color: string,
+  increment: number
+): ColorVariants | null {
   const hslColor = parseHSLColor(color);
   if (!hslColor) {
     return null;
   }
   const { h, s, l } = hslColor;
   const variants: ColorVariants = {
-    '50': '',
-    '100': '',
-    '200': '',
-    '300': '',
-    '400': '',
-    '500': '',
-    '600': '',
-    '700': '',
-    '800': '',
-    '900': '',
+    50: '',
+    100: '',
+    200: '',
+    300: '',
+    400: '',
+    500: '',
+    600: '',
+    700: '',
+    800: '',
+    900: '',
   };
-  variants['50'] = hslToHex(h, s, l + 20);
-  variants['100'] = hslToHex(h, s, l + 16);
-  variants['200'] = hslToHex(h, s, l + 12);
-  variants['300'] = hslToHex(h, s, l + 8);
-  variants['400'] = hslToHex(h, s, l + 4);
-  variants['500'] = hslToHex(h, s, l);
-  variants['600'] = hslToHex(h, s, l - 4);
-  variants['700'] = hslToHex(h, s, l - 8);
-  variants['800'] = hslToHex(h, s, l - 12);
-  variants['900'] = hslToHex(h, s, l - 16);
+  variants[50] = hslToHex(h, s, l + increment * 5);
+  variants[100] = hslToHex(h, s, l + increment * 4);
+  variants[200] = hslToHex(h, s, l + increment * 3);
+  variants[300] = hslToHex(h, s, l + increment * 2);
+  variants[400] = hslToHex(h, s, l + increment);
+  variants[500] = hslToHex(h, s, l);
+  variants[600] = hslToHex(h, s, l - increment);
+  variants[700] = hslToHex(h, s, l - increment * 2);
+  variants[800] = hslToHex(h, s, l - increment * 3);
+  variants[900] = hslToHex(h, s, l - increment * 4);
   return variants;
 }
 function hslToHex(h: number, s: number, l: number): string {

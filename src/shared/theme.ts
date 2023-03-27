@@ -328,8 +328,8 @@ export const colors = {
   black: '#000000',
   text: {
     primary: palette.neutral[800],
-    secondary: palette.neutral[700],
-    disabled: palette.neutral[300],
+    secondary: palette.neutral[500],
+    disabled: palette.neutral[400],
   },
   coreColors: {
     fuchsia: palette.fuchsia[100],
@@ -372,8 +372,8 @@ export const darkTheme: CustomTheme = {
     background: palette.neutral[900],
     text: {
       primary: palette.neutral[200],
-      secondary: palette.neutral[300],
-      disabled: palette.neutral[700],
+      secondary: palette.neutral[500],
+      disabled: palette.neutral[600],
     },
   },
   ...theme,

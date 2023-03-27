@@ -344,13 +344,13 @@ export const colors = {
     disabled: palette.neutral[400],
   },
   coreColors: {
+    neutral: palette.neutral[500],
     fuchsia: palette.fuchsia[500],
     blue: palette.blue[500],
     yellow: palette.yellow[500],
     cyan: palette.cyan[500],
     green: palette.green[500],
     red: palette.red[500],
-    neutral: palette.neutral[500],
   },
   palette: {
     ...palette,

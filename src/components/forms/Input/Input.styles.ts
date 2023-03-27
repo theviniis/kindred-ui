@@ -136,22 +136,23 @@ function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   let colorHover = darken(colorPrimary);
   let colorFocus = colorPrimary;
   let clr_disabled = text.disabled;
+  let clr_text = colorPrimary;
 
   if (skin === 'neutral') {
-    colorPrimary = text.secondary;
     colorHover =
       scheme === 'light'
         ? darken(colorPrimary, 0.2)
         : lighten(colorPrimary, 0.2);
     colorFocus = palette.fuchsia[300];
+    colorPrimary = text.secondary;
+    clr_text = text.secondary;
   }
-
   return css`
     --clr-primary: ${colorPrimary};
     --clr-hover: ${colorHover};
     --clr-disabled: ${clr_disabled};
     --clr-focus: ${colorFocus};
-    --clr_text: ${text.secondary};
+    --clr_text: ${clr_text};
     --clr_text_secondary: ${text.disabled};
     --border-width: ${border.width.sm}px;
     --border-radius: ${border.radius.xs}px;

@@ -202,6 +202,7 @@ export const border = {
 
 export const breakpoints = {
   xs: {
+    width: 0,
     columns: 4,
   },
   sm: {

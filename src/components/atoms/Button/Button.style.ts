@@ -113,7 +113,6 @@ function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
     --clr-text-hover: ${styles[variant].hover.color};
     --clr-text-focus: ${styles[variant].focus.color};
     --clr-border-focus: ${styles[variant].focus.border};
-
     --clr-text-secondary: ${colors.text.secondary};
     --clr-text-disabled: ${colors.text.disabled};
   `;

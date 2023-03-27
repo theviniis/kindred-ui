@@ -72,7 +72,7 @@ export const Dark: Story = () => {
                           (value.match(/^#/) ||
                             value.match(/^rgb/) ||
                             key.match(/color/i))
-                            ? { ...acc, [key]: value }
+                            ? { ...acc, [key]: value.toUpperCase() }
                             : acc,
                         {}
                       )}
@@ -120,7 +120,7 @@ export const Light: Story = () => {
                       (value.match(/^#/) ||
                         value.match(/^rgb/) ||
                         key.match(/color/i))
-                        ? { ...acc, [key]: value }
+                        ? { ...acc, [key]: value.toUpperCase() }
                         : acc,
                     {}
                   )}

@@ -1,6 +1,8 @@
 import React from 'react';
 import * as T from './Input.types';
 import * as S from './Input.styles';
+import { Icon } from '../../atoms';
+import { colors } from '../../../shared';
 
 export const Input: React.FC<T.InputProps> = ({
   id = React.useId() + '-input',
@@ -17,12 +19,18 @@ export const Input: React.FC<T.InputProps> = ({
   loading = false,
   disabled = false,
   required = false,
+  hasError,
   onChange,
   onBlur,
   ...props
 }) => {
   return (
-    <S.Wrapper skin={skin} startIcon={startIcon} endIcon={endIcon} size={size}>
+    <S.Wrapper
+      skin={hasError ? 'red' : skin}
+      startIcon={startIcon}
+      endIcon={endIcon}
+      size={size}
+    >
       <S.InputContainer className="input-container">
         <S.Label htmlFor={id}>
           {label}
@@ -50,14 +58,18 @@ export const Input: React.FC<T.InputProps> = ({
             </span>
           </legend>
         </S.Fieldset>
-        {(startIcon || endIcon) && (
+        {(startIcon || endIcon || hasError) && (
           <S.IconsWrapper>
             <span>{startIcon && startIcon}</span>
-            <span>{endIcon && endIcon}</span>
+            <span>{(hasError && <S.ErrorIcon />) || (endIcon && endIcon)}</span>
           </S.IconsWrapper>
         )}
       </S.InputContainer>
-      {supportingText && <S.SupportingText>{supportingText}</S.SupportingText>}
+      {supportingText && (
+        <S.SupportingText hasError={hasError}>
+          {supportingText}
+        </S.SupportingText>
+      )}
     </S.Wrapper>
   );
 };

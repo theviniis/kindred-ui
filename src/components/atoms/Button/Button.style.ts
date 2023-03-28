@@ -38,8 +38,8 @@ export const Button = styled.button<T.ButtonProps>`
     border-color: var(--clr-text-disabled);
   }
   ${({ theme }) => css`
-    border-width: ${theme.border.width.xs}px;
-    border-radius: ${theme.border.radius.xs}px;
+    border-width: ${theme.border.width.xs};
+    border-radius: ${theme.border.radius.xs};
   `};
 `;
 
@@ -135,7 +135,7 @@ function setSize(size: Partial<SIZES> = 'md') {
     },
   };
   return css`
-    --padding: ${sizes[size].padding}px;
-    --height: ${sizes[size].height}px;
+    --padding: ${sizes[size].padding};
+    --height: ${sizes[size].height};
   `;
 }

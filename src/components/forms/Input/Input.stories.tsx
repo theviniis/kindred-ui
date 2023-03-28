@@ -82,23 +82,29 @@ export const Sizes = SizesTemplate.bind({});
 export const SupportingText = Template.bind({});
 SupportingText.args = {
   supportingText: 'supporting text',
-  placeholder: 'Type something...',
+  label: 'Type something...',
 };
 
 export const StartIcon = Template.bind({});
 StartIcon.args = {
-  startIcon: <Icon onClick={() => console.log('start icon')} />,
-  placeholder: 'Type something...',
+  startIcon: <Icon icon="FiEye" onClick={() => console.log('start icon')} />,
+  label: 'Type something...',
 };
 
 export const EndIcon = Template.bind({});
 EndIcon.args = {
-  endIcon: <Icon onClick={() => console.log('end icon')} />,
-  placeholder: 'Type something...',
+  endIcon: <Icon icon="FiEye" onClick={() => console.log('end icon')} />,
+  label: 'Type something...',
+};
+
+export const Error = Template.bind({});
+Error.args = {
+  label: 'Error',
+  hasError: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  placeholder: 'disabled',
+  label: 'disabled',
   disabled: true,
 };

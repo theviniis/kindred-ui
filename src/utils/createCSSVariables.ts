@@ -25,6 +25,7 @@ export function createCSSVariables({ theme }: { theme: DefaultTheme }) {
     'colors',
     'border',
     'spacing',
+    'size',
     'typesystem',
     'typography',
     'breakpoints',

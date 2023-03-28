@@ -19,8 +19,8 @@ const Template = ({ theme = 'light' }: { theme: 'light' | 'dark' }) => {
                   {item.type}
                 </Typography>
                 <span>size: {item.size};</span>
-                <span>font-size: {item.fontSize}px;</span>
-                <span>line-height: {item.lineHeight}px;</span>
+                <span>font-size: {item.fontSize};</span>
+                <span>line-height: {item.lineHeight};</span>
                 <span>font-weight: {item.weight};</span>
               </S.InfoContainer>
               <S.Typography

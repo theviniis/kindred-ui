@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { getTypographyStyles } from '../../';
+import { getTypographyStyles, Icon } from '../../';
 import * as T from './Input.types';
 
 type InputWrapperProps = Pick<
@@ -61,7 +61,7 @@ export const Label = styled.label`
   left: var(--padding-left);
   transform: translateY(-50%);
   transition: 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
-  color: var(--clr_text);
+  color: var(--clr-text);
 `;
 
 export const Input = styled.input<Pick<T.InputProps, 'label'>>`
@@ -70,7 +70,7 @@ export const Input = styled.input<Pick<T.InputProps, 'label'>>`
   padding-inline-end: var(--padding-right);
   &::placeholder {
     font: inherit;
-    color: var(--clr_text_secondary);
+    color: var(--clr-text-secondary);
     visibility: ${({ label }) => !!label && 'hidden'};
   }
 `;
@@ -118,13 +118,21 @@ export const IconsWrapper = styled.div`
   span {
     cursor: pointer;
     pointer-events: initial;
+    display: grid;
+    place-content: center;
   }
 `;
 
-export const SupportingText = styled.span`
+export const SupportingText = styled.span<Pick<T.InputProps, 'hasError'>>`
   ${() => getTypographyStyles('body', 'md')};
   display: block;
-  color: var(--clr_text_secondary);
+  color: var(--clr-text-secondary);
+  margin-block-start: var(--spacing-xs);
+  ${({ hasError }) => hasError && 'color: var(--clr-error)'};
+`;
+
+export const ErrorIcon = styled(Icon).attrs({ icon: 'FiAlertTriangle' })`
+  color: var(--clr-error) !important;
 `;
 
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
@@ -134,22 +142,23 @@ function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   let colorPrimary = palette[skin][500];
   let colorHover = palette[skin][600];
   let colorFocus = palette[skin][500];
-  let clr_disabled = text.disabled;
-  let clr_text = colorPrimary;
+  let colorDisabled = text.disabled;
+  let colorText = colorPrimary;
 
   if (skin === 'neutral') {
-    colorFocus = palette.fuchsia[500];
+    colorFocus = palette.pink[500];
   }
 
   return css`
     --clr-primary: ${colorPrimary};
     --clr-hover: ${colorHover};
-    --clr-disabled: ${clr_disabled};
     --clr-focus: ${colorFocus};
-    --clr_text: ${clr_text};
-    --clr_text_secondary: ${text.disabled};
-    --border-width: ${border.width.sm}px;
-    --border-radius: ${border.radius.xs}px;
+    --clr-disabled: ${colorDisabled};
+    --clr-error: ${colors.coreColors.red};
+    --clr-text: ${colorText};
+    --clr-text-secondary: ${text.disabled};
+    --border-width: ${border.width.sm};
+    --border-radius: ${border.radius.xs};
   `;
 }
 
@@ -160,7 +169,7 @@ function getPadding({ theme, startIcon, endIcon, size }: T.GetPaddingProps) {
     md: spacing.xlg,
     lg: spacing.xxlg,
   };
-  const default_padding = spacing.xs;
+  const default_padding = parseInt(spacing.xs, 10);
   const icon_size = default_padding;
   let padding_left = default_padding;
   let padding_right = default_padding;
@@ -170,7 +179,7 @@ function getPadding({ theme, startIcon, endIcon, size }: T.GetPaddingProps) {
     padding_right += default_padding + icon_size;
   }
   return css`
-    --height: ${height_config[size]}px;
+    --height: ${height_config[size]};
     --padding: ${default_padding}px;
     --padding-left: ${padding_left}px;
     --padding-right: ${padding_right}px;

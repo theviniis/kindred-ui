@@ -5,11 +5,11 @@ export const Wrapper = styled.div`
   height: 300px;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.xs}px;
+  gap: ${({ theme }) => theme.spacing.xs};
   color: white;
   position: relative;
-  border-radius: ${({ theme }) => theme.border.radius.xs}px;
-  padding: ${({ theme }) => theme.spacing.xlg}px;
+  border-radius: ${({ theme }) => theme.border.radius.xs};
+  padding: ${({ theme }) => theme.spacing.xlg};
 `;
 
 export const Image = styled.svg`

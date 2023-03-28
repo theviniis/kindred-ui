@@ -5,7 +5,7 @@ export const Flex = styled.div<T.FlexProps>`
   display: flex;
   flex-direction: ${({ direction }): string =>
     direction === 'column' ? 'column' : 'row'};
-  gap: ${({ theme, gap }) => (gap ? theme.spacing[gap] : '0')}px;
+  gap: ${({ theme, gap }) => (gap ? theme.spacing[gap] : '0')};
   justify-content: ${({ justifyContent }): T.JUSTIFY_CONTENT | undefined =>
     justifyContent && justifyContent};
   align-items: ${({ alignItems }): T.ALIGN_ITEMS | undefined =>

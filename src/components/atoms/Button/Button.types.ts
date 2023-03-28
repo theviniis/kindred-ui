@@ -1,4 +1,5 @@
 import React from 'react';
+import { DefaultTheme } from 'styled-components';
 import { SIZES, SKINS } from '../../../utils';
 
 export type BUTTON_VARIANTS = 'default' | 'outlined' | 'ghost';
@@ -14,4 +15,6 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 }
 
 export interface SetVariantProps
-  extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'children'> {}
+  extends Omit<ButtonProps, 'icon' | 'iconPosition' | 'children'> {
+  theme: DefaultTheme;
+}

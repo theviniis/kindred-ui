@@ -8,7 +8,7 @@ export const Wrapper = styled(Flex).attrs({
     margin: 0;
     padding: 0;
   }
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }): string => theme.colors.background};
 `;
 
 export const Container = styled(Flex).attrs({
@@ -30,7 +30,7 @@ export const InfoContainer = styled(Typography).attrs({
   forwardedAs: 'div',
 })`
   min-width: 150px;
-  color: ${({ theme }) => theme.colors.text.secondary};
+  color: ${({ theme }): string => theme.colors.text.secondary};
   span {
     display: block;
     font: inherit;

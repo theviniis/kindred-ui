@@ -1,10 +1,15 @@
-import { css, DefaultTheme } from 'styled-components';
+import {
+  css,
+  DefaultTheme,
+  FlattenSimpleInterpolation,
+} from 'styled-components';
 
 interface Token {
   name: string;
-  value: any;
+  value: string | number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function transformObject(obj: any, parentKeys: string[] = []): Token[] {
   const tokens: Token[] = [];
   for (const key in obj) {
@@ -20,7 +25,11 @@ function transformObject(obj: any, parentKeys: string[] = []): Token[] {
   return tokens;
 }
 
-export function createCSSVariables({ theme }: { theme: DefaultTheme }) {
+export function createCSSVariables({
+  theme,
+}: {
+  theme: DefaultTheme;
+}): FlattenSimpleInterpolation {
   const tokens = [
     'colors',
     'border',

@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css, DefaultTheme } from 'styled-components';
 
 export const typography = {
   type: {
@@ -234,7 +234,7 @@ export const breakpoints = {
 } as const;
 
 export const keyframes = {
-  fadeIn: () => css`
+  fadeIn: css`
     transition: ease-in 150ms;
     animation: fadeIn 150ms forwards;
     @keyframes fadeIn {
@@ -246,7 +246,7 @@ export const keyframes = {
       }
     }
   `,
-  fadeUp: () => css`
+  fadeUp: css`
     transition: ease-in 150ms;
     animation: fadeUp 150ms forwards;
     @keyframes fadeUp {
@@ -260,7 +260,7 @@ export const keyframes = {
       }
     }
   `,
-};
+} as const;
 
 export const palette = {
   neutral: {
@@ -382,18 +382,13 @@ export const theme = {
   keyframes,
 } as const;
 
-type CustomTheme = typeof theme & {
-  colors: typeof colors;
-  scheme: 'light' | 'dark';
-};
-
-export const lightTheme: CustomTheme = {
+export const lightTheme: DefaultTheme = {
   scheme: 'light',
   colors: { ...colors },
   ...theme,
 } as const;
 
-export const darkTheme: CustomTheme = {
+export const darkTheme: DefaultTheme = {
   scheme: 'dark',
   colors: {
     ...colors,
@@ -405,12 +400,22 @@ export const darkTheme: CustomTheme = {
     },
   },
   ...theme,
-};
+} as const;
 
 export const themes = {
   light: lightTheme,
   dark: darkTheme,
-};
+} as const;
 declare module 'styled-components' {
-  export interface DefaultTheme extends CustomTheme {}
+  export interface DefaultTheme {
+    scheme: 'light' | 'dark';
+    colors: typeof colors;
+    typography: typeof typography;
+    typesystem: typeof typesystem;
+    size: typeof size;
+    spacing: typeof spacing;
+    border: typeof border;
+    breakpoints: typeof breakpoints;
+    keyframes: Record<keyof typeof keyframes, 'FlattenSimpleInterpolation'>;
+  }
 }

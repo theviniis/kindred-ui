@@ -1,4 +1,7 @@
-import { createGlobalStyle } from 'styled-components';
+import {
+  createGlobalStyle,
+  FlattenSimpleInterpolation,
+} from 'styled-components';
 import { createCSSVariables } from '../utils/createCSSVariables';
 import { typesystem } from './theme';
 
@@ -49,5 +52,5 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  ${({ theme }) => createCSSVariables({ theme })};
+  ${({ theme }): FlattenSimpleInterpolation => createCSSVariables({ theme })};
 `;

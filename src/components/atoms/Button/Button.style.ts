@@ -1,13 +1,17 @@
-import styled, { css, useTheme } from 'styled-components';
+import styled, {
+  css,
+  DefaultTheme,
+  FlattenSimpleInterpolation,
+} from 'styled-components';
 import { getContrastingColor, SIZES } from '../../../utils';
 import { getTypographyStyles } from '../Typography';
 import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
-  ${() => getTypographyStyles('label', 'lg')};
-  ${({ skin, variant, loading, disabled }) =>
-    setSkin({ skin, variant, loading, disabled })};
-  ${({ size }) => setSize(size)};
+  ${(): FlattenSimpleInterpolation => getTypographyStyles('label', 'lg')};
+  ${({ skin, variant, loading, disabled, theme }): FlattenSimpleInterpolation =>
+    setSkin({ skin, variant, loading, disabled, theme })};
+  ${({ size, theme }): FlattenSimpleInterpolation => setSize(size, theme)};
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -22,22 +26,22 @@ export const Button = styled.button<T.ButtonProps>`
   transition: all 0.3s ease 0s;
   border-width: var(--border-width-sm);
   border-radius: var(--border-radius-xs);
-  width: ${({ fullWidth }) => fullWidth && '100%'};
-  ${({ loading }) =>
-    !loading &&
-    css`
-      &:hover {
-        color: var(--clr-text-hover);
-        background-color: var(--clr-background-hover);
-        border-color: var(--clr-border-hover);
-      }
-      &:focus {
-        color: var(--clr-text-focus);
-        background-color: var(--clr-background-focus);
-        border-color: var(--clr-border-focus);
-      }
-    `};
-
+  width: ${({ fullWidth }): string => (fullWidth ? '100%' : 'min-content')};
+  ${({ loading }): FlattenSimpleInterpolation =>
+    !loading
+      ? css`
+          &:hover {
+            color: var(--clr-text-hover);
+            background-color: var(--clr-background-hover);
+            border-color: var(--clr-border-hover);
+          }
+          &:focus {
+            color: var(--clr-text-focus);
+            background-color: var(--clr-background-focus);
+            border-color: var(--clr-border-focus);
+          }
+        `
+      : css``};
   &:disabled {
     cursor: not-allowed;
     pointer-events: none;
@@ -45,11 +49,12 @@ export const Button = styled.button<T.ButtonProps>`
     background-color: var(--clr-background);
     border-color: var(--clr-border);
   }
-  ${({ loading }) =>
-    loading &&
-    css`
-      cursor: not-allowed;
-    `};
+  ${({ loading }): FlattenSimpleInterpolation =>
+    loading
+      ? css`
+          cursor: not-allowed;
+        `
+      : css``};
 `;
 
 function setSkin({
@@ -57,11 +62,12 @@ function setSkin({
   variant = 'default',
   loading = false,
   disabled = false,
-}: T.SetVariantProps) {
-  const { colors } = useTheme();
+  theme,
+}: T.SetVariantProps): FlattenSimpleInterpolation {
+  const { colors } = theme;
   let colorPrimary = colors.palette[skin][500];
-  let colorHover = colors.palette[skin][600];
-  let colorFocus = colors.palette[skin][700];
+  const colorHover = colors.palette[skin][600];
+  const colorFocus = colors.palette[skin][700];
   if (skin === 'neutral' && variant !== 'default') {
     colorPrimary = colors.text.primary;
   }
@@ -132,8 +138,11 @@ function setSkin({
   `;
 }
 
-function setSize(size: Partial<SIZES> = 'md') {
-  const { spacing } = useTheme();
+function setSize(
+  size: Partial<SIZES> = 'md',
+  theme: DefaultTheme
+): FlattenSimpleInterpolation {
+  const { spacing } = theme;
   const sizes = {
     xs: {
       padding: spacing.xxs,

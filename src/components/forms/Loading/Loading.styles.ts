@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { LoadingProps } from './Loading.types';
 
 export const Wrapper = styled.div<Pick<LoadingProps, 'skin' | 'size'>>`
-  ${({ theme, size = 'md', skin = 'neutral' }) => {
+  ${({ theme, size = 'md', skin = 'neutral' }): FlattenSimpleInterpolation => {
     const loadingSizes = {
       xs: theme.size.xs,
       sm: theme.size.sm,

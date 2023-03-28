@@ -1,15 +1,16 @@
 import React from 'react';
-// import { H2, P1 } from '../../components';
+import { Typography } from '../../components';
 import { Clouds } from './Clouds';
 import * as S from './Hero.styles';
 import * as T from './Hero.types';
 
 export const Hero: React.FC<T.HeroProps> = ({ children, title }) => {
-  console.log(children, title);
   return (
     <S.Wrapper>
-      {/* <H2 as="h1">{title}</H2> */}
-      {/* <P1>{children}</P1> */}
+      <Typography type="headline" forwardedAs="h1">
+        {title}
+      </Typography>
+      <Typography type="body">{children}</Typography>
       <Clouds />
     </S.Wrapper>
   );

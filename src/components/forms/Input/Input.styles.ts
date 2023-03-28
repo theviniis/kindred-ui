@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
 import { getTypographyStyles, Icon } from '../../';
 import * as T from './Input.types';
 
@@ -8,9 +8,9 @@ type InputWrapperProps = Pick<
 >;
 
 export const Wrapper = styled.div<InputWrapperProps>`
-  ${() => getTypographyStyles('body', 'lg')};
-  ${({ theme, skin }) => setSkin({ theme, skin })};
-  ${({ theme, startIcon, endIcon, size }) =>
+  ${(): FlattenSimpleInterpolation => getTypographyStyles('body', 'lg')};
+  ${({ theme, skin }): FlattenSimpleInterpolation => setSkin({ theme, skin })};
+  ${({ theme, startIcon, endIcon, size }): FlattenSimpleInterpolation =>
     getPadding({ theme, startIcon, endIcon, size })};
 `;
 
@@ -71,7 +71,7 @@ export const Input = styled.input<Pick<T.InputProps, 'label'>>`
   &::placeholder {
     font: inherit;
     color: var(--clr-text-secondary);
-    visibility: ${({ label }) => !!label && 'hidden'};
+    visibility: ${({ label }): string => (label ? 'hidden' : 'visible')};
   }
 `;
 
@@ -97,12 +97,8 @@ export const Fieldset = styled.fieldset<Pick<T.InputProps, 'label'>>`
       display: inline-block;
       opacity: 0;
       visibility: visible;
-      ${({ label }) =>
-        label &&
-        css`
-          padding-left: 5px;
-          padding-right: 5px;
-        `}
+      padding-left: 5px;
+      padding-right: 5px;
     }
   }
 `;
@@ -126,25 +122,28 @@ export const IconsWrapper = styled.div`
 `;
 
 export const SupportingText = styled.span<Pick<T.InputProps, 'hasError'>>`
-  ${() => getTypographyStyles('body', 'md')};
+  ${(): FlattenSimpleInterpolation => getTypographyStyles('body', 'md')};
   display: block;
   color: var(--clr-text-secondary);
   margin-block-start: var(--spacing-xs);
-  ${({ hasError }) => hasError && 'color: var(--clr-error)'};
+  ${({ hasError }): string => (hasError ? 'color: var(--clr-error)' : '')};
 `;
 
 export const ErrorIcon = styled(Icon).attrs({ icon: 'FiAlertTriangle' })`
   color: var(--clr-error) !important;
 `;
 
-function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
+function setSkin({
+  theme,
+  skin = 'neutral',
+}: T.InputSetSkinProps): FlattenSimpleInterpolation {
   const { colors, border } = theme;
   const { palette, text } = colors;
-  let colorPrimary = palette[skin][500];
-  let colorHover = palette[skin][600];
+  const colorPrimary = palette[skin][500];
+  const colorHover = palette[skin][600];
   let colorFocus = palette[skin][500];
-  let colorDisabled = text.disabled;
-  let colorText = colorPrimary;
+  const colorDisabled = text.disabled;
+  const colorText = colorPrimary;
 
   if (skin === 'neutral') {
     colorFocus = palette.pink[500];
@@ -163,27 +162,32 @@ function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   `;
 }
 
-function getPadding({ theme, startIcon, endIcon, size }: T.GetPaddingProps) {
+function getPadding({
+  theme,
+  startIcon,
+  endIcon,
+  size,
+}: T.GetPaddingProps): FlattenSimpleInterpolation {
   const { spacing } = theme;
-  const height_config = {
+  const heightConfig = {
     sm: spacing.lg,
     md: spacing.xlg,
     lg: spacing.xxlg,
   };
-  const default_padding = parseInt(spacing.xs, 10);
-  const icon_size = default_padding;
-  let padding_left = default_padding;
-  let padding_right = default_padding;
+  const defaultPadding = parseInt(spacing.xs, 10);
+  const iconSize = defaultPadding;
+  let paddingLeft = defaultPadding;
+  let paddingRight = defaultPadding;
   if (startIcon) {
-    padding_left += default_padding + icon_size;
+    paddingLeft += defaultPadding + iconSize;
   } else if (endIcon) {
-    padding_right += default_padding + icon_size;
+    paddingRight += defaultPadding + iconSize;
   }
   return css`
-    --height: ${height_config[size]};
-    --padding: ${default_padding}px;
-    --padding-left: ${padding_left}px;
-    --padding-right: ${padding_right}px;
-    --icon-container-size: ${icon_size}px;
+    --height: ${heightConfig[size]};
+    --padding: ${defaultPadding}px;
+    --padding-left: ${paddingLeft}px;
+    --padding-right: ${paddingRight}px;
+    --icon-container-size: ${iconSize}px;
   `;
 }

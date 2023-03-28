@@ -12,6 +12,6 @@ export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   weight?: TYPOGRAPHY_WEIGHTS;
   color?: string;
   spacing?: string;
-  as?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
-  forwardedAs?: keyof JSX.IntrinsicElements | React.ComponentType<any>;
+  as?: keyof JSX.IntrinsicElements | React.ComponentType<HTMLElement>;
+  forwardedAs?: keyof JSX.IntrinsicElements | React.ComponentType<HTMLElement>;
 }

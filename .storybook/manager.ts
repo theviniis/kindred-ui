@@ -10,15 +10,15 @@ const branding = {
 
 const baseTheme = {
   // UI
-  appBorderRadius: border.radius.xs,
-  inputBorderRadius: border.radius.xs,
+  appBorderRadius: parseInt(border.radius.xs, 10),
+  inputBorderRadius: parseInt(border.radius.xs, 10),
 
   // Typography
   fontBase: typography.type.primary,
   fontCode: typography.type.secondary,
 
   // baseColors
-  colorPrimary: colors.coreColors.fuchsia,
+  colorPrimary: colors.coreColors.pink,
   colorSecondary: colors.coreColors.blue,
   barSelectedColor: colors.coreColors.blue,
   barTextColor: colors.text.disabled,

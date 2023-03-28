@@ -15,10 +15,7 @@ export const Container = styled(Flex).attrs({
   gap: 'md',
   alignItems: 'center',
 })`
-  padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.lg}px`};
-  &:nth-child(odd) {
-    background-color: ${({ theme }) => theme.colors.text.disabled};
-  }
+  padding: var(--spacing-xs) var(--spacing-lg);
 `;
 
 export const Typography = styled(Type)`

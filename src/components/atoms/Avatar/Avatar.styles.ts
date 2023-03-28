@@ -6,7 +6,7 @@ export const Avatar = styled.img<Pick<T.AvatarProps, 'size'>>`
   aspect-ratio: 1;
   border-style: solid;
   border-color: ${({ theme }) => theme.colors.text};
-  border-width: ${({ theme }) => theme.border.width.sm}px;
+  border-width: ${({ theme }) => theme.border.width.sm};
   border-radius: ${({ theme }) => theme.border.radius.circular};
-  width: ${({ theme, size }) => theme.spacing[size] * 2}px;
+  width: ${({ size }) => `var(--size-${size})`};
 `;

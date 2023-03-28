@@ -13,6 +13,7 @@ export interface InputProps
   skin?: SKINS;
   size: SIZES;
   loading: boolean;
+  hasError?: boolean;
 }
 
 export interface InputSetSkinProps extends Pick<InputProps, 'skin'> {

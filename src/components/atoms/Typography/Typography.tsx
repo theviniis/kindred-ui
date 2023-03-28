@@ -40,12 +40,12 @@ export const getTypographyStyles = (
   const { typography, typesystem, colors } = useTheme();
   return css`
     font-family: ${typesystem[type][size].fontFamily};
-    font-size: ${typesystem[type][size].fontSize / 16}rem;
-    line-height: ${typesystem[type][size].lineHeight}px;
+    font-size: ${typesystem[type][size].fontSize};
+    line-height: ${typesystem[type][size].lineHeight};
     font-weight: ${weight
       ? typography.weight[weight]
       : typesystem[type][size].weight};
-    letter-spacing: ${spacing ?? typesystem[type][size].letterSpacing}px;
+    letter-spacing: ${spacing ?? typesystem[type][size].letterSpacing};
     color: ${color ?? colors.text.primary};
   `;
 };

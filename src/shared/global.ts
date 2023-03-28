@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { createCSSVariables } from '../utils/createCSSVariables';
 import { typesystem } from './theme';
 
 export const fontUrl =
@@ -47,4 +48,6 @@ export const GlobalStyle = createGlobalStyle`
     display: block;
     width: 100%;
   }
+
+  ${({ theme }) => createCSSVariables({ theme })};
 `;

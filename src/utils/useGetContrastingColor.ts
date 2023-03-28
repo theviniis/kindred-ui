@@ -1,7 +1,7 @@
 import { useTheme } from 'styled-components';
 import { themes } from '../shared';
 
-export function getContrastingColor(background: string): string {
+export function useGetContrastingColor(background: string): string {
   const { colors } = useTheme();
   if (background === 'transparent') return colors.text.primary;
   const hex = background

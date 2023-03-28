@@ -29,7 +29,7 @@ export const Typography: React.FC<T.TypographyProps> = ({
   );
 };
 
-export const getTypographyStyles = (
+export const useGetTypographyStyles = (
   type: T.TYPOGRAPHY_VARIANTS = 'body',
   size: 'sm' | 'md' | 'lg' = 'md',
   weight?: T.TYPOGRAPHY_WEIGHTS,

@@ -3,12 +3,12 @@ import styled, {
   DefaultTheme,
   FlattenSimpleInterpolation,
 } from 'styled-components';
-import { getContrastingColor, SIZES } from '../../../utils';
-import { getTypographyStyles } from '../Typography';
+import { useGetContrastingColor, SIZES } from '../../../utils';
+import { useGetTypographyStyles } from '../Typography';
 import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
-  ${(): FlattenSimpleInterpolation => getTypographyStyles('label', 'lg')};
+  ${(): FlattenSimpleInterpolation => useGetTypographyStyles('label', 'lg')};
   ${({ skin, variant, loading, disabled, theme }): FlattenSimpleInterpolation =>
     setSkin({ skin, variant, loading, disabled, theme })};
   ${({ size, theme }): FlattenSimpleInterpolation => setSize(size, theme)};
@@ -74,7 +74,7 @@ function setSkin({
   if (loading || disabled) {
     colorPrimary = colors.palette[skin][200];
   }
-  const colorTextPrimary = getContrastingColor(colorPrimary);
+  const colorTextPrimary = useGetContrastingColor(colorPrimary);
   const styles = {
     default: {
       color: colorTextPrimary,

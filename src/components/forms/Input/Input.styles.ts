@@ -1,5 +1,5 @@
 import styled, { css, FlattenSimpleInterpolation } from 'styled-components';
-import { getTypographyStyles, Icon } from '../../';
+import { useGetTypographyStyles, Icon } from '../../';
 import * as T from './Input.types';
 
 type InputWrapperProps = Pick<
@@ -8,7 +8,7 @@ type InputWrapperProps = Pick<
 >;
 
 export const Wrapper = styled.div<InputWrapperProps>`
-  ${(): FlattenSimpleInterpolation => getTypographyStyles('body', 'lg')};
+  ${(): FlattenSimpleInterpolation => useGetTypographyStyles('body', 'lg')};
   ${({ theme, skin }): FlattenSimpleInterpolation => setSkin({ theme, skin })};
   ${({ theme, startIcon, endIcon, size }): FlattenSimpleInterpolation =>
     getPadding({ theme, startIcon, endIcon, size })};
@@ -122,7 +122,7 @@ export const IconsWrapper = styled.div`
 `;
 
 export const SupportingText = styled.span<Pick<T.InputProps, 'hasError'>>`
-  ${(): FlattenSimpleInterpolation => getTypographyStyles('body', 'md')};
+  ${(): FlattenSimpleInterpolation => useGetTypographyStyles('body', 'md')};
   display: block;
   color: var(--clr-text-secondary);
   margin-block-start: var(--spacing-xs);

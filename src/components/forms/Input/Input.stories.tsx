@@ -64,8 +64,11 @@ const SizesTemplate: Story<InputProps> = args => {
 
 export const Default = Template.bind({});
 
+Default.args = {};
+
 export const Placeholder = Template.bind({});
 Placeholder.args = {
+  label: 'Label',
   placeholder: 'Type something',
 };
 
@@ -82,19 +85,19 @@ export const Sizes = SizesTemplate.bind({});
 export const SupportingText = Template.bind({});
 SupportingText.args = {
   supportingText: 'supporting text',
-  label: 'Type something...',
+  label: 'Label',
 };
 
 export const StartIcon = Template.bind({});
 StartIcon.args = {
   startIcon: <Icon icon="FiEye" onClick={() => console.log('start icon')} />,
-  label: 'Type something...',
+  label: 'Label',
 };
 
 export const EndIcon = Template.bind({});
 EndIcon.args = {
   endIcon: <Icon icon="FiEye" onClick={() => console.log('end icon')} />,
-  label: 'Type something...',
+  label: 'Label',
 };
 
 export const Error = Template.bind({});

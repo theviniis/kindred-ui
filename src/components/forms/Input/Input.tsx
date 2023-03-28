@@ -1,8 +1,6 @@
 import React from 'react';
 import * as T from './Input.types';
 import * as S from './Input.styles';
-import { Icon } from '../../atoms';
-import { colors } from '../../../shared';
 
 export const Input: React.FC<T.InputProps> = ({
   id = React.useId() + '-input',

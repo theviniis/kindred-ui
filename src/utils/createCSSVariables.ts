@@ -31,17 +31,17 @@ export function createCSSVariables({ theme }: { theme: DefaultTheme }) {
     'breakpoints',
   ] as const;
   return css`
-    :root {
-      ${tokens.map(token => {
-        return transformObject(theme[token]).map(({ name, value }) => {
-          return css`
+    body {
+      ${tokens.map(token =>
+        transformObject(theme[token]).map(
+          ({ name, value }) => css`
             ${`--${token.replace('colors', 'clr')}-${name.replace(
               'palette-',
               ''
             )}: ${value}`};
-          `;
-        });
-      })}
+          `
+        )
+      )}
     }
   `;
 }

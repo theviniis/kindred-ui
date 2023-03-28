@@ -169,7 +169,7 @@ function getPadding({ theme, startIcon, endIcon, size }: T.GetPaddingProps) {
     md: spacing.xlg,
     lg: spacing.xxlg,
   };
-  const default_padding = parseInt(spacing.xs, 10);
+  const default_padding = parseInt(spacing.sm, 10);
   const icon_size = default_padding;
   let padding_left = default_padding;
   let padding_right = default_padding;

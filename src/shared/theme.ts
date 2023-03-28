@@ -197,7 +197,7 @@ export const size = {
 
 export const border = {
   radius: {
-    xs: '4px',
+    xs: '33.3px',
     sm: '8px',
     md: '16px',
     lg: '24px',

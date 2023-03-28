@@ -178,9 +178,10 @@ export const spacing = {
   sm: '24px',
   md: '32px',
   lg: '40px',
-  xlg: '48px',
-  xxlg: '56px',
-  xxxlg: '64px',
+  xl: '48px',
+  xlg: '56px',
+  xxlg: '64px',
+  xxxlg: '72px',
 } as const;
 
 export const size = {
@@ -190,9 +191,10 @@ export const size = {
   sm: '24px',
   md: '32px',
   lg: '40px',
-  xlg: '48px',
-  xxlg: '56px',
-  xxxlg: '64px',
+  xl: '48px',
+  xlg: '56px',
+  xxlg: '64px',
+  xxxlg: '72px',
 } as const;
 
 export const border = {

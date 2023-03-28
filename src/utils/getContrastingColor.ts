@@ -21,7 +21,7 @@ export function getContrastingColor(background: string): string {
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
   const textColor =
     brightness >= 128
-      ? themes.dark.colors.text.primary
-      : themes.light.colors.text.primary;
+      ? themes.light.colors.text.primary
+      : themes.dark.colors.text.primary;
   return textColor;
 }

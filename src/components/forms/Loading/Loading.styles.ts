@@ -2,19 +2,25 @@ import styled, { css } from 'styled-components';
 import { LoadingProps } from './Loading.types';
 
 export const Wrapper = styled.div<Pick<LoadingProps, 'skin' | 'size'>>`
-  ${({ theme, size, skin = 'neutral' }) => {
+  ${({ theme, size = 'md', skin = 'neutral' }) => {
     const loadingSizes = {
+      xs: theme.size.xs,
       sm: theme.size.sm,
       md: theme.size.md,
       lg: theme.size.lg,
+      xl: theme.size.xl,
     };
     const loadingBarHeights = {
+      xs: '1px',
       sm: '2px',
       md: '4px',
       lg: '6px',
+      xl: '8px',
     };
     return css`
-      --clr-primary: ${theme.colors.palette[skin][500]};
+      --clr-primary: ${skin === 'currentColor'
+        ? 'currentColor'
+        : theme.colors.palette[skin][500]};
       --clr-background: ${theme.colors.text.disabled};
       --size: ${loadingSizes[size]};
       --height: ${loadingBarHeights[size]};
@@ -33,7 +39,7 @@ export const CircleLoading = styled.svg`
   circle {
     fill: none;
     stroke: var(--clr-primary);
-    stroke-width: var(--border-width-sm);
+    stroke-width: var(--border-width-md);
     stroke-dasharray: 1, 200;
     stroke-dashoffset: 0;
     stroke-linecap: round;

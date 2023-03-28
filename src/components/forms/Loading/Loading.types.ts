@@ -1,8 +1,8 @@
 import React from 'react';
-import { SIZES, SKINS } from '../../../utils';
+import { SKINS } from '../../../utils';
 
 export interface LoadingProps extends React.HTMLAttributes<HTMLDivElement> {
-  skin?: SKINS;
-  size: SIZES;
+  skin?: SKINS | 'currentColor';
+  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
   type?: 'bar' | 'circle';
 }

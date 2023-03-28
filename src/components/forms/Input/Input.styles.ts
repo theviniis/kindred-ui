@@ -60,7 +60,7 @@ export const Label = styled.label`
   top: 50%;
   left: var(--padding-left);
   transform: translateY(-50%);
-  transition: 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
+  transition: all 0.3s ease 0s;
   color: var(--clr-text);
 `;
 
@@ -84,7 +84,8 @@ export const Fieldset = styled.fieldset<Pick<T.InputProps, 'label'>>`
   border-radius: var(--border-radius);
   padding-inline: calc((var(--padding) / 2) + 1px);
   border-color: var(--clr-primary);
-  transition: border-color 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
+  transition: all 0.3s ease 0s;
+
   legend {
     display: block;
     visibility: hidden;

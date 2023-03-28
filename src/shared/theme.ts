@@ -193,7 +193,7 @@ export const size = {
   xlg: '48px',
   xxlg: '56px',
   xxxlg: '64px',
-};
+} as const;
 
 export const border = {
   radius: {

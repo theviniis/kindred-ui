@@ -18,7 +18,7 @@ export const Button = styled.button<T.ButtonProps>`
   border-color: var(--clr-border);
   padding-inline: var(--padding);
   height: var(--height);
-  transition: ease-in-out 100ms;
+  transition: all 0.3s ease 0s;
   width: ${({ fullWidth }) => fullWidth && '100%'};
   &:hover {
     color: var(--clr-text-hover);

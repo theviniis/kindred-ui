@@ -82,7 +82,7 @@ export const Fieldset = styled.fieldset<Pick<T.InputProps, 'label'>>`
   border: solid;
   border-width: var(--border-width);
   border-radius: var(--border-radius);
-  padding-inline: 8.775px;
+  padding-inline: calc((var(--padding) / 2) + 1px);
   border-color: var(--clr-primary);
   transition: border-color 100ms cubic-bezier(0, 0, 0.2, 1) 50ms;
   legend {
@@ -120,6 +120,7 @@ export const IconsWrapper = styled.div`
     pointer-events: initial;
     display: grid;
     place-content: center;
+    color: var(--clr-text);
   }
 `;
 
@@ -138,7 +139,6 @@ export const ErrorIcon = styled(Icon).attrs({ icon: 'FiAlertTriangle' })`
 function setSkin({ theme, skin = 'neutral' }: T.InputSetSkinProps) {
   const { colors, border } = theme;
   const { palette, text } = colors;
-
   let colorPrimary = palette[skin][500];
   let colorHover = palette[skin][600];
   let colorFocus = palette[skin][500];
@@ -169,7 +169,7 @@ function getPadding({ theme, startIcon, endIcon, size }: T.GetPaddingProps) {
     md: spacing.xlg,
     lg: spacing.xxlg,
   };
-  const default_padding = parseInt(spacing.sm, 10);
+  const default_padding = parseInt(spacing.xs, 10);
   const icon_size = default_padding;
   let padding_left = default_padding;
   let padding_right = default_padding;

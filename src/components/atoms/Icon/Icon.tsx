@@ -14,7 +14,6 @@ export const Icon: React.FC<T.IconProps> = ({
   const theme = useTheme();
   const iconsProps = {
     size: theme.size[size],
-    color: skin ? theme.colors.coreColors[skin] : 'currentColor',
     title,
     style: { cursor: 'pointer' },
     ...props,

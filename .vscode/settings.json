@@ -11,6 +11,7 @@
     "dist": true,
     ".prettierignore": true,
     "package-lock.json": true,
-    "LICENSE": true
+    "LICENSE": true,
+    "jest.config.ts": true
   }
 }

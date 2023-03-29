@@ -1,7 +1,7 @@
 import { useTheme } from 'styled-components';
 import { themes } from '../shared';
 
-export function getContrastingColor(background: string): string {
+export function useGetContrastingColor(background: string): string {
   const { colors } = useTheme();
   if (background === 'transparent') return colors.text.primary;
   const hex = background
@@ -21,7 +21,7 @@ export function getContrastingColor(background: string): string {
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
   const textColor =
     brightness >= 128
-      ? themes.dark.colors.text.primary
-      : themes.light.colors.text.primary;
+      ? themes.light.colors.text.primary
+      : themes.dark.colors.text.primary;
   return textColor;
 }

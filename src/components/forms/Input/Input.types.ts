@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
 import { DefaultTheme } from 'styled-components';
-import { SIZES, SKINS } from '../../../utils';
+import { SKINS } from '../../../utils';
 
 type InputStringProps = Partial<Record<'label' | 'supportingText', string>>;
 
@@ -11,7 +11,7 @@ export interface InputProps
     InputStringProps,
     InputIconsProps {
   skin?: SKINS;
-  size: SIZES;
+  size: 'sm' | 'md' | 'lg';
   loading: boolean;
   hasError?: boolean;
 }

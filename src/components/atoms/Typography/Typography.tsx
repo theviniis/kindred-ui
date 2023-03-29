@@ -1,10 +1,9 @@
 import React from 'react';
-import { css, useTheme } from 'styled-components';
+import { css, FlattenSimpleInterpolation, useTheme } from 'styled-components';
 import * as T from './Typography.types';
 import * as S from './Typography.styles';
-import { SIZES } from '../../../utils';
 
-export const Typography = ({
+export const Typography: React.FC<T.TypographyProps> = ({
   children,
   type = 'body',
   size = 'lg',
@@ -13,7 +12,7 @@ export const Typography = ({
   spacing,
   as,
   ...props
-}: T.TypographyProps) => {
+}) => {
   const { typesystem } = useTheme();
   return (
     <S.Typography
@@ -30,13 +29,13 @@ export const Typography = ({
   );
 };
 
-export const getTypographyStyles = (
+export const useGetTypographyStyles = (
   type: T.TYPOGRAPHY_VARIANTS = 'body',
-  size: SIZES = 'lg',
+  size: 'sm' | 'md' | 'lg' = 'md',
   weight?: T.TYPOGRAPHY_WEIGHTS,
   color?: string,
   spacing?: string
-) => {
+): FlattenSimpleInterpolation => {
   const { typography, typesystem, colors } = useTheme();
   return css`
     font-family: ${typesystem[type][size].fontFamily};

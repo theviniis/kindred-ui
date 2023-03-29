@@ -38,7 +38,7 @@ const VariantsTemplate: Story<ButtonProps> = args => {
 };
 
 const SizesTemplate: Story<ButtonProps> = args => {
-  const sizes_list: SIZES[] = ['sm', 'md', 'lg'];
+  const sizes_list: SIZES[] = ['xs', 'sm', 'md', 'lg', 'xl'];
   return (
     <Flex gap="xs" wrap="wrap">
       {sizes_list.map(size => (
@@ -60,6 +60,12 @@ const Skin: Story<ButtonProps> = SkinsTemplate.bind({});
 const Variant: Story<ButtonProps> = VariantsTemplate.bind({});
 
 const Size: Story<ButtonProps> = SizesTemplate.bind({});
+
+export const Loading: Story<ButtonProps> = Template.bind({});
+Loading.args = {
+  children: 'Loading',
+  loading: true,
+};
 
 const Disabled: Story<ButtonProps> = Template.bind({});
 Disabled.args = {

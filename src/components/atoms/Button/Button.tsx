@@ -1,6 +1,7 @@
 import React from 'react';
 import * as T from './Button.types';
 import * as S from './Button.style';
+import { Loading } from '../../forms/Loading';
 
 export const Button: React.FC<T.ButtonProps> = ({
   children,
@@ -9,6 +10,7 @@ export const Button: React.FC<T.ButtonProps> = ({
   disabled = false,
   size = 'md',
   fullWidth = false,
+  loading,
   ...props
 }) => {
   return (
@@ -17,9 +19,11 @@ export const Button: React.FC<T.ButtonProps> = ({
       variant={variant}
       disabled={disabled}
       size={size}
+      loading={loading}
       fullWidth={fullWidth}
       {...props}
     >
+      {loading && <Loading size="xs" skin={'currentColor'} />}
       {children}
     </S.Button>
   );

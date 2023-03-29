@@ -10,14 +10,14 @@ export interface KindredContextProps {
   theme?: DefaultTheme;
 }
 
-export const KindredContext = ({
+export const KindredContext: React.FC<KindredContextProps> = ({
   scheme = 'dark',
   theme,
   children,
-}: KindredContextProps) => {
+}) => {
   const [currentTheme, setCurrentTheme] = React.useState(theme || themes.light);
 
-  function themeToggle() {
+  function themeToggle(): void {
     const currentTheme = scheme === 'light' ? themes.light : themes.dark;
     setCurrentTheme(currentTheme);
   }

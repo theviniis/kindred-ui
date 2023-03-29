@@ -1,60 +1,80 @@
-import styled, { css, useTheme } from 'styled-components';
-import { getContrastingColor, SIZES } from '../../../utils';
-import { getTypographyStyles } from '../Typography';
+import styled, {
+  css,
+  DefaultTheme,
+  FlattenSimpleInterpolation,
+} from 'styled-components';
+import { useGetContrastingColor, SIZES } from '../../../utils';
+import { useGetTypographyStyles } from '../Typography';
 import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
-  ${() => getTypographyStyles('label', 'lg')};
-  ${({ skin, variant }) => setSkin({ skin, variant })};
-  ${({ size }) => setSize(size)};
+  ${(): FlattenSimpleInterpolation => useGetTypographyStyles('label', 'lg')};
+  ${({ skin, variant, loading, disabled, theme }): FlattenSimpleInterpolation =>
+    useSetSkin({ skin, variant, loading, disabled, theme })};
+  ${({ size, theme }): FlattenSimpleInterpolation => setSize(size, theme)};
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: center;
-  gap: var(--padding);
+  gap: var(--spacing-xs);
   border-style: solid;
   color: var(--clr-text);
   background-color: var(--clr-background);
   border-color: var(--clr-border);
   padding-inline: var(--padding);
   height: var(--height);
-  transition: ease-in-out 100ms;
-  width: ${({ fullWidth }) => fullWidth && '100%'};
-  &:hover {
-    color: var(--clr-text-hover);
-    background-color: var(--clr-background-hover);
-    border-color: var(--clr-border-hover);
-  }
-  &:focus {
-    color: var(--clr-text-focus);
-    background-color: var(--clr-background-focus);
-    border-color: var(--clr-border-focus);
-  }
+  transition: all 0.3s ease 0s;
+  border-width: var(--border-width-sm);
+  border-radius: var(--border-radius-xs);
+  width: ${({ fullWidth }): string => (fullWidth ? '100%' : 'min-content')};
+  ${({ loading }): FlattenSimpleInterpolation =>
+    !loading
+      ? css`
+          &:hover {
+            color: var(--clr-text-hover);
+            background-color: var(--clr-background-hover);
+            border-color: var(--clr-border-hover);
+          }
+          &:focus {
+            color: var(--clr-text-focus);
+            background-color: var(--clr-background-focus);
+            border-color: var(--clr-border-focus);
+          }
+        `
+      : css``};
   &:disabled {
     cursor: not-allowed;
     pointer-events: none;
-    color: var(--clr-text-secondary);
-    background-color: var(--clr-text-disabled);
-    border-color: var(--clr-text-disabled);
+    color: var(--clr-text);
+    background-color: var(--clr-background);
+    border-color: var(--clr-border);
   }
-  ${({ theme }) => css`
-    border-width: ${theme.border.width.xs};
-    border-radius: ${theme.border.radius.xs};
-  `};
+  ${({ loading }): FlattenSimpleInterpolation =>
+    loading
+      ? css`
+          cursor: not-allowed;
+        `
+      : css``};
 `;
 
-function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
-  const { colors } = useTheme();
+function useSetSkin({
+  skin = 'neutral',
+  variant = 'default',
+  loading = false,
+  disabled = false,
+  theme,
+}: T.SetVariantProps): FlattenSimpleInterpolation {
+  const { colors } = theme;
   let colorPrimary = colors.palette[skin][500];
-  let colorHover = colors.palette[skin][600];
-  let colorFocus = colors.palette[skin][700];
-  const colorTextPrimary = getContrastingColor(colorPrimary);
-  if (skin === 'neutral') {
-    if (variant !== 'default') {
-      colorPrimary = colors.text.primary;
-    }
+  const colorHover = colors.palette[skin][600];
+  const colorFocus = colors.palette[skin][700];
+  if (skin === 'neutral' && variant !== 'default') {
+    colorPrimary = colors.text.primary;
   }
-
+  if (loading || disabled) {
+    colorPrimary = colors.palette[skin][200];
+  }
+  const colorTextPrimary = useGetContrastingColor(colorPrimary);
   const styles = {
     default: {
       color: colorTextPrimary,
@@ -118,9 +138,16 @@ function setSkin({ skin = 'neutral', variant = 'default' }: T.SetVariantProps) {
   `;
 }
 
-function setSize(size: Partial<SIZES> = 'md') {
-  const { spacing } = useTheme();
+function setSize(
+  size: Partial<SIZES> = 'md',
+  theme: DefaultTheme
+): FlattenSimpleInterpolation {
+  const { spacing } = theme;
   const sizes = {
+    xs: {
+      padding: spacing.xxs,
+      height: spacing.md,
+    },
     sm: {
       padding: spacing.xs,
       height: spacing.lg,
@@ -130,8 +157,12 @@ function setSize(size: Partial<SIZES> = 'md') {
       height: spacing.xlg,
     },
     lg: {
-      padding: spacing.md,
+      padding: spacing.lg,
       height: spacing.xxlg,
+    },
+    xl: {
+      padding: spacing.xlg,
+      height: spacing.xxxlg,
     },
   };
   return css`

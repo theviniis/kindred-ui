@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Story } from '@storybook/react';
 import { Input, InputProps } from './';
 import { Flex, Icon } from '../../';
-import { SIZES, SKINS } from '../../../utils';
+import { SKINS } from '../../../utils';
 import { useTheme } from 'styled-components';
 
 const Template: Story<InputProps> = args => {
@@ -43,7 +43,7 @@ const SkinsTemplate: Story<InputProps> = args => {
 
 const SizesTemplate: Story<InputProps> = args => {
   const [value, setValue] = useState('');
-  const inputSizes: SIZES[] = ['sm', 'md', 'lg'];
+  const inputSizes = ['sm', 'md', 'lg'] as const;
   return (
     <Flex wrap="wrap" gap="xs">
       {inputSizes.map(size => (

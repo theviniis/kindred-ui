@@ -19,7 +19,8 @@
     "size": "size-limit",
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic --project-token=035ed90b41fb"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -36,7 +37,9 @@
     "trailingComma": "es5"
   },
   "name": "kindred_ui",
-  "author": "theviniis",
+  "author": {
+    "name": "theviniis"
+  },
   "module": "dist/kindred_ui.esm.js",
   "size-limit": [
     {
@@ -80,5 +83,7 @@
     "lodash.merge": "^4.6.2",
     "react-icons": "^4.8.0",
     "styled-components": "^5.3.6"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "kindred_ui@0.1.0"
 }

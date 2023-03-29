@@ -10,7 +10,7 @@ import * as T from './Button.types';
 export const Button = styled.button<T.ButtonProps>`
   ${(): FlattenSimpleInterpolation => useGetTypographyStyles('label', 'lg')};
   ${({ skin, variant, loading, disabled, theme }): FlattenSimpleInterpolation =>
-    setSkin({ skin, variant, loading, disabled, theme })};
+    useSetSkin({ skin, variant, loading, disabled, theme })};
   ${({ size, theme }): FlattenSimpleInterpolation => setSize(size, theme)};
   display: flex;
   align-items: center;
@@ -57,7 +57,7 @@ export const Button = styled.button<T.ButtonProps>`
       : css``};
 `;
 
-function setSkin({
+function useSetSkin({
   skin = 'neutral',
   variant = 'default',
   loading = false,

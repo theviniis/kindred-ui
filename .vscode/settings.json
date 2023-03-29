@@ -12,6 +12,9 @@
     ".prettierignore": true,
     "package-lock.json": true,
     "LICENSE": true,
-    "jest.config.ts": true
+    "jest.config.ts": true,
+    "build-storybook.log": true,
+    ".github": true,
+    "README.md": true
   }
 }

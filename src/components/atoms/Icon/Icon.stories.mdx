@@ -3,9 +3,16 @@ import { Icon } from '.'
 import * as template from './Icon.stories.tsx'
 import { Hero } from '../Hero'
 
-<Meta title="Components/Atoms/Icon" component={Icon} />
-
-<Hero title='Icon'>Icons can help users quickly and easily identify what they need or want.</Hero>
+<Meta 
+  title="Components/Atoms/Icon" 
+  component={Icon}
+  argTypes={{
+    status: {
+      name: 'Icon',
+      description: 'Icons can help users quickly and easily identify what they need or want.',
+      }
+  }}  
+/>
 
 - [Importing and usage](#importing)
 - [API](#api)
@@ -25,7 +32,7 @@ import { Icon } from '@kindred-ui';
 
 ### Default
 
-<Canvas>
+<Canvas withSource="open" withToolbar>
   <Story story={template.Default} />
 </Canvas>
 

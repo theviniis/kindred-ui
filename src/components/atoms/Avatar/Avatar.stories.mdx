@@ -4,28 +4,48 @@ import * as _template from './Avatar.stories.tsx';
 import { Hero } from '../Hero'
 
 
-<Meta title="Components/Atoms/Avatar" component={Avatar} />
+<Meta 
+  title="Components/Atoms/Avatar" 
+  component={Avatar} 
+  argTypes={{
+    status: {
+      name: 'Avatar',
+      description: 'Avatars are found throughout material design with uses in everything from tables to dialog menus.',
+      }
+  }}
+/>
 
-<Hero title='Avatar'>Avatars are found throughout material design with uses in everything from tables to dialog menus.</Hero>
+## Index
 
+- [Preview](#Preview)
 - [Importing and usage](#importing)
-- [API](#api)
+- [Usage](#usage)
+- [API](#API)
 - [Examples](#examples)
 
-## <a id="importing"></a>Importing and usage
+## <a id="Preview"></a>Preview
+
+<Canvas withSource="open" withToolbar>
+  <Story story={_template.Default} />
+</Canvas>
+
+## <a id="importing"></a>Importing
 
 ```js
 import { Avatar } from '@kindred-ui';
 ```
 
-## API
+## <a id="usage"></a>Usage
+
+<Canvas>
+  <Avatar />
+</Canvas>
+
+## <a id="API"></a>API
 
 <ArgsTable of={Avatar} />
 
 ## <a id="examples"></a>Examples
 
-## Default
 
-<Canvas>
-  <Story story={_template.Default} />
-</Canvas>
+

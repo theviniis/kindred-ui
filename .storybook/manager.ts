@@ -22,7 +22,6 @@ const baseTheme = {
   colorSecondary: colors.coreColors.blue,
   barSelectedColor: colors.coreColors.blue,
   barTextColor: colors.text.disabled,
-
   ...branding,
 };
 
@@ -39,11 +38,9 @@ const SBdarkTheme = create({
   textColor: themes.dark.colors.text.primary,
   barTextColor: themes.dark.colors.text.secondary,
   textInverseColor: themes.light.colors.text.primary,
-  // input
   inputBg: palette.neutral[900],
   inputBorder: palette.neutral[700],
   inputTextColor: themes.dark.colors.text.primary,
-  inputBorderRadius: 8,
 });
 
 addons.setConfig({

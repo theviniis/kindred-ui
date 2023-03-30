@@ -2,6 +2,10 @@ import React from 'react';
 import { KindredContext } from '../src/context';
 import { SchemeWrapper, Flex } from './styles';
 import { SBdarkTheme } from './manager';
+import { DocsContainer, DocsPage } from '@storybook/addon-docs';
+import { themes } from '../src';
+import { ThemeProvider } from 'styled-components';
+import { Hero } from '../src/components/atoms/Hero';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -13,14 +17,29 @@ export const parameters = {
   },
   docs: {
     theme: SBdarkTheme,
+    page: DocsPage,
+    container: ({ children, context }) => {
+      return (
+        // @ts-ignore
+        <DocsContainer context={context}>
+          <ThemeProvider theme={themes.dark}>
+            <Hero title={context.argTypes?.status?.name}>
+              {context.argTypes?.status?.description}
+            </Hero>
+            {children}
+          </ThemeProvider>
+        </DocsContainer>
+      );
+    },
   },
+  viewMode: 'docs',
 };
 
 export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme for components',
-    defaultValue: 'both',
+    defaultValue: 'dark',
     toolbar: {
       icon: 'circlehollow',
       items: ['light', 'dark', 'both'],

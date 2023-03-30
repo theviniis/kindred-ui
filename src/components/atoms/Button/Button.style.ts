@@ -9,8 +9,14 @@ import * as T from './Button.types';
 
 export const Button = styled.button<T.ButtonProps>`
   ${(): FlattenSimpleInterpolation => useGetTypographyStyles('label', 'lg')};
-  ${({ skin, variant, loading, disabled, theme }): FlattenSimpleInterpolation =>
-    useSetSkin({ skin, variant, loading, disabled, theme })};
+  ${({
+    skin,
+    variant,
+    isLoading,
+    disabled,
+    theme,
+  }): FlattenSimpleInterpolation =>
+    useSetSkin({ skin, variant, isLoading, disabled, theme })};
   ${({ size, theme }): FlattenSimpleInterpolation => setSize(size, theme)};
   display: flex;
   align-items: center;
@@ -27,8 +33,8 @@ export const Button = styled.button<T.ButtonProps>`
   border-width: var(--border-width-sm);
   border-radius: var(--border-radius-xs);
   width: ${({ fullWidth }): string => (fullWidth ? '100%' : 'min-content')};
-  ${({ loading }): FlattenSimpleInterpolation =>
-    !loading
+  ${({ isLoading }): FlattenSimpleInterpolation =>
+    !isLoading
       ? css`
           &:hover {
             color: var(--clr-text-hover);
@@ -49,8 +55,8 @@ export const Button = styled.button<T.ButtonProps>`
     background-color: var(--clr-background);
     border-color: var(--clr-border);
   }
-  ${({ loading }): FlattenSimpleInterpolation =>
-    loading
+  ${({ isLoading }): FlattenSimpleInterpolation =>
+    isLoading
       ? css`
           cursor: not-allowed;
         `
@@ -60,7 +66,7 @@ export const Button = styled.button<T.ButtonProps>`
 function useSetSkin({
   skin = 'neutral',
   variant = 'default',
-  loading = false,
+  isLoading = false,
   disabled = false,
   theme,
 }: T.SetVariantProps): FlattenSimpleInterpolation {
@@ -71,7 +77,7 @@ function useSetSkin({
   if (skin === 'neutral' && variant !== 'default') {
     colorPrimary = colors.text.primary;
   }
-  if (loading || disabled) {
+  if (isLoading || disabled) {
     colorPrimary = colors.palette[skin][200];
   }
   const colorTextPrimary = useGetContrastingColor(colorPrimary);
@@ -153,16 +159,16 @@ function setSize(
       height: spacing.lg,
     },
     md: {
+      padding: spacing.xs,
+      height: spacing.xl,
+    },
+    lg: {
       padding: spacing.sm,
       height: spacing.xlg,
     },
-    lg: {
+    xl: {
       padding: spacing.lg,
       height: spacing.xxlg,
-    },
-    xl: {
-      padding: spacing.xlg,
-      height: spacing.xxxlg,
     },
   };
   return css`

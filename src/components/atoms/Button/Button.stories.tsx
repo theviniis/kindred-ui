@@ -61,10 +61,10 @@ const Variant: Story<ButtonProps> = VariantsTemplate.bind({});
 
 const Size: Story<ButtonProps> = SizesTemplate.bind({});
 
-export const Loading: Story<ButtonProps> = Template.bind({});
-Loading.args = {
-  children: 'Loading',
-  loading: true,
+export const isLoading: Story<ButtonProps> = Template.bind({});
+isLoading.args = {
+  children: 'isLoading',
+  isLoading: true,
 };
 
 const Disabled: Story<ButtonProps> = Template.bind({});

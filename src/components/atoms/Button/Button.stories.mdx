@@ -3,13 +3,28 @@ import { Button } from '.';
 import * as templates from './Button.stories.tsx';
 import { Hero } from '../Hero'
 
-<Meta title="Components/Atoms/Button" component={Button} />
+<Meta 
+  title="Components/Atoms/Button"
+  component={Button}
+  argTypes={{
+  status: {
+    name: 'Button',
+    description: "Buttons can be used to show the user's choice of options for actions and assign these to a clear hierarchy.",
+    }
+}}
+/>
 
-<Hero title='Button'>Buttons can be used to show the user's choice of options for actions and assign these to a clear hierarchy.</Hero>
-
+- [Preview](#Preview)
 - [Importing and usage](#importing)
-- [API](#api)
+- [API](#API)
 - [Examples](#examples)
+
+
+## <a id="Preview"></a>Preview
+
+<Canvas withSource="open" withToolbar>
+  <Story story={templates.Default} />
+</Canvas>
 
 ## <a id="importing"></a>Importing and usage
 
@@ -17,17 +32,11 @@ import { Hero } from '../Hero'
 import { Button } from '@kindred-ui';
 ```
 
-## API
+## <a id="API"></a>API
 
 <ArgsTable of={Button} />
 
 ## <a id="examples"></a>Examples
-
-### Default
-
-<Canvas>
-  <Story story={templates.Default} />
-</Canvas>
 
 ### Skin
 
@@ -47,10 +56,10 @@ import { Button } from '@kindred-ui';
   <Story story={templates.Size} />
 </Canvas>
 
-### Loading
+### isLoading
 
 <Canvas>
-  <Story story={templates.Loading} />
+  <Story story={templates.isLoading} />
 </Canvas>
 
 

@@ -1,19 +1,38 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { Typography } from './Typography';
 import * as _template from './Typography.stories.tsx';
-import { Hero } from '../../atoms/Hero'
+import { Hero } from '../../atoms/Hero';
+import styled from 'styled-components';
+import { Typesystem } from './Typesystem.stories'
 
 
-<Meta title="Faundation/Typography" component={Typography} />
+<Meta 
+  title="Faundation/Typography"
+  component={Typography} 
+  argTypes={{
+    status: {
+      name: 'Typography',
+      description: 'Typography is a component that helps display text with consistent typesystem elements.',
+      }
+  }}
+/>
 
-<Hero title='Typography'>Typography is a component to display text with consistent typography elements.</Hero>
-
+- [Preview](#Preview)
 - [Importing](#importing)
-- [API](#api)
 - [Usage](#usage)
-- [Examples](#examples)
+  - [Passing text as children](#usage-children)
+  - [Styling any component](#usage-any-component)
+- [API](#api)
+- [Typesystem](#Typesystem)
 
-## <a id="importing"></a>Importing and usage
+
+## <a id="Preview"></a>Preview
+
+<Canvas withSource="open" withToolbar>
+  <Story story={_template.Typography} />
+</Canvas>
+
+## <a id="importing"></a>Importing
 
 ```js
 import { Typography } from '@kindred-ui';
@@ -21,22 +40,57 @@ import { Typography } from '@kindred-ui';
 
 ## <a id="usage"></a>Usage
 
-### Passing as children
+> ### <a id="usage-children"></a>Passing text as children
 
 You can simple render our `Typography` component passing your text as `children` prop.
 
 ```jsx
-<Typography type='heading'>This is my header.</Typography>
+<Typography type='headline'>This is my header.</Typography>
 <Typography type='body'>This is my paragraph.</Typography>
 ```
 
-## API
-<ArgsTable of={Typography} />
+<Canvas>
+  <Typography type='headline'>This is my header.</Typography>
+  <Typography type='body'>This is my paragraph.</Typography>
+</Canvas>
 
-# <a id="examples"></a>Examples
 
-### Default
+> ### <a id="usage-any-component"></a>Styling any component
+
+First you need to create your `Wrapper` extending `Typography` styles.
+
+```jsx
+const Wrapper = styled(Typography)``;
+```
+
+Them use `.attrs()` method passing an object defining a `typography` `{ type: 'body' }`.
+
+```jsx
+const Wrapper = styled(Typography).attrs({ type: 'body' })`
+  // your styles goes here
+`;
+```
+
+Render your Wrapper passing `forwardedAs="element"` prop.
+
+```jsx
+<Wrapper forwardedAs="div">I'm an Typography styled div</Wrapper>
+```
+
+Your Wrapper will be rendered as a `div` tag and will be styled with `TYPOGRAPHY_VARIANTS.body1` styles.
+
+export const Wrapper = styled(Typography).attrs({ type: 'body' })``;
 
 <Canvas>
-  <Story story={_template.Default} />
+  <Wrapper forwardedAs="div">I'm a body styled div.</Wrapper>
 </Canvas>
+
+## <a id="api"></a>API
+
+<ArgsTable of={Typography} />
+
+## <a id="Typesystem"></a>Typesystem
+
+<Typesystem theme='dark' />
+
+

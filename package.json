@@ -55,6 +55,7 @@
     "@babel/core": "^7.19.6",
     "@size-limit/preset-small-lib": "^8.1.0",
     "@storybook/addon-a11y": "^6.5.16",
+    "@storybook/addon-docs": "^6.5.16",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-info": "^5.3.21",
     "@storybook/addon-links": "^6.5.16",

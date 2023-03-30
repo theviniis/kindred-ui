@@ -3,9 +3,18 @@ import { Input } from '.';
 import * as templates from './Input.stories.tsx';
 import { Hero } from '../../atoms/Hero'
 
-<Meta title="Components/Forms/Input" component={Input} />
-
-<Hero title='InputText'>Text fields let users enter and edit text.</Hero>
+<Meta 
+  title="Components/Forms/Input" 
+  component={Input} 
+  argTypes={
+    {
+      status: {
+        name: 'Input',
+        description: 'Text fields let users enter and edit text.',
+      }
+    }
+  }
+/>
 
 - [Importing and usage](#importing)
 - [API](#api)
@@ -25,7 +34,7 @@ import { InputText } from '@kindred-ui';
 
 ### Default
 
-<Canvas>
+<Canvas withSource="open" withToolbar>
   <Story story={templates.Default} />
 </Canvas>
 

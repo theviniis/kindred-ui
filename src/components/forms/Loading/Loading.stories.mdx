@@ -4,9 +4,16 @@ import * as templates from './Loading.stories.tsx';
 import { Hero } from '../../atoms/Hero'
 
 
-<Meta title="Components/Forms/Loading" component={Loading} />
-
-<Hero title='Loading'>Loading can be used provide a better user experience when something is loading</Hero>
+<Meta 
+  title="Components/Forms/Loading" 
+  component={Loading} 
+  argTypes={{
+    status: {
+      name: 'Loading',
+      description: 'Loading can be used provide a better user experience when something is loading',
+      }
+  }}
+/>
 
 - [Importing and usage](#importing)
 - [API](#api)
@@ -25,7 +32,7 @@ import { Loading } from '@kindred-ui';
 
 ### Circle
 
-<Canvas>
+<Canvas withSource="open" withToolbar>
   <Story story={templates.Circle} />
 </Canvas>
 

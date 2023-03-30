@@ -11,7 +11,7 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
   size?: SIZES;
   fullWidth?: boolean;
-  loading?: boolean;
+  isLoading?: boolean;
 }
 
 export interface SetVariantProps

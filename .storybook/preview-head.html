@@ -1,0 +1,44 @@
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,600;1,700&family=Roboto:wght@400;500;700&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  body {
+    /* background-color: #fbfbfc; */
+  }
+
+  #root > div {
+    padding: 0;
+  }
+
+  .sb-show-main::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .sb-show-main::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .sb-show-main::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+  }
+
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
+  ul li {
+    position: relative;
+  }
+  ul li::before {
+    content: '\2022'; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #727272;
+    width: 1em;
+    margin-left: -1em;
+    position: relative;
+    left: -0.5em;
+  }
+</style>

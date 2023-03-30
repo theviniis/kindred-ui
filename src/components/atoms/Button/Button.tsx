@@ -10,7 +10,7 @@ export const Button: React.FC<T.ButtonProps> = ({
   disabled = false,
   size = 'md',
   fullWidth = false,
-  loading,
+  isLoading,
   ...props
 }) => {
   return (
@@ -19,11 +19,11 @@ export const Button: React.FC<T.ButtonProps> = ({
       variant={variant}
       disabled={disabled}
       size={size}
-      loading={loading}
+      isLoading={isLoading}
       fullWidth={fullWidth}
       {...props}
     >
-      {loading && <Loading size="xs" skin={'currentColor'} />}
+      {isLoading && <Loading size="xs" skin={'currentColor'} />}
       {children}
     </S.Button>
   );

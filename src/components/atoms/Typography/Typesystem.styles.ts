@@ -8,7 +8,6 @@ export const Wrapper = styled(Flex).attrs({
     margin: 0;
     padding: 0;
   }
-  background-color: ${({ theme }): string => theme.colors.background};
 `;
 
 export const Container = styled(Flex).attrs({

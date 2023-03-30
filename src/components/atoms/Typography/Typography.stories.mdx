@@ -1,11 +1,44 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { Typography } from './Typography';
 import * as _template from './Typography.stories.tsx';
+import { Hero } from '../../atoms/Hero'
+
 
 <Meta title="Faundation/Typography" component={Typography} />
 
-# Typography
+<Hero title='Typography'>Typography is a component to display text with consistent typography elements.</Hero>
 
+- [Importing](#importing)
+- [API](#api)
+- [Usage](#usage)
+- [Examples](#examples)
+
+## <a id="importing"></a>Importing and usage
+
+```js
+import { Typography } from '@kindred-ui';
+```
+
+## <a id="usage"></a>Usage
+
+### Passing as children
+
+You can simple render our `Typography` component passing your text as `children` prop.
+
+```jsx
+<Typography type='heading'>This is my header.</Typography>
+<Typography type='body'>This is my paragraph.</Typography>
+```
+
+<Story>
+  <Canvas>
+    <div>
+    </div>
+  </Canvas>
+</Story>
+
+
+## API
 <ArgsTable of={Typography} />
 
 # <a id="examples"></a>Examples

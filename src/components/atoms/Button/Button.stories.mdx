@@ -1,14 +1,27 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { Button } from '.';
 import * as templates from './Button.stories.tsx';
+import { Hero } from '../Hero'
 
 <Meta title="Components/Atoms/Button" component={Button} />
 
-# Button
+<Hero title='Button'>Buttons can be used to show the user's choice of options for actions and assign these to a clear hierarchy.</Hero>
+
+- [Importing and usage](#importing)
+- [API](#api)
+- [Examples](#examples)
+
+## <a id="importing"></a>Importing and usage
+
+```js
+import { Button } from '@kindred-ui';
+```
+
+## API
 
 <ArgsTable of={Button} />
 
-# <a id="examples"></a>Examples
+## <a id="examples"></a>Examples
 
 ### Default
 

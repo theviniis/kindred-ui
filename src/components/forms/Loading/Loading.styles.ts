@@ -80,7 +80,7 @@ export const BarLoading = styled.div`
     border-radius: var(--border-radius-sm);
     background: var(--clr-primary);
     transition: 0.5s;
-    animation: loading_44 6s cubic-bezier(0.4, 1.01, 1, 1) infinite;
+    animation: loading_44 6s cubic-bezier(0.4, 1.01, 1, 1) forwards;
   }
 
   @keyframes loading_44 {
@@ -88,12 +88,8 @@ export const BarLoading = styled.div`
       width: 0%;
     }
 
-    50% {
-      width: 100%;
-    }
-
     100% {
-      width: 0%;
+      width: 100%;
     }
   }
 `;

@@ -45,7 +45,7 @@ export const GlobalStyle = createGlobalStyle`
     color: currentColor;
   }
   label, span {
-    display: inline-block;
+    /* display: inline-block; */
   }
   img {
     display: block;

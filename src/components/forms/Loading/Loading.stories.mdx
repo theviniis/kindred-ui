@@ -1,14 +1,27 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import { Loading } from '.';
 import * as templates from './Loading.stories.tsx';
+import { Hero } from '../../atoms/Hero'
+
 
 <Meta title="Components/Forms/Loading" component={Loading} />
 
-# Loading
+<Hero title='Loading'>Loading can be used provide a better user experience when something is loading</Hero>
 
+- [Importing and usage](#importing)
+- [API](#api)
+- [Examples](#examples)
+
+## <a id="importing"></a>Importing and usage
+
+```js
+import { Loading } from '@kindred-ui';
+```
+
+## API
 <ArgsTable of={Loading} />
 
-# <a id="examples"></a>Examples
+## <a id="examples"></a>Examples
 
 ### Circle
 

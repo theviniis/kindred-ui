@@ -1,7 +1,13 @@
 import React from 'react';
 import { useTheme } from 'styled-components';
 import * as T from './Icon.types';
-import { FiAlertTriangle, FiEye, FiEyeOff } from 'react-icons/fi';
+import {
+  FiAlertTriangle,
+  FiEye,
+  FiEyeOff,
+  FiPackage,
+  FiShoppingCart,
+} from 'react-icons/fi';
 
 export const Icon: React.FC<T.IconProps> = ({
   children,
@@ -22,6 +28,8 @@ export const Icon: React.FC<T.IconProps> = ({
     FiEye: <FiEye {...iconsProps} />,
     FiEyeOff: <FiEyeOff {...iconsProps} />,
     FiAlertTriangle: <FiAlertTriangle {...iconsProps} />,
+    FiShoppingCart: <FiShoppingCart {...iconsProps} />,
+    FiPackage: <FiPackage {...iconsProps} />,
   } as const;
   const Component = iconsVariants[icon];
   return Component;

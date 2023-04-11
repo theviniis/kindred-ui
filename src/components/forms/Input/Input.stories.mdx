@@ -16,14 +16,42 @@ import { Hero } from '../../atoms/Hero'
   }
 />
 
-- [Importing and usage](#importing)
+- [Preview](#Preview)
+- [Importing](#importing)
+- [Usage](#usage)
 - [API](#api)
 - [Examples](#examples)
 
-## <a id="importing"></a>Importing and usage
+## <a id="Preview"></a>Preview
+
+<Canvas withSource="open" withToolbar>
+  <Story story={templates.Default} />
+</Canvas>
+
+## <a id="importing"></a>Importing
 
 ```js
 import { InputText } from '@kindred-ui';
+```
+
+## <a id="usage"></a>Usage
+
+
+```jsx
+export default function App() {
+  const [username, setUsername] = React.useState('');
+
+  return (
+    <form>
+      <Input
+        type="text"
+        label="Username"
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+      />
+    </form>
+  );
+}
 ```
 
 ## API
@@ -31,12 +59,6 @@ import { InputText } from '@kindred-ui';
 <ArgsTable of={Input} />
 
 ## <a id="examples"></a>Examples
-
-### Default
-
-<Canvas withSource="open" withToolbar>
-  <Story story={templates.Default} />
-</Canvas>
 
 ### Placeholder
 

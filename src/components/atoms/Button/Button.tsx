@@ -8,7 +8,7 @@ export const Button: React.FC<T.ButtonProps> = ({
   skin = 'neutral',
   variant = 'default',
   disabled = false,
-  size = 'md',
+  size = 'sm',
   fullWidth = false,
   isLoading,
   ...props

@@ -1,7 +1,12 @@
 import { spacing } from '../../../shared';
 import { SKINS } from '../../../utils';
 
-export type ICONS_VARIANTS = 'FiEye' | 'FiEyeOff' | 'FiAlertTriangle';
+export type ICONS_VARIANTS =
+  | 'FiEye'
+  | 'FiEyeOff'
+  | 'FiAlertTriangle'
+  | 'FiShoppingCart'
+  | 'FiPackage';
 export interface IconProps extends React.SVGAttributes<HTMLOrSVGElement> {
   icon: ICONS_VARIANTS;
   skin?: SKINS;

@@ -29,9 +29,10 @@ export const Button = styled.button<T.ButtonProps>`
   border-color: var(--clr-border);
   padding-inline: var(--padding);
   height: var(--height);
-  transition: all 0.3s ease 0s;
+  transition: ease-in 150ms;
   border-width: var(--border-width-sm);
   border-radius: var(--border-radius-xs);
+  white-space: nowrap;
   width: ${({ fullWidth }): string => (fullWidth ? '100%' : 'min-content')};
   ${({ isLoading }): FlattenSimpleInterpolation =>
     !isLoading

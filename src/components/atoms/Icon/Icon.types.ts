@@ -6,7 +6,8 @@ export type ICONS_VARIANTS =
   | 'FiEyeOff'
   | 'FiAlertTriangle'
   | 'FiShoppingCart'
-  | 'FiPackage';
+  | 'FiPackage'
+  | 'remove';
 export interface IconProps extends React.SVGAttributes<HTMLOrSVGElement> {
   icon: ICONS_VARIANTS;
   skin?: SKINS;

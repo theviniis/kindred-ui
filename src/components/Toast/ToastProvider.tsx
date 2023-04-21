@@ -1,18 +1,28 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import React, {
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import ReactDOM from 'react-dom';
 import * as T from './Toast.types';
 import * as S from './Toast.styles';
-import { Typography } from '../atoms';
+import { Toast } from './Toast';
+
+const DEFAULT_TOAST_PROVIDER_OPTIONS = {
+  autoClose: true,
+  isDismissible: true,
+  autoCloseTime: 2000,
+};
 
 export const ToastContext = React.createContext<T.ToastContextProps>({
   toastList: [],
   setToastList: () => {},
+  options: DEFAULT_TOAST_PROVIDER_OPTIONS,
+  setOptions: () => {},
   send: () => {},
-  options: {
-    autoClose: true,
-    isDismissible: true,
-  },
-  setToastOptions: () => {},
+  remove: () => {},
 });
 
 export function ToastProvider({
@@ -21,26 +31,48 @@ export function ToastProvider({
   children: ReactNode;
 }): JSX.Element {
   const [toastList, setToastList] = useState<T.TOAST[]>([]);
-  const [options, setOptions] = useState<T.TOAST_OPTIONS>({});
+  const [options, setOptions] = useState<T.TOAST_OPTIONS>(
+    DEFAULT_TOAST_PROVIDER_OPTIONS
+  );
+  const timeout = useRef<NodeJS.Timeout | null>(null);
+
+  const send = useCallback((toast: T.TOAST) => {
+    const id = toast.id ?? crypto.randomUUID();
+    setToastList(currentList => [...currentList, { ...toast, id }]);
+  }, []);
+
+  const remove = useCallback((id: string) => {
+    setToastList(currentList => {
+      return currentList.filter(toast => toast.id !== id);
+    });
+  }, []);
 
   const ToastContainer: JSX.Element = (
     <S.ToastContainer id="toast-container">
-      {toastList.map(toast => (
-        <S.Toast key={toast.id ?? crypto.randomUUID()}>
-          <Typography type="title">{toast.title}</Typography>
-          <Typography type="body">{toast.message}</Typography>
-        </S.Toast>
-      ))}
+      {toastList &&
+        toastList.map(toast => {
+          return <Toast key={crypto.randomUUID()} {...toast} />;
+        })}
     </S.ToastContainer>
   );
-
-  const send = useCallback((toast: T.TOAST) => {
-    setToastList(currentList => [...currentList, toast]);
-  }, []);
 
   const ToastWrapperInBody = ReactDOM.createPortal(
     ToastContainer,
     document.body
+  );
+
+  useEffect(
+    function autoClose() {
+      if (toastList.length && options.autoClose) {
+        const expiredToast = toastList[toastList.length - 1].id;
+        timeout.current = setTimeout(() => {
+          setToastList(currentList => {
+            return currentList.filter(toast => toast.id !== expiredToast);
+          });
+        }, options.autoCloseTime);
+      }
+    },
+    [toastList, options.autoClose, options.autoCloseTime]
   );
 
   return (
@@ -50,7 +82,8 @@ export function ToastProvider({
         setToastList,
         send,
         options,
-        setToastOptions: setOptions,
+        setOptions,
+        remove,
       }}
     >
       {children}
@@ -59,5 +92,13 @@ export function ToastProvider({
   );
 }
 
-export const useToast = (): T.ToastContextProps =>
-  React.useContext(ToastContext);
+export const useToast = (options?: T.TOAST_OPTIONS): T.ToastContextProps => {
+  const context = React.useContext(ToastContext);
+  useEffect(() => {
+    if (options) {
+      context.setOptions(options);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return context;
+};

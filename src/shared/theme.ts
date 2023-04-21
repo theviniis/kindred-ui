@@ -370,6 +370,12 @@ export const colors = {
   palette: {
     ...palette,
   },
+  surface: {
+    20: palette.neutral[900],
+    40: palette.neutral[900],
+    60: palette.neutral[900],
+    80: palette.neutral[900],
+  },
 };
 
 export const theme = {
@@ -397,6 +403,12 @@ export const darkTheme: DefaultTheme = {
       primary: palette.neutral[200],
       secondary: palette.neutral[500],
       disabled: palette.neutral[600],
+    },
+    surface: {
+      20: palette.neutral[800],
+      40: palette.neutral[700],
+      60: palette.neutral[600],
+      80: palette.neutral[500],
     },
   },
   ...theme,

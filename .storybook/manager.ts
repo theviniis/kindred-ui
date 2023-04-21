@@ -34,7 +34,7 @@ const SBdarkTheme = create({
   ...baseTheme,
   base: 'dark',
   appBg: palette.neutral[900],
-  appContentBg: palette.neutral[800],
+  appContentBg: palette.neutral[900],
   textColor: themes.dark.colors.text.primary,
   barTextColor: themes.dark.colors.text.secondary,
   textInverseColor: themes.light.colors.text.primary,

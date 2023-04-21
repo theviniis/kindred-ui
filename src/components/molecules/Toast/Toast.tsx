@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
 import * as S from './Toast.styles';
-import { TOAST } from './Toast.types';
-import { Icon, Typography } from '../atoms';
-import { ToastContext } from './ToastProvider';
+import { Icon, Typography } from '../../';
+import { ToastContext, TOAST } from './';
 
 export const Toast = ({
   id = crypto.randomUUID(),

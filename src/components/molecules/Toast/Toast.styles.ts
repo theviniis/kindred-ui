@@ -1,5 +1,5 @@
 import styled, { FlattenSimpleInterpolation, css } from 'styled-components';
-import { Button as B } from '../atoms';
+import { Button as B } from '../../';
 
 export const ToastContainer = styled.div`
   position: fixed;

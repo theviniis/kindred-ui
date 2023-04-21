@@ -1,8 +1,19 @@
 import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
-import { Toast } from './Toast.tsx';
+import { Toast } from './';
 import * as templates from './Toast.stories.tsx';
 
-<Meta title="Toast" component={Toast} />
+<Meta
+  title="Components/Molecules/Toast"
+  component={Toast}
+  argTypes={
+  {
+    status: {
+      name: 'Toast',
+      description: 'Toast are used to display an visual feedback to user',
+    }
+  }
+}
+/>
 
 # Toast
 

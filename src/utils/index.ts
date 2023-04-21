@@ -1,4 +1,4 @@
-export * from './types';
+export * from '../@types/types';
 export * from './darken';
 export * from './lighten';
 export * from './createTheme';

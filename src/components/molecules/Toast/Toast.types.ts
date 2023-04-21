@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { SKINS } from '../../utils';
+import { SKINS } from '../../../utils';
 
 export type TOAST_OPTIONS = {
   autoClose?: boolean;
@@ -21,5 +21,4 @@ export type TOAST = {
   message: string;
   skin?: SKINS;
   icon?: ReactNode;
-  // options?: TOAST_OPTIONS;
 };

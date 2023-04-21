@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 import * as T from './Toast.types';
 import * as S from './Toast.styles';
 import { Toast } from './Toast';
+import { merge } from 'lodash';
 
 const DEFAULT_TOAST_PROVIDER_OPTIONS = {
   autoClose: true,
@@ -34,7 +35,8 @@ export function ToastProvider({
   const [options, setOptions] = useState<T.TOAST_OPTIONS>(
     DEFAULT_TOAST_PROVIDER_OPTIONS
   );
-  const timeout = useRef<NodeJS.Timeout | null>(null);
+
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const send = useCallback((toast: T.TOAST) => {
     const id = toast.id ?? crypto.randomUUID();
@@ -65,7 +67,7 @@ export function ToastProvider({
     function autoClose() {
       if (toastList.length && options.autoClose) {
         const expiredToast = toastList[toastList.length - 1].id;
-        timeout.current = setTimeout(() => {
+        timeoutRef.current = setTimeout(() => {
           setToastList(currentList => {
             return currentList.filter(toast => toast.id !== expiredToast);
           });
@@ -95,10 +97,7 @@ export function ToastProvider({
 export const useToast = (options?: T.TOAST_OPTIONS): T.ToastContextProps => {
   const context = React.useContext(ToastContext);
   useEffect(() => {
-    if (options) {
-      context.setOptions(options);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    context.setOptions(currentOptions => merge(currentOptions, options));
+  });
   return context;
 };

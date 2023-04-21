@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { GlobalStyle, themes } from '../shared';
-import { ToastProvider } from '../components/Toast';
+import { ToastProvider } from '../components/';
 
 export const GlobalContext = React.createContext({});
 

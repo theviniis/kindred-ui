@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { render, RenderOptions, RenderResult } from '@testing-library/react';
-import { KindredContext } from '../context';
+import { KindredContext } from '../src/context';
 
 const AllTheProviders = ({
   children,

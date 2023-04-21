@@ -1,8 +1,7 @@
 import React from 'react';
 import { Story } from '@storybook/react';
-import { TOAST } from './';
-import { Button } from '../atoms';
-import { useToast } from './ToastProvider';
+import { TOAST, useToast } from './';
+import { Button } from '../../';
 
 const Template: Story<TOAST> = args => {
   const { send } = useToast();

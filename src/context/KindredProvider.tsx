@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import { DefaultTheme, ThemeProvider } from 'styled-components';
 import { GlobalStyle, themes } from '../shared';
+import { ToastProvider } from '../components/Toast';
 
 export const GlobalContext = React.createContext({});
 
@@ -27,7 +28,7 @@ export const KindredContext: React.FC<KindredContextProps> = ({
       value={{ currentTheme, setCurrentTheme, themeToggle }}
     >
       <ThemeProvider theme={themes[scheme]}>
-        {children}
+        <ToastProvider>{children}</ToastProvider>
         <GlobalStyle />
       </ThemeProvider>
     </GlobalContext.Provider>

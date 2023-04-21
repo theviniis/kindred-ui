@@ -1,0 +1,17 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import { Toast } from './Toast.tsx';
+import * as templates from './Toast.stories.tsx';
+
+<Meta title="Toast" component={Toast} />
+
+# Toast
+
+<ArgsTable of={Toast} />
+
+# <a id="examples"></a>Examples
+
+### Default
+
+<Canvas>
+  <Story story={templates.Default} />
+</Canvas>

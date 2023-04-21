@@ -1,1 +1,1 @@
-export * from './KindredContext';
+export * from './KindredProvider';

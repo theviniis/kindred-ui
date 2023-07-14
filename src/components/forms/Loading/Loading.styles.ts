@@ -3,20 +3,24 @@ import { LoadingProps } from './Loading.types';
 
 export const Wrapper = styled.div<Pick<LoadingProps, 'skin' | 'size'>>`
   ${({ theme, size = 'md', skin = 'neutral' }): FlattenSimpleInterpolation => {
-    const loadingSizes = {
+    const loadingSizes: {
+      [key: string]: string;
+    } = {
       xs: theme.size.xs,
       sm: theme.size.sm,
       md: theme.size.md,
       lg: theme.size.lg,
       xl: theme.size.xl,
-    };
-    const loadingBarHeights = {
+    } as const;
+    const loadingBarHeights: {
+      [key: string]: string;
+    } = {
       xs: '1px',
       sm: '2px',
       md: '4px',
       lg: '6px',
       xl: '8px',
-    };
+    } as const;
     return css`
       --clr-primary: ${skin === 'currentColor'
         ? 'currentColor'

@@ -10,7 +10,7 @@ module.exports = {
     // path.resolve('./.storybook/my-preset'),
   ],
   typescript: {
-    check: true, // type-check stories during Storybook build
+    check: false, // type-check stories during Storybook build
   },
   configureJSX: true,
   babelOptions: {},

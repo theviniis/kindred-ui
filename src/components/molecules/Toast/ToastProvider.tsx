@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import * as T from './Toast.types';
 import * as S from './Toast.styles';
 import { Toast } from './Toast';
-import { merge } from 'lodash';
+import { merge } from 'lodash-es';
 
 const DEFAULT_TOAST_PROVIDER_OPTIONS = {
   autoClose: true,

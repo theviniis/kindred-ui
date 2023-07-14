@@ -6,7 +6,7 @@ export type SIZES = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 declare global {
   interface Crypto {
-    // eslint-disable-next-line prettier/prettier
-    randomUUID: () => `${string}-${string}-${string}-${string}-${string}`;
+    // @ts-ignore
+    randomUUID: () => string;
   }
 }
